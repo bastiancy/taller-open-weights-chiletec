@@ -1,0 +1,9 @@
+<svg class="ship" viewBox="0 0 84 40" aria-hidden="true">
+      <ellipse cx="10" cy="20" rx="10" ry="4.5" fill="var(--accent)" opacity=".85"/>
+      <ellipse cx="6" cy="20" rx="6" ry="2.2" fill="#fff" opacity=".9"/>
+      <path d="M16 13 L58 11 Q80 16 82 20 Q80 24 58 29 L16 27 Z" fill="#DCE4EC"/>
+      <path d="M28 12 L44 2 L52 11.5 Z" fill="#AEB9C5"/>
+      <path d="M28 28 L44 38 L52 28.5 Z" fill="#AEB9C5"/>
+      <path d="M58 15 Q70 17 72 20 Q70 23 58 25 Z" fill="var(--accent)" opacity=".9"/>
+      <rect x="16" y="18.5" width="36" height="3" rx="1.5" fill="#8C98A6"/>
+    </svg>
