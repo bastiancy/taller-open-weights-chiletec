@@ -47,7 +47,10 @@ xdg-open slides/dist/index.html         # o abrir en el navegador
 
 - **Edita siempre `slides/deck.src.html`**, nunca `dist/index.html`.
 - Después de cada cambio: build + capturas de las diapositivas tocadas + revisar las imágenes antes de dar el trabajo por terminado. Revisa que nada se salga de los márgenes (lienzo 1600×900, padding 64px/96px).
-- Navegación del deck: flechas/espacio, tecla **F** pantalla completa, `#n` en la URL para saltar a una diapositiva, swipe en táctil.
+- Navegación del deck: flechas/espacio/PageUp-PageDown (clicker), tecla **F** pantalla completa, `#n` en la URL para saltar a una diapositiva, swipe en táctil.
+- **Modo presentador:** tecla **P** abre una ventana sincronizada (`?presenter`) con la diapositiva actual, la siguiente (o el siguiente paso), las notas y cronómetros (total, por diapositiva con objetivo, y plan acumulado). Las vistas internas usan `?embed`. Sincroniza por `postMessage` (funciona con file://) y `BroadcastChannel`.
+- **Notas del speaker:** cada `<section>` termina con `<aside class="notes" data-min="N"><ul><li>…</li></ul></aside>` (N = minutos objetivo). No se ven en la presentación.
+- Charla por Zoom: el Mac comparte la *ventana* del deck (no pantalla completa de macOS) con cámara y micrófono; el PC Ubuntu entra sin audio y comparte pantalla en la demo.
 - Las fuentes vienen de Google Fonts (Fraunces, IBM Plex Sans, IBM Plex Mono); si no hay red, cae a fuentes del sistema.
 
 ### Sistema de diseño (mantenerlo consistente)
@@ -82,11 +85,12 @@ xdg-open slides/dist/index.html         # o abrir en el navegador
 - RAG con **LangChain** y el mínimo código visible: el usuario define una carpeta, deja sus archivos, y el resto lo hace LangChain. Notebooks de JupyterLab, entregados **ya ejecutados**.
 - Todo lo que se muestre en vivo debe quedar en el repo para que los asistentes lo repitan.
 
-## Estado actual del deck (23 diapositivas en `deck.src.html`)
+## Estado actual del deck (25 diapositivas en `deck.src.html`)
 
-**Parte 1 — Breve historia de la galaxia (30 min):** 1 Portada · 2 Temario (QR) · 3 Divisor · 4 ¿Qué es un LLM? · 5 ¿Cómo nace un archivo Open Weights? · 6 Lado claro (Transformer, BERT, GPT-1, GPT-2) · 7 Lado oscuro (GPT-3, ChatGPT, GPT-4 + Ley 21.719) · 8 Alianza rebelde (LLaMA se filtra, Mistral 7B, DeepSeek R1, gpt-oss, Qwen3.6) · 9 Resumen: tres tipos de modelo.
+**Parte 1 — Breve historia de la galaxia (30 min), orden acordado el 19 oct 2026:** 1 Portada · 2 Temario · 3 Divisor · 4 ¿Qué es un LLM? (chat animado: aplicación vs LLM; la 8 "Entonces, ¿qué es un LLM?" remata el chiste) · 5 ¿Qué es un token? · 6 ¿Qué es un embedding? (embeddings reales) · 7 ¿Qué es un parámetro? · 8 Entonces, ¿qué es un LLM? (red animada) · 9 En realidad: un Transformer (→ decoder-only) · 10 Capacidades (razonamiento, herramientas, visión) · 11 Ventana de contexto · 12 Tres tipos de modelo · 13 Breve historia (lado claro → oscuro → rebelión, con logos) · 14 ¿Cómo aprende? y 15 ¿Cómo nace un archivo Open Weights? (por decidir si se quedan).
+Las redes se generan en JS desde `data-nn` (JSON con capas) y los embeddings desde `data-emb`.
 
-**Parte 2 — Práctica Jedi (60 min):** 10 Divisor · 11 Ollama · 12 Tabla de hardware (costos "por completar") · 13 Cuantización · 14 Caché KV · 15 LM Studio: el catálogo · 16 Benchmarks · 17 Panorama de hoy · 18 Cinco filtros · 19 Caso de uso Convenio Marco · 20 Camino 1: PDF → texto/RAG · 21 Camino 2: multimodal · 22 Misma pregunta, tres modelos · 23 Cierre.
+**Parte 2 — Práctica Jedi (60 min), versión antigua, por reestructurar:** 12 Divisor · 13 Ollama · 14 Tabla de hardware · 15 Cuantización · 16 Caché KV · 17 LM Studio: el catálogo · 18 Benchmarks · 19 Panorama de hoy · 20 Cinco filtros · 21 Caso de uso Convenio Marco · 22 Camino 1 · 23 Camino 2 · 24 Misma pregunta, tres modelos · 25 Cierre.
 
 ⚠️ **El orden de la Parte 2 en el deck todavía es el antiguo** (Ollama antes que LM Studio). El orden acordado está en `docs/contenido-taller-1.md` y abajo.
 
@@ -113,7 +117,7 @@ xdg-open slides/dist/index.html         # o abrir en el navegador
 ## Pendientes
 
 **Del usuario:**
-- Logos oficiales de empresas y logo de Afentu (placeholder SVG en la portada, bloque `.brand`).
+- Logos oficiales que faltan (kit de OpenAI y Mistral, vector de Chiletec). La diapositiva "Quién soy" se eliminó: Chiletec presenta al speaker.
 - URL real del repo de GitHub → regenerar `slides/assets/qr.b64` (hoy apunta a `https://github.com/TU-USUARIO/taller-open-weights-chiletec`). Se puede generar con `qrencode -o qr.png URL && base64 -w0 qr.png > slides/assets/qr.b64`.
 - Costos de hardware en Chile (se ofreció buscar precios de referencia).
 - PDF de las bases (y anexos) para el dataset del benchmark; confirmar las ~100 páginas.

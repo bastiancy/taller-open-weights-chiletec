@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- Visor local de Markdown (solo rama develop).
+     Uso: http://localhost:8000/docs/ver.html?f=contenido-taller-1.md  (ruta relativa a docs/) -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visor de contenido</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600&family=IBM+Plex+Sans:wght@400;600&family=IBM+Plex+Mono&display=swap">
+<style>
+:root{--bg:#0d1220;--fg:#e6e9f0;--mute:#9aa3b5;--acc:#4AC6B3;--line:#26304a;}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif;}
+main{max-width:860px;margin:0 auto;padding:40px 20px 120px;}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;line-height:1.25;}
+h2{border-top:1px solid var(--line);padding-top:28px;margin-top:48px;}
+a{color:var(--acc);}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;background:#1a2236;padding:1px 5px;border-radius:4px;}
+table{border-collapse:collapse;width:100%;margin:16px 0;}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top;}
+blockquote{border-left:3px solid var(--acc);margin:0;padding:4px 16px;color:var(--mute);}
+nav{position:sticky;top:0;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--mute);}
+</style>
+</head>
+<body>
+<main>
+<nav id="nav"></nav>
+<article id="doc">Cargando…</article>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script>
+const f = new URLSearchParams(location.search).get("f") || "contenido-taller-1.md";
+document.getElementById("nav").textContent = "docs/" + f;
+fetch(f, {cache: "no-store"}).then(r => r.text()).then(md => {
+  const doc = document.getElementById("doc");
+  doc.innerHTML = marked.parse(md);
+  doc.querySelectorAll("h2,h3").forEach(h => {
+    h.id = h.textContent.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "")
+      .replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  });
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+});
+</script>
+</body>
+</html>

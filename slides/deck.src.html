@@ -88,7 +88,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
 .speaker strong{font-size:28px;font-weight:600;}
 .speaker span{font-size:21px;color:var(--soft);}
 .brand{position:absolute;left:96px;bottom:60px;display:flex;align-items:center;gap:14px;font-family:var(--f-head);font-size:30px;font-weight:600;letter-spacing:.01em;}
-.brand svg{width:42px;height:42px;}
+.brand img{height:52px;width:auto;display:block;}
 .chiletec{position:absolute;right:96px;bottom:66px;font-size:19px;color:var(--mute);text-align:right;}
 
 /* ---------- agenda ---------- */
@@ -435,6 +435,262 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
 .when{position:absolute;left:96px;right:96px;bottom:140px;display:grid;grid-template-columns:1fr 1fr;gap:64px;}
 .when div{font-size:21px;color:var(--soft);line-height:1.45;padding-left:20px;border-left:3px solid var(--jedi);}
 .when b{display:block;font-family:var(--f-head);font-size:26px;color:var(--ink);margin-bottom:4px;}
+
+/* ---------- v3: quién soy ---------- */
+.s-about{display:flex;align-items:center;gap:110px;}
+.photo{flex:none;width:400px;height:400px;border-radius:50%;border:2px dashed rgba(236,241,246,.38);display:grid;place-items:center;overflow:hidden;color:var(--mute);font-size:22px;box-shadow:0 0 80px rgba(134,191,220,.18);}
+.photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.about h2{font-family:var(--f-head);font-weight:700;font-size:92px;line-height:1;letter-spacing:-.02em;margin:26px 0 0;}
+.about p{font-size:32px;margin:30px 0 0;}
+.about p.sub{font-size:24px;color:var(--soft);margin-top:10px;}
+.about-logo{display:block;height:60px;width:auto;margin-top:64px;}
+
+/* ---------- v3: diagramas de red neuronal ---------- */
+.sent{position:absolute;left:96px;top:208px;font-size:34px;}
+.sent .blank{display:inline-block;min-width:170px;height:46px;border-bottom:3px solid var(--accent);margin-left:10px;vertical-align:bottom;position:relative;}
+.sent .blank b{position:absolute;left:4px;bottom:4px;font-weight:600;color:var(--accent);}
+.sent .mask{background:rgba(236,241,246,.07);border-radius:6px 6px 0 0;}
+.sent .mask b{left:0;right:0;text-align:center;}
+.sent .mask b.ok{color:var(--jedi);}
+.nnsvg{position:absolute;left:96px;top:272px;width:1408px;height:500px;overflow:visible;}
+.nnsvg text{font-family:var(--f-body);fill:var(--ink);}
+.col-lab text{font-size:18px;fill:var(--mute);letter-spacing:.02em;}
+.toks rect{fill:rgba(236,241,246,.07);stroke:rgba(236,241,246,.28);stroke-width:1.5;}
+.toks text{font-size:23px;}
+.toks text.id{font-family:var(--f-mono);font-size:14px;fill:var(--mute);text-anchor:end;}
+.toks.hot rect{stroke:var(--accent);fill:rgba(134,191,220,.12);}
+.emb rect{fill:var(--accent);}
+.nn line{stroke:var(--ink);stroke-width:1;opacity:.09;}
+.nn line.hi{stroke:var(--accent);stroke-width:3.5;opacity:1;filter:drop-shadow(0 0 6px var(--accent));}
+.nn circle{fill:var(--space);stroke:rgba(236,241,246,.5);stroke-width:1.5;}
+.nn.ov line{opacity:0;}
+.nn.fwd.in line{animation:epulse 2.6s ease-in-out infinite;animation-delay:calc(var(--k) * .42s);}
+.nn.fwd.in circle{animation:npulse 2.6s ease-in-out infinite;animation-delay:calc(var(--k) * .42s + .18s);}
+.nn.back.in line{stroke:var(--oscuro);animation:epulse 2.2s ease-in-out infinite;animation-delay:calc((4 - var(--k)) * .36s);}
+@keyframes epulse{0%,100%{opacity:.06}14%{opacity:var(--w)}34%{opacity:.06}}
+@keyframes npulse{0%,100%{fill:var(--space)}14%{fill:var(--accent)}34%{fill:var(--space)}}
+.probs text.w{font-size:24px;}
+.probs text.pct{font-size:17px;fill:var(--soft);}
+.probs rect{fill:rgba(236,241,246,.32);}
+.probs .hot{fill:var(--accent);}
+.probs text.hot{font-weight:600;}
+.probs .bad{fill:var(--oscuro);}
+.probs text.bad{fill:#F2A49D;}
+.probs text.more{font-size:17px;fill:var(--mute);}
+.probs text.err{font-size:18px;fill:#F2A49D;}
+.loop path{fill:none;stroke:var(--accent);stroke-width:2;stroke-dasharray:7 7;}
+.loop path.tip{stroke-dasharray:none;stroke-linejoin:round;}
+.loop text{font-size:18px;fill:var(--soft);}
+.wcall rect{fill:var(--space);stroke:var(--accent);stroke-width:2;}
+.wcall text{font-family:var(--f-mono);font-size:22px;fill:var(--accent);}
+.wcall.up rect{stroke:var(--jedi);}
+.wcall.up text{fill:var(--jedi);}
+.fileout path{fill:rgba(134,191,220,.1);stroke:var(--accent);stroke-width:2;}
+.fileout text.num{font-family:var(--f-mono);font-size:14px;fill:var(--soft);}
+.fileout text.dots{font-size:24px;fill:var(--soft);}
+.fileout text.ext{font-family:var(--f-mono);font-size:16px;font-weight:400;fill:var(--soft);}
+.cap{position:absolute;left:96px;right:96px;bottom:58px;height:44px;}
+.cap p{position:absolute;inset:0;margin:0;font-size:28px;color:var(--soft);}
+.cap b{color:var(--ink);font-weight:600;}
+.cap .src{font-size:17px;color:var(--mute);margin-left:10px;}
+
+/* ---------- v3: transformer (arquitectura original, etiquetas en inglés) ---------- */
+.tf2{top:206px;height:584px;}
+.tf2 .ar{stroke:var(--ink);stroke-width:1.8;}
+.tf2 .blk2 rect{fill:rgba(6,9,17,.75);stroke:var(--c);stroke-width:2;}
+.tf2 .blk2 text{fill:var(--ink);}
+.tf2 .frame{fill:rgba(236,241,246,.04);stroke:rgba(236,241,246,.35);stroke-width:2;}
+.tf2 .nx{fill:none;stroke:rgba(236,241,246,.45);stroke-width:1.5;stroke-dasharray:5 5;}
+.tf2 .nxl{font-size:22px;fill:var(--soft);}
+.tf2 .plus,.tf2 .pe,.tf2 .plusx,.tf2 .pew{fill:none;stroke:var(--ink);stroke-width:1.7;}
+.tf2 .pel{font-size:17px;fill:var(--soft);}
+.tf2 .res{fill:none;stroke:rgba(236,241,246,.6);stroke-width:1.5;}
+.tf2 .tenc,.tf2 .xatt,.tf2 .nxfull{transition:opacity .6s ease;}
+.slide[data-cur="2"] .tf2 .tenc,.slide[data-cur="2"] .tf2 .xatt,.slide[data-cur="2"] .tf2 .nxfull{opacity:0;}
+.tf2 .nxdec{opacity:0;transition:opacity .5s ease;}
+.slide[data-cur="2"] .tf2 .nxdec{opacity:1;transition-delay:1.1s;}
+.tf2 .dec,.tf2 .up{transition:transform 1s cubic-bezier(.6,.04,.25,1);}
+.slide[data-cur="2"] .tf2 .dec{transform:translateX(-146px);transition-delay:.4s;}
+.slide[data-cur="2"] .tf2 .up{transform:translateY(114px);transition-delay:.4s;}
+.tf2 .half{font-family:var(--f-head);font-size:26px;font-weight:600;fill:var(--claro);}
+.tf2 .halfs{font-size:17px;fill:var(--soft);}
+.tf2 .co{font-size:18px;fill:var(--accent);}
+.tf2 .lead{stroke:var(--accent);stroke-width:1.5;stroke-dasharray:4 4;}
+.slide[data-cur="2"] .tf2 .callouts{transition-delay:1.3s;}
+
+/* ---------- v3: conceptos (token, embedding, capacidades, contexto) ---------- */
+.tk{display:inline-block;padding:10px 16px;margin:0 6px 0 0;border-radius:8px;font-size:34px;white-space:pre;border:1.5px solid;}
+.tk.c0{background:rgba(134,191,220,.16);border-color:rgba(134,191,220,.6);}
+.tk.c1{background:rgba(230,185,94,.16);border-color:rgba(230,185,94,.6);}
+.tk.c2{background:rgba(74,198,179,.16);border-color:rgba(74,198,179,.6);}
+.tk.c3{background:rgba(242,141,60,.16);border-color:rgba(242,141,60,.6);}
+.tk.sm{font-size:24px;padding:6px 12px;}
+.tk.big{font-size:40px;}
+.tzcmp{margin-top:56px;}
+.tzhead,.tzrow{display:grid;grid-template-columns:230px minmax(0,1fr) 60px;gap:24px;align-items:center;}
+.tzhead{font-size:16px;color:var(--mute);margin-bottom:10px;}
+.tzrow{padding:14px 0;border-top:1px solid var(--line);}
+.tzname{font-family:var(--f-head);font-size:28px;font-weight:600;line-height:1.1;}
+.tzname small{display:block;font-family:var(--f-body);font-size:15px;font-weight:400;color:var(--mute);margin-top:4px;}
+.tzchips{display:flex;flex-wrap:wrap;gap:6px;}
+.tkid{display:inline-flex;flex-direction:column;align-items:center;padding:6px 10px;border-radius:8px;border:1.5px solid;}
+.tkid b{font-weight:500;font-size:22px;white-space:pre;}
+.tkid small{font-family:var(--f-mono);font-size:13px;color:var(--soft);margin-top:2px;}
+.tkid.c0{background:rgba(134,191,220,.16);border-color:rgba(134,191,220,.6);}
+.tkid.c1{background:rgba(230,185,94,.16);border-color:rgba(230,185,94,.6);}
+.tkid.c2{background:rgba(74,198,179,.16);border-color:rgba(74,198,179,.6);}
+.tkid.c3{background:rgba(242,141,60,.16);border-color:rgba(242,141,60,.6);}
+.tzn{font-family:var(--f-head);font-size:34px;font-weight:600;color:var(--accent);text-align:right;}
+.tokrow{margin-top:56px;}
+.tokcases{display:flex;flex-direction:column;gap:18px;margin-top:48px;}
+.tokcases div{display:flex;align-items:center;font-size:24px;}
+.tokcases b{display:inline-block;width:210px;font-weight:500;}
+.arr{color:var(--mute);margin:0 18px;font-size:26px;}
+.tkn{font-family:var(--f-mono);font-size:22px;color:var(--soft);}
+.tokcmp{position:absolute;right:96px;top:420px;width:560px;}
+.tokcmp .hbar{grid-template-columns:110px 1fr;}
+.glab{font-size:19px;color:var(--soft);margin-bottom:20px;}
+
+.embl{position:absolute;left:96px;top:250px;width:470px;display:flex;flex-direction:column;align-items:flex-start;}
+.embl .arr.big{margin:14px 0 14px 60px;font-size:34px;}
+.vecnum{white-space:nowrap;font-family:var(--f-mono);font-size:19px;color:var(--accent);padding:14px 16px;border:1.5px solid rgba(134,191,220,.4);border-radius:10px;background:rgba(6,9,17,.6);}
+.embl p{font-size:24px;margin:22px 0 0;line-height:1.4;}
+.embl p span{font-size:19px;color:var(--mute);}
+.embmap{left:0;top:0;width:1600px;height:900px;}
+.embmap .halos ellipse{fill:rgba(134,191,220,.06);stroke:rgba(134,191,220,.35);stroke-width:1.5;stroke-dasharray:6 6;}
+.embmap .halos text.hl{font-size:18px;fill:var(--mute);letter-spacing:.04em;}
+.embmap .dots circle{fill:var(--accent);}
+.embmap .dots text{font-size:22px;}
+.embmap .sim line{stroke:var(--claro);stroke-width:2;stroke-dasharray:6 6;}
+
+.caps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;margin-top:44px;}
+.capc{display:flex;flex-direction:column;gap:14px;}
+.capc h3{font-family:var(--f-head);font-size:32px;font-weight:600;margin:0 0 6px;}
+.bub{padding:12px 16px;border-radius:12px;font-size:20px;line-height:1.4;max-width:92%;}
+.bub.me{align-self:flex-end;background:rgba(134,191,220,.16);}
+.bub.ai{background:rgba(236,241,246,.08);}
+.call{font-family:var(--f-mono);font-size:17px;color:var(--rebelde);padding:10px 14px;border:1.5px dashed rgba(242,141,60,.6);border-radius:8px;}
+.tool{font-size:18px;color:var(--soft);}
+.think{font-family:var(--f-mono);font-size:17px;line-height:1.6;color:var(--mute);padding:10px 14px;border-left:3px solid var(--mute);font-style:italic;}
+.why{font-size:19px;color:var(--mute);margin:8px 0 0;line-height:1.4;}
+.visrow{display:flex;align-items:center;}
+.page.sm{width:110px;height:140px;padding:12px;}
+.patches.sm{grid-template-columns:repeat(6,18px);gap:3px;}
+.patches.sm i{width:18px;height:22px;}
+
+.ctxwin{margin-top:70px;}
+.ctxbar{display:flex;height:70px;border:2px solid var(--accent);border-radius:12px;overflow:visible;position:relative;width:1000px;}
+.ctxbar span{display:grid;place-items:center;font-size:19px;color:#071014;font-weight:600;white-space:nowrap;}
+.ctxbar .sys{width:16%;background:#BFE3F3;border-radius:10px 0 0 10px;}
+.ctxbar .hist{width:22%;background:#86BFDC;}
+.ctxbar .cdoc{width:44%;background:#E6B95E;}
+.ctxbar .resp{width:18%;background:#4AC6B3;border-radius:0 10px 10px 0;}
+.ctxbar .out{position:absolute;left:100%;top:-2px;height:70px;width:260px;margin-left:14px;border:2px dashed rgba(236,241,246,.35);border-radius:10px;color:var(--mute);background:repeating-linear-gradient(135deg,rgba(236,241,246,.06) 0 10px,transparent 10px 20px);}
+.ctxlim{margin-top:18px;display:flex;flex-direction:column;gap:6px;}
+.ctxlim b{font-size:24px;font-weight:600;color:var(--accent);}
+.ctxlim span{font-size:20px;color:var(--soft);}
+.ctxmem{margin-top:54px;width:1000px;}
+.mrows{position:relative;display:flex;flex-direction:column;gap:16px;}
+.mrows .hbar{grid-template-columns:150px 1fr;}
+.mrows .limit{top:-34px;bottom:-8px;}
+.cap code{font-family:var(--f-mono);font-size:.85em;}
+
+/* ---------- v3: ventana de chat al estilo ChatGPT ---------- */
+.chatwin{position:absolute;left:240px;top:222px;width:920px;height:520px;background:#212121;border-radius:18px;border:1px solid #383838;box-shadow:0 30px 80px rgba(0,0,0,.55);font-family:'Söhne','IBM Plex Sans',system-ui,sans-serif;color:#ECECEC;}
+.ch-top{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;}
+.ch-model{font-size:21px;font-weight:600;}
+.ch-model i{font-style:normal;color:#9B9B9B;font-size:15px;margin-left:6px;}
+.ch-dots{color:#9B9B9B;font-size:24px;}
+.ch-body{position:absolute;left:0;right:0;top:80px;bottom:120px;padding:0 70px;display:flex;flex-direction:column;gap:26px;}
+.ch-user{align-self:flex-end;background:#303030;border-radius:22px;padding:14px 22px;font-size:23px;opacity:0;}
+.ch-think{display:flex;gap:7px;height:24px;align-items:center;opacity:0;margin-top:-10px;}
+.ch-think i{width:10px;height:10px;border-radius:50%;background:#ECECEC;}
+.ch-ai{font-size:24px;line-height:1.5;margin-top:-50px;white-space:pre;}
+.ch-ai .tok{opacity:0;}
+.ch-input{position:absolute;left:60px;right:60px;bottom:30px;height:66px;border-radius:33px;background:#303030;display:flex;align-items:center;padding:0 14px 0 22px;font-size:21px;}
+.ch-plus{color:#B4B4B4;font-size:28px;margin-right:16px;}
+.ch-ph{color:#8F8F8F;position:absolute;left:66px;}
+.ch-typed{position:absolute;left:66px;white-space:pre;}
+.ch-typed span{opacity:0;}
+.ch-send{margin-left:auto;width:42px;height:42px;border-radius:50%;background:#ECECEC;color:#212121;display:grid;place-items:center;font-weight:700;font-size:22px;}
+.slide.active[data-cur="1"] .ch-ph,.slide.active[data-cur="2"] .ch-ph{animation:chhide .01s linear var(--t) forwards, chshow .3s linear var(--t2) forwards;}
+.slide.active[data-cur="1"] .ch-typed span,.slide.active[data-cur="2"] .ch-typed span{animation:chshow .01s linear forwards;}
+.slide.active[data-cur="1"] .ch-typed,.slide.active[data-cur="2"] .ch-typed{animation:chhide .2s linear var(--t) forwards;}
+.slide.active[data-cur="1"] .ch-user,.slide.active[data-cur="2"] .ch-user{animation:chpop .35s ease forwards;}
+.slide.active[data-cur="1"] .ch-think,.slide.active[data-cur="2"] .ch-think{animation:chshow .01s linear var(--t0) forwards, chhide .01s linear var(--t1) forwards;}
+.slide.active[data-cur="1"] .ch-think i,.slide.active[data-cur="2"] .ch-think i{animation:chblink 1s ease-in-out infinite;}
+.slide.active[data-cur="1"] .ch-think i:nth-child(2),.slide.active[data-cur="2"] .ch-think i:nth-child(2){animation-delay:.15s;}
+.slide.active[data-cur="1"] .ch-think i:nth-child(3),.slide.active[data-cur="2"] .ch-think i:nth-child(3){animation-delay:.3s;}
+.slide.active[data-cur="1"] .ch-ai .tok,.slide.active[data-cur="2"] .ch-ai .tok{animation:chshow .12s ease forwards;}
+@keyframes chshow{to{opacity:1}}
+@keyframes chhide{to{opacity:0}}
+@keyframes chpop{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes chblink{0%,100%{opacity:.25}50%{opacity:1}}
+.aside-t{font-family:var(--f-body);font-size:30px;font-weight:400;font-style:italic;color:var(--accent);margin-left:26px;letter-spacing:0;}
+
+/* ---------- notas del speaker y modo presentador ---------- */
+aside.notes{display:none;}
+.embed .hud,.embed .progress{display:none;}
+.presenter body{overflow:hidden;}
+.presenter #stars,.presenter .neb,.presenter .twinkle,.presenter .stage,.presenter .hud,.presenter .progress{display:none !important;}
+.pv{position:fixed;inset:0;display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:14px;padding:14px;background:#0b0f18;color:var(--ink);font-family:var(--f-body);}
+.pv small{display:block;font-size:13px;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;}
+.pv-top{grid-column:1 / -1;display:flex;align-items:center;gap:34px;padding:10px 16px;background:#111827;border-radius:12px;}
+.pv-clock b{font-family:var(--f-mono);font-size:34px;font-weight:500;}
+.pv-clock em,.pv-plan em{font-style:normal;font-size:14px;color:var(--soft);margin-left:10px;}
+.pv .warn{color:#F2B84B;}
+.pv .over{color:#F2675E;}
+.pv-plan{flex:1;min-width:0;}
+.pv-bar{position:relative;height:10px;border-radius:5px;background:rgba(236,241,246,.12);margin:8px 0 6px;}
+.pv-bar i{position:absolute;left:0;top:0;bottom:0;border-radius:5px;background:rgba(74,198,179,.55);}
+.pv-bar span{position:absolute;top:-5px;width:3px;height:20px;margin-left:-1px;background:#fff;border-radius:2px;}
+.pv-plan em{margin-left:0;}
+.pv-btns{display:flex;align-items:center;gap:10px;}
+.pv-btns button{font:inherit;font-size:15px;padding:8px 14px;border-radius:8px;border:1px solid rgba(236,241,246,.25);background:rgba(236,241,246,.08);color:var(--ink);cursor:pointer;}
+.pv-btns button:hover{background:rgba(236,241,246,.16);}
+.pv-btns span{font-family:var(--f-mono);font-size:15px;color:var(--soft);margin-left:6px;white-space:nowrap;}
+.pv-cur{display:flex;align-items:flex-start;min-height:0;}
+.pv iframe{display:block;width:100%;aspect-ratio:16/9;border:0;border-radius:10px;background:#060911;}
+.pv-cur iframe{max-height:100%;outline:2px solid rgba(74,198,179,.6);}
+.pv-side{display:flex;flex-direction:column;gap:14px;min-height:0;}
+.pv-next iframe{opacity:.9;}
+.pv-notes{flex:1;min-height:0;overflow:auto;padding:14px 18px;background:#111827;border-radius:12px;}
+#pvNotes ul{margin:0;padding-left:22px;}
+#pvNotes li{font-size:21px;line-height:1.45;margin-bottom:10px;}
+.pv-empty{color:var(--mute);}
+@media (max-width:1100px){ .pv{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);} .pv-side{flex-direction:row;} .pv-next{width:42%;} }
+
+/* ---------- v3: parámetros ---------- */
+.params{display:grid;grid-template-columns:560px minmax(0,1fr);gap:110px;margin-top:56px;align-items:start;}
+.pnet{position:relative;height:420px;}
+.pnet .nnsvg{position:static;width:560px;height:420px;}
+.pnote{font-size:24px;line-height:1.5;color:var(--soft);margin:30px 0 0;}
+.psize{display:flex;flex-direction:column;gap:26px;padding-top:10px;}
+.prow{display:grid;grid-template-columns:180px minmax(0,1fr) 140px;align-items:center;gap:30px;}
+.prow i{display:block;justify-self:center;border-radius:50%;background:radial-gradient(circle at 35% 35%, #BFE3F3, var(--neutral) 60%, #2d5f78);}
+.prow b{display:block;font-family:var(--f-head);font-size:40px;font-weight:600;line-height:1;}
+.prow span{display:block;font-size:20px;color:var(--mute);margin-top:6px;}
+.prow em{font-style:normal;font-family:var(--f-mono);font-size:28px;color:var(--accent);text-align:right;}
+.psize .note{margin:6px 0 0;}
+
+/* ---------- v3: historia en tres actos ---------- */
+.steps-title{position:relative;height:64px;}
+.steps-title span{position:absolute;left:0;top:0;white-space:nowrap;}
+.logo.tile{height:46px;min-width:46px;padding:5px;margin-bottom:6px;border:0;border-radius:12px;background:#fff;}
+.logo.tile img{height:36px;width:36px;object-fit:contain;}
+.tl-node:has(.tile)::before{top:126px;height:26px;}
+.tl-node .yr{font-size:22px;}
+.tl-node .logos{display:flex;justify-content:center;gap:8px;}
+.logo.tile.wide img{width:auto;height:22px;}
+.bigstat{margin-top:26px;}
+.bigstat strong{display:block;font-family:var(--f-head);font-size:56px;font-weight:600;line-height:1;color:var(--accent);}
+.bigstat span{display:block;font-size:20px;color:var(--soft);margin-top:8px;}
+.growth .glab{font-size:19px;color:var(--soft);margin-bottom:20px;}
+.growth .gsrc{font-size:15px;color:var(--mute);margin-top:18px;}
+.growth .hbar span{font-size:21px;}
+.sats rect{fill:#fff;}
+.sats text{font-family:var(--f-body);font-size:19px;fill:#C5D0DB;}
+.tl-node{width:330px;margin-left:-165px;}
 </style>
 </head>
 <body>
@@ -456,15 +712,14 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     <strong>Bastian Carvajal</strong>
     <span>Master en Tecnologías de la Información, fundador de Afentu</span>
   </div>
-  <!-- LOGO AFENTU: reemplazar este bloque por <img> cuando llegue el archivo real -->
   <div class="brand">
-    <svg viewBox="0 0 42 42" aria-hidden="true"><circle cx="21" cy="21" r="19" fill="none" stroke="#4AC6B3" stroke-width="2.5"/><circle cx="21" cy="21" r="7" fill="#4AC6B3"/></svg>
-    Afentu
+    <img src="__ASSET:brand/afentu-dark-bg.svg__" alt="Afentu">
   </div>
   <div class="chiletec">Taller online, 90 minutos<br>No requiere saber programar</div>
+  <aside class="notes" data-min="1"><ul><li>Saludo y agradecimiento a Chiletec y a la Mesa de IA y Ética.</li><li>Promesa: al final sabrán cómo correr un modelo en su propio equipo, sin enviar datos a nadie.</li></ul></aside>
 </section>
 
-<!-- 2 ─ Temario -->
+<!-- 3 ─ Temario -->
 <section class="slide" data-era="neutral">
   <div class="where">Temario</div>
   <h2 class="title">Hoy vamos a recorrer esto</h2>
@@ -473,19 +728,18 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       <span class="len">Parte 1, 30 minutos</span>
       <h3>Breve historia de la galaxia</h3>
       <ol>
-        <li style="--c:var(--neutral)">El origen</li>
-        <li style="--c:var(--claro)">El lado claro de la Fuerza</li>
-        <li style="--c:var(--oscuro)">El lado oscuro</li>
-        <li style="--c:var(--rebelde)">La alianza rebelde de Open Weights</li>
+        <li style="--c:var(--neutral)">El origen: cómo funciona un LLM</li>
+        <li style="--c:var(--neutral)">Tres tipos de modelo</li>
+        <li style="--c:var(--rebelde)">Lado claro, lado oscuro y la rebelión</li>
       </ol>
     </div>
     <div class="route">
       <span class="len">Parte 2, 60 minutos</span>
       <h3>Práctica Jedi: usar modelos Open Weights localmente</h3>
       <ol>
-        <li>Ollama y el hardware</li>
-        <li>LM Studio y cómo elegir modelo</li>
-        <li>Caso de uso: las bases del Convenio Marco</li>
+        <li>LM Studio: anatomía de un modelo</li>
+        <li>Benchmarks: cómo elegir</li>
+        <li>Ollama y RAG: el caso Convenio Marco</li>
       </ol>
     </div>
     <div class="qr">
@@ -494,50 +748,496 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       <small>Enlace provisorio: falta la URL real</small>
     </div>
   </div>
+  <aside class="notes" data-min="1"><ul><li>Dos partes: 30 min de conceptos e historia, 60 min de práctica en vivo.</li><li>Todo el material queda en GitHub (QR). No hace falta tomar notas.</li></ul></aside>
 </section>
 
-<!-- 3 ─ Divisor Parte 1 -->
+<!-- 4 ─ Divisor Parte 1 -->
 <section class="slide s-divider" data-era="neutral">
   <div class="part">Parte 1, 30 minutos</div>
   <h2>Breve historia<br>de la galaxia</h2>
   <p>Cómo llegamos a poder descargar un modelo de IA.</p>
+  <aside class="notes" data-min="0.5"><ul><li>Parte 1: entender qué estamos descargando antes de usarlo.</li></ul></aside>
 </section>
 
-<!-- 4 ─ ¿Qué es un LLM? -->
+<!-- 5 ─ ¿Qué es un LLM? (chat) Ventana de chat animada (sin logos). La respuesta aparece token a token (tokens de Qwen3).
+     Paso 1: corre la animación. Paso 2: "…no, esto es un chatbot" junto al título. -->
+<section class="slide" data-era="neutral" data-steps="2">
+  <div class="where">El origen</div>
+  <h2 class="title">¿Qué es un LLM?<span class="aside-t frag" data-step="2">…no, esto es un chatbot</span></h2>
+  <div class="chatwin">
+    <div class="ch-top"><span class="ch-model">ChatGPT <i>▾</i></span><span class="ch-dots">⋯</span></div>
+    <div class="ch-body">
+      <div class="ch-user" style="animation-delay:2.59s">¿Cuál es la capital de Chile?</div>
+      <div class="ch-think" style="--t0:2.89s;--t1:4.09s"><i></i><i></i><i></i></div>
+      <div class="ch-ai"><span class="tok" style="animation-delay:4.09s">La</span><span class="tok" style="animation-delay:4.42s"> capital</span><span class="tok" style="animation-delay:4.73s"> de</span><span class="tok" style="animation-delay:5.05s"> Chile</span><span class="tok" style="animation-delay:5.38s"> es</span><span class="tok" style="animation-delay:5.70s"> Santiago</span><span class="tok" style="animation-delay:6.01s">.</span></div>
+    </div>
+    <div class="ch-input">
+      <span class="ch-plus">+</span>
+      <span class="ch-ph" style="--t:0.60s;--t2:2.59s">Pregunta lo que quieras</span>
+      <span class="ch-typed" style="--t:2.59s"><span style="animation-delay:0.60s">¿</span><span style="animation-delay:0.66s">C</span><span style="animation-delay:0.71s">u</span><span style="animation-delay:0.77s">á</span><span style="animation-delay:0.82s">l</span><span style="animation-delay:0.88s"> </span><span style="animation-delay:0.93s">e</span><span style="animation-delay:0.98s">s</span><span style="animation-delay:1.04s"> </span><span style="animation-delay:1.09s">l</span><span style="animation-delay:1.15s">a</span><span style="animation-delay:1.21s"> </span><span style="animation-delay:1.26s">c</span><span style="animation-delay:1.31s">a</span><span style="animation-delay:1.37s">p</span><span style="animation-delay:1.42s">i</span><span style="animation-delay:1.48s">t</span><span style="animation-delay:1.54s">a</span><span style="animation-delay:1.59s">l</span><span style="animation-delay:1.65s"> </span><span style="animation-delay:1.70s">d</span><span style="animation-delay:1.75s">e</span><span style="animation-delay:1.81s"> </span><span style="animation-delay:1.86s">C</span><span style="animation-delay:1.92s">h</span><span style="animation-delay:1.98s">i</span><span style="animation-delay:2.03s">l</span><span style="animation-delay:2.08s">e</span><span style="animation-delay:2.14s">?</span></span>
+      <span class="ch-send">↑</span>
+    </div>
+    
+  </div>
+  <div class="cap">
+    <p class="only" data-only="0,1">La interfaz que todos conocemos.</p>
+    <p class="only" data-only="2">Es una <b>aplicación</b> de chat. Por dentro, un <b>LLM</b> recibe el texto y escribe la respuesta, token a token.</p>
+  </div>
+  <aside class="notes" data-min="2"><ul><li>Paso 1: lanzar la animación y dejar que corra (~6 s).</li><li>Preguntar: “¿esto es un LLM?” — esperar un segundo.</li><li>Paso 2: …no, esto es un chatbot. La aplicación no es el modelo.</li><li>Por dentro, un LLM recibe el texto y responde token a token.</li></ul></aside>
+</section>
+
+<!-- 6a ─ ¿Qué es un token? Tokenizadores oficiales (tokenizer.json en Hugging Face) de Llama 3.2, Gemma 4 y Qwen3, 19 oct. 2026 [65][71].
+     La frase de arriba se muestra palabra por palabra a propósito, igual que en el resto de las diapositivas. -->
 <section class="slide" data-era="neutral" data-steps="1">
   <div class="where">El origen</div>
-  <h2 class="title">¿Qué es un LLM?</h2>
-  <p class="lead">Large Language Model: un modelo de lenguaje de gran escala.</p>
-  <div class="llm-wrap">
-    <div>
-      <div class="predict">
-        <div class="sentence">El gato se subió al<span class="blank"></span></div>
-        <div class="arrow"></div>
-        <div class="llm">LLM</div>
-        <div class="arrow"></div>
-        <div class="probs">
-          <div class="prob"><span>techo</span><i style="width:100%"></i><b>62%</b></div>
-          <div class="prob"><span>árbol</span><i style="width:34%"></i><b>21%</b></div>
-          <div class="prob"><span>auto</span><i style="width:15%"></i><b>9%</b></div>
-        </div>
-      </div>
-      <p>Un algoritmo entrenado con un solo objetivo: adivinar la palabra que sigue.</p>
-      <p>Con suficientes datos y parámetros, aprende cosas que nadie le programó:</p>
-      <div class="emerge"><span>traducir</span><span>resumir</span><span>responder</span><span>programar</span></div>
-    </div>
-    <div class="scale frag" data-step="1">
-      <h3>¿Qué tan “grande”?</h3>
-      <div class="scale-row">
-        <div><i style="width:40px;height:40px"></i><b>3B</b><span>corre en un notebook</span></div>
-        <div><i style="width:80px;height:80px"></i><b>27B</b><span>una GPU de 24 GB</span></div>
-        <div><i style="width:170px;height:170px"></i><b>671B</b><span>un centro de datos</span></div>
-      </div>
-      <p class="note" style="margin-top:22px">B = miles de millones de parámetros. Por dentro usan la arquitectura Transformer (Google, 2017); el detalle queda para otro taller.</p>
-    </div>
+  <h2 class="title">¿Qué es un token?</h2>
+  <div class="tokrow"><span class="tk c0">La</span><span class="tk c1"> capital</span><span class="tk c2"> de</span><span class="tk c3"> Chile</span><span class="tk c0"> es</span><span class="tk c1"> Santiago</span></div>
+  <div class="tzcmp frag" data-step="1">
+    <div class="glab">“La licitación cierra en septiembre”, según el tokenizador de cada modelo</div>
+    <div class="tzhead"><span></span><span>tokens y su número (ID)</span><span>total</span></div>
+      <div class="tzrow"><div class="tzname">Llama 3.2<small>vocabulario de 128 mil tokens</small></div><div class="tzchips"><span class="tkid c0"><b>La</b><small>8921</small></span><span class="tkid c1"><b>lic</b><small>12553</small></span><span class="tkid c2"><b>it</b><small>275</small></span><span class="tkid c3"><b>ación</b><small>5840</small></span><span class="tkid c0"><b>ci</b><small>12088</small></span><span class="tkid c1"><b>erra</b><small>14210</small></span><span class="tkid c2"><b>en</b><small>665</small></span><span class="tkid c3"><b>sept</b><small>35429</small></span><span class="tkid c0"><b>iembre</b><small>54571</small></span></div><div class="tzn">9</div></div>
+      <div class="tzrow"><div class="tzname">Gemma 4<small>vocabulario de 262 mil tokens</small></div><div class="tzchips"><span class="tkid c0"><b>La</b><small>4967</small></span><span class="tkid c1"><b>lic</b><small>5533</small></span><span class="tkid c2"><b>itación</b><small>65236</small></span><span class="tkid c3"><b>cierra</b><small>215196</small></span><span class="tkid c0"><b>en</b><small>696</small></span><span class="tkid c1"><b>septiembre</b><small>52741</small></span></div><div class="tzn">6</div></div>
+      <div class="tzrow"><div class="tzname">Qwen3<small>vocabulario de 152 mil tokens</small></div><div class="tzchips"><span class="tkid c0"><b>La</b><small>8747</small></span><span class="tkid c1"><b>lic</b><small>12273</small></span><span class="tkid c2"><b>it</b><small>275</small></span><span class="tkid c3"><b>ación</b><small>5721</small></span><span class="tkid c0"><b>ci</b><small>11825</small></span><span class="tkid c1"><b>erra</b><small>13886</small></span><span class="tkid c2"><b>en</b><small>662</small></span><span class="tkid c3"><b>sept</b><small>34329</small></span><span class="tkid c0"><b>iembre</b><small>53471</small></span></div><div class="tzn">9</div></div>
+      
   </div>
+  <div class="cap">
+    <p class="only" data-only="0">El modelo no lee letras ni palabras: lee <b>tokens</b>, pedazos de texto con un número.</p>
+    <p class="only" data-only="1">Todo se mide en tokens: el <b>contexto</b>, la <b>velocidad</b> (tokens por segundo) y el <b>precio</b> de las APIs.</p>
+  </div>
+  <aside class="notes" data-min="2"><ul><li>El modelo no lee palabras: lee tokens, cada uno con un número.</li><li>Simplificación: en todo el deck “La capital de Chile es Santiago” va palabra por palabra.</li><li>Paso 1: cada modelo corta distinto y usa sus propios números (Gemma 6 tokens, Llama y Qwen 9).</li><li>Todo se mide en tokens: contexto, velocidad, precio.</li></ul></aside>
 </section>
 
-<!-- 5 ─ ¿Cómo nace el archivo Open Weights? -->
+<!-- 6b ─ ¿Qué es un embedding? Embeddings reales de qwen3-embedding:0.6b (1.024 dimensiones) vía Ollama, proyectados a 2D con PCA, 19 oct. 2026.
+     Similitud coseno: Santiago–Lima 0,93 · Santiago–perro 0,63. Llama 3.2 3B usa 3.072 números por token (ollama show). -->
+<section class="slide" data-era="neutral" data-steps="2">
+  <div class="where">El origen</div>
+  <h2 class="title">¿Qué es un embedding?</h2>
+  <div class="embl">
+    <span class="tk c3 big">Santiago</span>
+    <span class="arr big">↓</span>
+    <div class="vecnum">[ 0,021 · −0,048 · 0,113 · −0,007 · … ]</div>
+    <p>una lista de <b>1.024 números</b><br><span>(3.072 en Llama 3.2 3B)</span></p>
+  </div>
+  <svg class="nnsvg embmap frag" data-step="1" viewBox="0 0 1600 900" aria-hidden="true">
+    <g class="halos">
+      <ellipse cx="796" cy="504" rx="108" ry="83"/><text class="hl" x="796" y="411" text-anchor="middle">lugares</text>
+      <ellipse cx="1237" cy="699" rx="86" ry="106"/><text class="hl" x="1237" y="583" text-anchor="middle">animales</text>
+      <ellipse cx="1211" cy="296" rx="138" ry="86"/><text class="hl" x="1211" y="200" text-anchor="middle">compras públicas</text>
+    </g>
+    <g class="sim frag" data-step="2">
+      <line x1="824" y1="470" x2="1232" y2="744"/>
+    </g>
+    <g class="dots"><circle cx="824" cy="470" r="7"/><text x="838" y="474" text-anchor="start">Santiago</text><circle cx="819" cy="471" r="7"/><text x="819" y="447" text-anchor="middle">Lima</text><circle cx="789" cy="461" r="7"/><text x="775" y="463" text-anchor="end">Buenos Aires</text><circle cx="771" cy="547" r="7"/><text x="757" y="561" text-anchor="end">Chile</text><circle cx="800" cy="547" r="7"/><text x="814" y="563" text-anchor="start">Perú</text><circle cx="772" cy="529" r="7"/><text x="758" y="527" text-anchor="end">Argentina</text><circle cx="1232" cy="744" r="7"/><text x="1246" y="762" text-anchor="start">perro</text><circle cx="1242" cy="719" r="7"/><text x="1256" y="715" text-anchor="start">gato</text><circle cx="1236" cy="633" r="7"/><text x="1250" y="639" text-anchor="start">caballo</text><circle cx="1229" cy="266" r="7"/><text x="1215" y="272" text-anchor="end">licitación</text><circle cx="1251" cy="280" r="7"/><text x="1265" y="288" text-anchor="start">contrato</text><circle cx="1154" cy="342" r="7"/><text x="1140" y="352" text-anchor="end">proveedor</text></g>
+  </svg>
+  <div class="cap">
+    <p class="only" data-only="0">Cada token se convierte en una lista de números que representa su <b>significado</b>.</p>
+    <p class="only" data-only="1">Significados parecidos quedan cerca. <span class="src">Embeddings reales de qwen3-embedding, proyectados a 2D.</span></p>
+    <p class="only" data-only="2">Santiago–Lima: <b>0,93</b> de similitud · Santiago–perro: <b>0,63</b>. Así busca un RAG.</p>
+  </div>
+  <aside class="notes" data-min="2.5"><ul><li>Cada token se convierte en una lista de números (1.024 en este modelo).</li><li>Paso 1: embeddings reales calculados en mi PC, proyectados a 2D.</li><li>Se agrupan solos: lugares, animales, compras públicas.</li><li>Paso 2: Santiago–Lima 0,93 vs Santiago–perro 0,63. Así busca un RAG (lo veremos al final).</li></ul></aside>
+</section>
+
+<!-- 6 ─ ¿Qué es un parámetro? -->
+<section class="slide" data-era="neutral" data-steps="2">
+  <div class="where">El origen</div>
+  <h2 class="title">¿Qué es un parámetro?</h2>
+  <div class="params">
+    <div class="pnet">
+      <svg class="nnsvg" viewBox="0 0 560 420" aria-hidden="true">
+        <g class="nn" data-nn='{"x":[40,200,360,520],"n":[4,6,6,3],"y0":40,"y1":380,"hi":[1,2,3]}'></g>
+        <g class="wcall">
+          <rect x="219" y="140" width="122" height="46" rx="10"/>
+          <text x="280" y="171" text-anchor="middle">0,0371</text>
+        </g>
+      </svg>
+      <p class="pnote">Cada conexión es un número aprendido: un <b>peso</b>.<br>Al total de pesos le llamamos <b>parámetros</b>.</p>
+    </div>
+    <div class="psize frag" data-step="1">
+      <div class="prow"><i style="width:44px;height:44px"></i><div><b>3B</b><span>3.000 millones de números</span></div><em>~6 GB</em></div>
+      <div class="prow"><i style="width:96px;height:96px"></i><div><b>27B</b><span>27.000 millones</span></div><em>~54 GB</em></div>
+      <div class="prow"><i style="width:170px;height:170px"></i><div><b>671B</b><span>671.000 millones</span></div><em>~1,3 TB</em></div>
+      <p class="note frag" data-step="2">Tamaño del archivo guardando cada número en 16 bits. En la práctica veremos cómo achicarlo.</p>
+    </div>
+  </div>
+  <aside class="notes" data-min="2"><ul><li>Cada conexión es un número aprendido: un peso. El total = parámetros.</li><li>3B = 3 mil millones de números.</li><li>Paso 2: a 16 bits, ~2 GB por cada mil millones. 671B ≈ 1,3 TB. Luego veremos cómo achicarlo (cuantización).</li></ul></aside>
+</section>
+
+<!-- 5e ─ Entonces, ¿qué es un LLM? (animación: tokens → embeddings → red → probabilidades → bucle)
+     Tokens e IDs: tokenizador de Qwen3. Probabilidades: Llama 3.2 3B vía Ollama (logprobs), 18 oct 2026. -->
+<section class="slide" data-era="neutral" data-steps="5">
+  <div class="where">El origen</div>
+  <h2 class="title">Entonces, ¿qué es un LLM?</h2>
+  <div class="sent">La capital de Chile es <span class="blank"><b class="frag" data-step="5">Santiago</b></span></div>
+  <svg class="nnsvg" viewBox="0 0 1408 500" aria-hidden="true">
+    <g class="col-lab">
+      <text class="frag" data-step="1" x="0" y="24">Tokens</text>
+      <text class="frag" data-step="2" x="232" y="24">Embeddings</text>
+      <text x="740" y="24" text-anchor="middle">Red neuronal</text>
+      <text class="frag" data-step="4" x="1075" y="24">Siguiente token</text>
+    </g>
+    <g class="toks frag" data-step="1">
+      <g transform="translate(0,80)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">La</text><text class="id" x="186" y="6">8747</text></g>
+      <g transform="translate(0,150)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">capital</text><text class="id" x="186" y="6">6722</text></g>
+      <g transform="translate(0,220)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">de</text><text class="id" x="186" y="6">409</text></g>
+      <g transform="translate(0,290)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">Chile</text><text class="id" x="186" y="6">33000</text></g>
+      <g transform="translate(0,360)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">es</text><text class="id" x="186" y="6">1531</text></g>
+    </g>
+    <g class="toks hot frag" data-step="5">
+      <g transform="translate(0,430)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">Santiago</text><text class="id" x="186" y="6">54578</text></g>
+    </g>
+    <g class="emb frag" data-step="2" data-emb="80,150,220,290,360" data-x="232"></g>
+    <g class="nn fwd" data-step="3" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352}'></g>
+    <g class="probs frag" data-step="4">
+      <g transform="translate(1075,100)"><text class="w hot" y="8">Santiago</text><rect class="hot" x="128" y="-9" width="102" height="18" rx="3"/><text class="pct" x="240" y="7">68%</text></g>
+      <g transform="translate(1075,170)"><text class="w" y="8">la</text><rect x="128" y="-9" width="19" height="18" rx="3"/><text class="pct" x="157" y="7">12%</text></g>
+      <g transform="translate(1075,240)"><text class="w" y="8">una</text><rect x="128" y="-9" width="14" height="18" rx="3"/><text class="pct" x="152" y="7">10%</text></g>
+      <g transform="translate(1075,310)"><text class="w" y="8">un</text><rect x="128" y="-9" width="3" height="18" rx="1"/><text class="pct" x="141" y="7">2%</text></g>
+      <text class="more" x="1075" y="372">…y 150 mil tokens más</text>
+    </g>
+    <g class="loop frag" data-step="5">
+      <path d="M1100 392 Q1100 478 1050 478 L 250 478 Q 214 478 214 452" />
+      <path class="tip" d="M206 462 L214 448 L222 462" />
+      <text x="680" y="466" text-anchor="middle">se agrega al texto y se repite, un token a la vez</text>
+    </g>
+  </svg>
+  <div class="cap">
+    <p class="only" data-only="0">Un LLM recibe texto y predice qué viene después.</p>
+    <p class="only" data-only="1"><b>Tokens:</b> el texto se corta en pedazos, y cada pedazo es un número.</p>
+    <p class="only" data-only="2"><b>Embeddings:</b> cada token se convierte en una lista de números que representa su significado.</p>
+    <p class="only" data-only="3">Esos números atraviesan capa tras capa. Cada conexión multiplica por un <b>peso</b>.</p>
+    <p class="only" data-only="4">El resultado: una probabilidad para cada token posible. <span class="src">Probabilidades reales de Llama 3.2 3B.</span></p>
+    <p class="only" data-only="5">Así escribe un LLM: <b>un token a la vez</b>.</p>
+  </div>
+  <aside class="notes" data-min="3"><ul><li>Remate del chiste: ahora sí, ¿qué es un LLM?</li><li>Pasos: tokens → embeddings → capas (pesos) → probabilidades.</li><li>Probabilidades reales de Llama 3.2 3B: Santiago 68 %.</li><li>Último paso: el token elegido vuelve a entrar. Un token a la vez.</li></ul></aside>
+</section>
+
+<!-- 5b ─ En realidad: un Transformer. Arquitectura original (Vaswani et al., 2017), etiquetas en inglés.
+     Referencia visual: video de ByteByteGo "Transformers Step-by-Step Explained" (redibujado en SVG). -->
+<section class="slide" data-era="neutral" data-steps="2">
+  <div class="where">El origen</div>
+  <h2 class="title">En realidad: un Transformer</h2>
+  <svg class="nnsvg tf2" viewBox="0 -12 1408 598" aria-hidden="true">
+    <defs><marker id="tf-a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0.5 L9 5 L0 9.5" fill="none" stroke="#ECF1F6" stroke-width="1.7"/></marker></defs>
+    <rect class="frame" x="250" y="-4" width="908" height="584" rx="28"/>
+    <g class="tenc">
+    <rect class="nx" x="360" y="226" width="320" height="232" rx="10"/><text class="nxl" x="348" y="350" text-anchor="end">Nx</text>
+    <g class="blk2" style="--c:#D8E36A"><rect x="405.0" y="236" width="230" height="30" rx="7"/>
+    <text x="520" y="256.9" font-size="17" text-anchor="middle">Add &amp; Norm</text>
+    </g>
+    <g class="blk2" style="--c:#5BA8E0"><rect x="405.0" y="280" width="230" height="52" rx="7"/>
+    <text x="520" y="313.0" font-size="20" text-anchor="middle">Feed Forward</text>
+    </g>
+    <g class="blk2" style="--c:#D8E36A"><rect x="405.0" y="346" width="230" height="30" rx="7"/>
+    <text x="520" y="366.9" font-size="17" text-anchor="middle">Add &amp; Norm</text>
+    </g>
+    <g class="blk2" style="--c:#F28D3C"><rect x="405.0" y="390" width="230" height="56" rx="7"/>
+    <text x="520" y="414.0" font-size="20" text-anchor="middle">Multi-Head</text>
+    <text x="520" y="436.0" font-size="20" text-anchor="middle">Attention</text>
+    </g>
+    <g class="blk2" style="--c:#E4707A"><rect x="405.0" y="510" width="230" height="52" rx="7"/>
+    <text x="520" y="532.0" font-size="20" text-anchor="middle">Input</text>
+    <text x="520" y="554.0" font-size="20" text-anchor="middle">Embedding</text>
+    </g>
+    <circle class="plus" cx="520" cy="482" r="11"/><path class="plusx" d="M514 482 H526 M520 476 V488"/>
+    <line class="ar" x1="474" y1="482" x2="506" y2="482" marker-end="url(#tf-a)"/>
+    <circle class="pe" cx="458" cy="482" r="16"/><path class="pew" d="M447 482 q5.5 -11 11 0 t11 0"/>
+    <text class="pel" x="350" y="477" text-anchor="end">Positional</text><text class="pel" x="350" y="497" text-anchor="end">Encoding</text>
+    <line class="ar" x1="520" y1="510" x2="520" y2="496" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="520" y1="471" x2="520" y2="448" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="520" y1="390" x2="520" y2="378" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="520" y1="346" x2="520" y2="334" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="520" y1="280" x2="520" y2="268" marker-end="url(#tf-a)"/>
+    <path class="res" d="M520 460 H380 V361 H403.0" marker-end="url(#tf-a)"/>
+    <path class="res" d="M520 273 H380 V251 H403.0" marker-end="url(#tf-a)"/>
+    <path class="res" d="M520 236 V200 H710 V300 H733.0" marker-end="url(#tf-a)"/>
+    </g>
+    <g class="dec">
+    <rect class="nx nxfull" x="690" y="108" width="320" height="350" rx="10"/><rect class="nx nxdec" x="690" y="222" width="320" height="236" rx="10"/><text class="nxl" x="1022" y="290">Nx</text>
+    <g class="up">
+    <g class="blk2" style="--c:#D8E36A"><rect x="735.0" y="118" width="230" height="30" rx="7"/>
+    <text x="850" y="138.9" font-size="17" text-anchor="middle">Add &amp; Norm</text>
+    </g>
+    <g class="blk2" style="--c:#5BA8E0"><rect x="735.0" y="162" width="230" height="52" rx="7"/>
+    <text x="850" y="195.0" font-size="20" text-anchor="middle">Feed Forward</text>
+    </g>
+    <g class="blk2" style="--c:#A98BF0"><rect x="765.0" y="62" width="170" height="32" rx="7"/>
+    <text x="850" y="84.3" font-size="18" text-anchor="middle">Linear</text>
+    </g>
+    <g class="blk2" style="--c:#4AC6B3"><rect x="765.0" y="14" width="170" height="32" rx="7"/>
+    <text x="850" y="36.3" font-size="18" text-anchor="middle">Softmax</text>
+    </g>
+    <line class="ar" x1="850" y1="162" x2="850" y2="150" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="118" x2="850" y2="96" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="62" x2="850" y2="48" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="14" x2="850" y2="-10" marker-end="url(#tf-a)"/>
+    <path class="res" d="M850 221 H990 V133 H967.0" marker-end="url(#tf-a)"/>
+    </g>
+    <g class="xatt">
+    <g class="blk2" style="--c:#D8E36A"><rect x="735.0" y="228" width="230" height="30" rx="7"/>
+    <text x="850" y="248.9" font-size="17" text-anchor="middle">Add &amp; Norm</text>
+    </g>
+    <g class="blk2" style="--c:#F28D3C"><rect x="735.0" y="272" width="230" height="56" rx="7"/>
+    <text x="850" y="296.0" font-size="20" text-anchor="middle">Multi-Head</text>
+    <text x="850" y="318.0" font-size="20" text-anchor="middle">Attention</text>
+    </g>
+    <line class="ar" x1="850" y1="272" x2="850" y2="260" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="228" x2="850" y2="216" marker-end="url(#tf-a)"/>
+    <path class="res" d="M850 335 H990 V243 H967.0" marker-end="url(#tf-a)"/>
+    </g>
+    <g class="blk2" style="--c:#D8E36A"><rect x="735.0" y="342" width="230" height="30" rx="7"/>
+    <text x="850" y="362.9" font-size="17" text-anchor="middle">Add &amp; Norm</text>
+    </g>
+    <g class="blk2" style="--c:#F28D3C"><rect x="735.0" y="386" width="230" height="64" rx="7"/>
+    <text x="850" y="404.3" font-size="18" text-anchor="middle">Masked</text>
+    <text x="850" y="424.3" font-size="18" text-anchor="middle">Multi-Head</text>
+    <text x="850" y="444.3" font-size="18" text-anchor="middle">Attention</text>
+    </g>
+    <g class="blk2" style="--c:#E4707A"><rect x="735.0" y="510" width="230" height="52" rx="7"/>
+    <text x="850" y="532.0" font-size="20" text-anchor="middle">Output</text>
+    <text x="850" y="554.0" font-size="20" text-anchor="middle">Embedding</text>
+    </g>
+    <circle class="plus" cx="850" cy="482" r="11"/><path class="plusx" d="M844 482 H856 M850 476 V488"/>
+    <line class="ar" x1="896" y1="482" x2="864" y2="482" marker-end="url(#tf-a)"/>
+    <circle class="pe" cx="912" cy="482" r="16"/><path class="pew" d="M901 482 q5.5 -11 11 0 t11 0"/>
+    <text class="pel" x="1020" y="477" text-anchor="start">Positional</text><text class="pel" x="1020" y="497" text-anchor="start">Encoding</text>
+    <line class="ar" x1="850" y1="510" x2="850" y2="496" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="471" x2="850" y2="452" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="386" x2="850" y2="374" marker-end="url(#tf-a)"/>
+    <line class="ar" x1="850" y1="342" x2="850" y2="330" marker-end="url(#tf-a)"/>
+    <path class="res" d="M850 460 H990 V357 H967.0" marker-end="url(#tf-a)"/>
+    </g>
+    <g class="only" data-only="1">
+    <text class="half" x="520" y="152" text-anchor="middle">Codificador</text><text class="halfs" x="520" y="178" text-anchor="middle">lee la frase completa</text>
+    <text class="half" x="962" y="62">Decodificador</text><text class="halfs" x="962" y="88">escribe token a token</text>
+    </g>
+    <g class="callouts frag" data-step="2">
+    <line class="lead" x1="792" y1="144" x2="852" y2="144"/><text class="co" x="862" y="150">probabilidades del siguiente token</text>
+    <line class="lead" x1="586" y1="302" x2="532" y2="302"/><text class="co" x="522" y="308" text-anchor="end">la red de capas</text>
+    <line class="lead" x1="822" y1="418" x2="862" y2="418"/><text class="co" x="872" y="410">solo mira</text><text class="co" x="872" y="432">hacia atrás</text>
+    <text class="co" x="914" y="290">= 28 en Llama 3.2 3B</text>
+    </g>
+  </svg>
+  <div class="cap">
+    <p class="only" data-only="0">La arquitectura Transformer original (Google, 2017), pensada para <b>traducir</b>.</p>
+    <p class="only" data-only="1">Dos mitades: el <b>codificador</b> lee la frase completa y el <b>decodificador</b> escribe un token a la vez.</p>
+    <p class="only" data-only="2">Los LLM actuales usan solo el decodificador: <b>decoder-only</b>. <span class="src">Llama, Qwen, Gemma, DeepSeek, gpt-oss</span></p>
+  </div>
+  <aside class="notes" data-min="3"><ul><li>La red de capas era una simplificación: casi todos son Transformers (Google, 2017).</li><li>Paso 1: dos mitades. Codificador lee, decodificador escribe (se inventó para traducir).</li><li>Paso 2: los LLM actuales usan solo el decodificador (decoder-only). Feed Forward = la red de capas; Masked = solo mira hacia atrás.</li></ul></aside>
+</section>
+
+<!-- 6c ─ Capacidades: razonamiento, uso de herramientas y visión. Ejemplos ilustrativos. -->
+<section class="slide" data-era="neutral" data-steps="2">
+  <div class="where">El origen</div>
+  <h2 class="title">Capacidades de un modelo</h2>
+  <div class="caps">
+    <div class="capc">
+      <h3>Razonamiento</h3>
+      <div class="bub me">1.200 UF con 15% de descuento</div>
+      <div class="think">pensando…<br>15% de 1.200 = 180<br>1.200 − 180 = 1.020</div>
+      <div class="bub ai">Quedan 1.020 UF.</div>
+      <p class="why">Escribe sus pasos antes de responder: más tokens, mejores respuestas.</p>
+    </div>
+    <div class="capc frag" data-step="1">
+      <h3>Uso de herramientas</h3>
+      <div class="bub me">¿Cuándo cierra la licitación?</div>
+      <div class="call">buscar_licitacion("2239-2-LR26")</div>
+      <div class="tool">⚙ tu sistema responde: <b>25 sep. 2026</b></div>
+      <div class="bub ai">Cierra el 25 de septiembre.</div>
+      <p class="why">El modelo no busca: pide que alguien busque.</p>
+    </div>
+    <div class="capc frag" data-step="2">
+      <h3>Visión</h3>
+      <div class="visrow">
+        <div class="page sm"><i></i><i></i><i style="width:60%"></i><div class="tbl"></div></div>
+        <span class="arr">→</span>
+        <div class="patches sm"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="bub ai">La tabla tiene 3 categorías y 18 servicios.</div>
+      <p class="why">La imagen se corta en parches y cada parche se vuelve tokens.</p>
+    </div>
+  </div>
+  <div class="cap"><p>No todos los modelos tienen las tres. Es uno de los filtros para elegir.</p></div>
+  <aside class="notes" data-min="3"><ul><li>Razonamiento: escribe sus pasos antes de responder; más tokens, mejores respuestas.</li><li>Uso de herramientas: el modelo no busca, pide que tu sistema busque.</li><li>Visión: la imagen se corta en parches y cada parche se vuelve tokens.</li><li>En LM Studio estas capacidades aparecen como íconos en el catálogo.</li></ul></aside>
+</section>
+
+<!-- 6d ─ Ventana de contexto. Máximos: llama3.2:3b 131.072, gemma4:26b 262.144 (ollama show).
+     Memoria total medida con `ollama ps` (columna SIZE) el 19 oct. 2026: llama3.2:3b 2,6 / 6,1 / 18 GB con num_ctx 4.096 / 32.768 / 131.072;
+     gemma4:26b 18 / 19 / 19 GB. -->
+<section class="slide" data-era="neutral" data-steps="2">
+  <div class="where">El origen</div>
+  <h2 class="title">Ventana de contexto</h2>
+  <div class="ctxwin">
+    <div class="ctxbar">
+      <span class="sys">Instrucciones</span><span class="hist">Conversación</span><span class="cdoc">Documento adjunto</span><span class="resp">Respuesta</span>
+      <span class="out frag" data-step="1">… resto del documento</span>
+    </div>
+    <div class="ctxlim"><b>Lo que el modelo ve a la vez</b><span>Llama 3.2 3B: hasta 131 mil tokens · Gemma 4 26B: hasta 262 mil</span></div>
+  </div>
+  <div class="ctxmem frag" data-step="2">
+    <div class="glab">Memoria total de Llama 3.2 3B según el contexto configurado</div>
+    <div class="mrows">
+      <div class="limit" style="left:calc(170px + (100% - 170px) * 1)"><b>24 GB</b></div>
+      <div class="hbar"><span>4 mil</span><i style="width:10.8%" data-v="2,6 GB"></i></div>
+      <div class="hbar"><span>32 mil</span><i style="width:25.4%" data-v="6,1 GB"></i></div>
+      <div class="hbar hot"><span>131 mil</span><i style="width:75%" data-v="18 GB"></i></div>
+    </div>
+  </div>
+  <div class="cap">
+    <p class="only" data-only="0">Todo lo que el modelo puede considerar a la vez, <b>medido en tokens</b>: instrucciones, conversación, documentos y respuesta.</p>
+    <p class="only" data-only="1">Lo que no cabe, <b>el modelo no lo ve</b>. Por eso existe el RAG.</p>
+    <p class="only" data-only="2">Y cada token de contexto <b>ocupa memoria</b> (la caché KV). Medido con <code>ollama ps</code> en la RTX 3090.</p>
+  </div>
+  <aside class="notes" data-min="2.5"><ul><li>Todo lo que el modelo ve a la vez, en tokens: instrucciones + conversación + documento + respuesta.</li><li>Paso 1: lo que no cabe, no lo ve. Por eso existe el RAG.</li><li>Paso 2: el contexto ocupa memoria. Llama 3B: 2,6 GB con 4 mil tokens, 18 GB con 131 mil (medido).</li></ul></aside>
+</section>
+
+<!-- 9 ─ Resumen: tres categorías -->
+<section class="slide" data-era="neutral">
+  <div class="where">El origen</div>
+  <h2 class="title">Tres tipos de modelo</h2>
+  <div class="summary">
+    <div><strong>API cerrada</strong><span>No descargas nada. Tus datos viajan al servidor del proveedor.</span><em>GPT, Claude, Gemini</em></div>
+    <div><strong>Open weights</strong><span>Descargas el archivo de pesos y lo corres en tu equipo.</span><em>Llama, Mistral, DeepSeek, Qwen, gpt-oss</em></div>
+    <div><strong>Open source</strong><span>Además de los pesos, el código y los datos de entrenamiento.</span><em>OLMo</em></div>
+  </div>
+  <div class="summary-scale"><span>Menos control</span><span>Más control</span></div>
+  <aside class="notes" data-min="1.5"><ul><li>API cerrada: tus datos viajan al proveedor.</li><li>Open weights: descargas el archivo y lo corres tú. De esto trata el taller.</li><li>Open source: además, código y datos (OLMo).</li></ul></aside>
+</section>
+
+<!-- 10 ─ Breve historia: una línea de tiempo, tres eras. El título y el color cambian con cada hito.
+     Fechas: BERT oct. 2018 [2], GPT-2 por etapas feb.–nov. 2019 [3][4]; GPT-3 (paper may. 2020) a ChatGPT (30 nov. 2022) [53][54]; LLaMA se filtra el 3 mar. 2023 [13]. -->
+<section class="slide" data-era="claro" data-steps="3" data-eras="claro,claro,oscuro,rebelde">
+  <div class="where">Breve historia de la galaxia</div>
+  <h2 class="title steps-title">
+    <span class="only" data-only="0,1">El lado claro de la Fuerza</span>
+    <span class="only" data-only="2">El lado oscuro</span>
+    <span class="only" data-only="3">La rebelión Open Weights</span>
+  </h2>
+  <div class="tl">
+    <div class="tl-line"></div>
+    <div class="tl-node frag" data-step="1" style="--x:14%"><div class="logos"><span class="logo tile wide"><img src="__ASSET:logos/google.png__" alt="Google"></span><span class="logo tile"><img src="__ASSET:logos/openai.png__" alt="OpenAI"></span></div><span class="yr">oct. 2018 – nov. 2019</span><span class="nm">BERT y GPT-2</span></div>
+    <div class="tl-node frag" data-step="2" style="--x:50%"><span class="logo tile"><img src="__ASSET:logos/openai.png__" alt="OpenAI"></span><span class="yr">may. 2020 – nov. 2022</span><span class="nm">GPT-3 y ChatGPT</span></div>
+    <div class="tl-node frag" data-step="3" style="--x:86%"><span class="logo tile"><img src="__ASSET:logos/meta-llama-github-avatar.png__" alt="Meta"></span><span class="yr">mar. 2023</span><span class="nm">LLaMA se filtra</span></div>
+    __SHIP__
+  </div>
+  <div class="detail">
+    <div class="d only" data-only="0"><div><p>Una historia sobre quién controla los pesos.</p></div></div>
+    <div class="d only" data-only="1">
+      <div><h4>Pesos para todos</h4><p>Google y OpenAI publicaban sus modelos completos, listos para descargar.</p></div>
+      <div class="chips">
+        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E6B95E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>Pesos</div>
+        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E6B95E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>Código</div>
+      </div>
+    </div>
+    <div class="d only" data-only="2">
+      <div><h4>Se cierra la puerta</h4><p>Desde GPT-3, solo por API. ChatGPT explota en usuarios: nace el Imperio.</p>
+        <div class="bigstat"><strong>1 millón</strong><span>de usuarios en 5 días</span></div></div>
+      <div class="growth">
+        <div class="glab">Meses hasta llegar a 100 millones de usuarios</div>
+        <div class="hbars">
+          <div class="hbar hot"><span>ChatGPT</span><i style="width:6.7%" data-v="2 meses"></i></div>
+          <div class="hbar"><span>TikTok</span><i style="width:30%" data-v="9 meses"></i></div>
+          <div class="hbar"><span>Instagram</span><i style="width:85%" data-v="30 meses"></i></div>
+        </div>
+        <div class="gsrc">UBS vía Reuters, feb. 2023 · Sam Altman, 5 dic. 2022</div>
+      </div>
+    </div>
+    <div class="d only" data-only="3">
+      <div><h4>La rebelión</h4><p>Meta compartió LLaMA solo con investigadores. En una semana los pesos estaban en internet. Desde ahí, una galaxia de modelos abiertos.</p></div>
+      <div class="spread"><svg viewBox="-70 -28 700 310" aria-hidden="true">
+        <g stroke="#F28D3C" stroke-width="1.5" opacity=".55"><line x1="280" y1="125" x2="110" y2="28"/><line x1="280" y1="125" x2="280" y2="28"/><line x1="280" y1="125" x2="450" y2="28"/><line x1="280" y1="125" x2="40" y2="125"/><line x1="280" y1="125" x2="520" y2="125"/><line x1="280" y1="125" x2="110" y2="222"/><line x1="280" y1="125" x2="280" y2="222"/><line x1="280" y1="125" x2="450" y2="222"/></g>
+        <circle cx="280" cy="125" r="18" fill="#F28D3C"/>
+        <g class="sats">
+          <g class="sat"><rect x="88" y="6" width="44" height="44" rx="10"/><image href="__ASSET:logos/mistral.png__" x="93" y="11" width="34" height="34"/><text x="110" y="-4" text-anchor="middle">Mistral</text></g>
+          <g class="sat"><rect x="258" y="6" width="44" height="44" rx="10"/><image href="__ASSET:logos/deepseek-github-avatar.png__" x="263" y="11" width="34" height="34"/><text x="280" y="-4" text-anchor="middle">DeepSeek</text></g>
+          <g class="sat"><rect x="428" y="6" width="44" height="44" rx="10"/><image href="__ASSET:logos/qwen-github-avatar.png__" x="433" y="11" width="34" height="34"/><text x="450" y="-4" text-anchor="middle">Qwen</text></g>
+          <g class="sat"><rect x="18" y="103" width="44" height="44" rx="10"/><image href="__ASSET:logos/meta-llama-github-avatar.png__" x="23" y="108" width="34" height="34"/><text x="8" y="131" text-anchor="end">Llama</text></g>
+          <g class="sat"><rect x="498" y="103" width="44" height="44" rx="10"/><image href="__ASSET:logos/zai-github-avatar.png__" x="503" y="108" width="34" height="34"/><text x="552" y="131" text-anchor="start">GLM</text></g>
+          <g class="sat"><rect x="88" y="200" width="44" height="44" rx="10"/><image href="__ASSET:logos/google.png__" x="93" y="205" width="34" height="34"/><text x="110" y="266" text-anchor="middle">Gemma</text></g>
+          <g class="sat"><rect x="258" y="200" width="44" height="44" rx="10"/><image href="__ASSET:logos/openai.png__" x="263" y="205" width="34" height="34"/><text x="280" y="266" text-anchor="middle">gpt-oss</text></g>
+          <g class="sat"><rect x="428" y="200" width="44" height="44" rx="10"/><image href="__ASSET:logos/moonshot-github-avatar.jpg__" x="433" y="205" width="34" height="34"/><text x="450" y="266" text-anchor="middle">Kimi</text></g>
+        </g>
+      </svg></div>
+    </div>
+  </div>
+  <aside class="notes" data-min="3"><ul><li>Breve: es una anécdota.</li><li>Lado claro: Google (BERT) y OpenAI (GPT-2) publicaban sus pesos. Chiste: “cuando OpenAI era Open”.</li><li>Lado oscuro: GPT-3 solo por API; ChatGPT 1 millón en 5 días, 100 millones en 2 meses.</li><li>Rebelión: LLaMA se filtra en una semana → Mistral, DeepSeek, Qwen, Gemma, gpt-oss…</li></ul></aside>
+</section>
+
+<!-- 7 ─ ¿Cómo aprende? (animación: adivina → compara → ajusta pesos hacia atrás) -->
+<section class="slide" data-era="neutral" data-steps="4">
+  <div class="where">El origen</div>
+  <h2 class="title">¿Cómo aprende?</h2>
+  <div class="sent">La capital de Chile es <span class="blank mask"><b class="only" data-only="0">?</b><b class="only" data-only="1">?</b><b class="frag ok" data-step="2">Santiago</b></span></div>
+  <svg class="nnsvg" viewBox="0 0 1408 500" aria-hidden="true">
+    <g class="col-lab">
+      <text x="0" y="24">Texto de entrenamiento</text>
+      <text x="740" y="24" text-anchor="middle">Red neuronal</text>
+      <text class="only" data-only="1" x="1075" y="24">Lo que adivina</text><text class="only" data-only="2" x="1075" y="24">Lo que adivina</text><text class="only" data-only="3" x="1075" y="24">Lo que adivina</text><text class="only" data-only="4" x="1075" y="24">El resultado</text>
+    </g>
+    <g class="toks">
+      <g transform="translate(0,80)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">La</text><text class="id" x="186" y="6">8747</text></g>
+      <g transform="translate(0,150)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">capital</text><text class="id" x="186" y="6">6722</text></g>
+      <g transform="translate(0,220)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">de</text><text class="id" x="186" y="6">409</text></g>
+      <g transform="translate(0,290)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">Chile</text><text class="id" x="186" y="6">33000</text></g>
+      <g transform="translate(0,360)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">es</text><text class="id" x="186" y="6">1531</text></g>
+    </g>
+    <g class="emb" data-emb="80,150,220,290,360" data-x="232"></g>
+    <g class="nn" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"hi":[2,3,4]}'></g>
+    <g class="nn fwd ov only" data-only="1" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"bare":true}'></g>
+    <g class="nn back ov only" data-only="2" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"bare":true}'></g>
+    <g class="nn fwd ov only" data-only="3" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"bare":true}'></g>
+    <g class="wcall only" data-only="2"><rect x="754" y="160" width="122" height="46" rx="10"/><text x="815" y="191" text-anchor="middle">0,0371</text></g>
+    <g class="wcall up only" data-only="3"><rect x="754" y="160" width="122" height="46" rx="10"/><text x="815" y="191" text-anchor="middle">0,0412</text></g>
+    <g class="probs only" data-only="1">
+      <g transform="translate(1075,100)"><text class="w" y="8">azul</text><rect x="128" y="-9" width="33" height="18" rx="3"/><text class="pct" x="171" y="7">22%</text></g>
+      <g transform="translate(1075,170)"><text class="w" y="8">grande</text><rect x="128" y="-9" width="26" height="18" rx="3"/><text class="pct" x="164" y="7">17%</text></g>
+      <g transform="translate(1075,240)"><text class="w" y="8">la</text><rect x="128" y="-9" width="14" height="18" rx="3"/><text class="pct" x="152" y="7">9%</text></g>
+      <g transform="translate(1075,310)"><text class="w" y="8">Santiago</text><rect x="128" y="-9" width="3" height="18" rx="1"/><text class="pct" x="141" y="7">2%</text></g>
+    </g>
+    <g class="probs only" data-only="2">
+      <g transform="translate(1075,100)"><text class="w bad" y="8">azul</text><rect class="bad" x="128" y="-9" width="33" height="18" rx="3"/><text class="pct" x="171" y="7">22%</text></g>
+      <g transform="translate(1075,170)"><text class="w" y="8">grande</text><rect x="128" y="-9" width="26" height="18" rx="3"/><text class="pct" x="164" y="7">17%</text></g>
+      <g transform="translate(1075,240)"><text class="w" y="8">la</text><rect x="128" y="-9" width="14" height="18" rx="3"/><text class="pct" x="152" y="7">9%</text></g>
+      <g transform="translate(1075,310)"><text class="w hot" y="8">Santiago</text><rect class="hot" x="128" y="-9" width="3" height="18" rx="1"/><text class="pct" x="141" y="7">2%</text></g>
+      <text class="err" x="1075" y="372">Error: debía ser «Santiago»</text>
+    </g>
+    <g class="probs only" data-only="3">
+      <g transform="translate(1075,100)"><text class="w hot" y="8">Santiago</text><rect class="hot" x="128" y="-9" width="40" height="18" rx="3"/><text class="pct" x="178" y="7">27%</text></g>
+      <g transform="translate(1075,170)"><text class="w" y="8">azul</text><rect x="128" y="-9" width="24" height="18" rx="3"/><text class="pct" x="162" y="7">16%</text></g>
+      <g transform="translate(1075,240)"><text class="w" y="8">grande</text><rect x="128" y="-9" width="18" height="18" rx="3"/><text class="pct" x="156" y="7">12%</text></g>
+      <g transform="translate(1075,310)"><text class="w" y="8">la</text><rect x="128" y="-9" width="12" height="18" rx="3"/><text class="pct" x="150" y="7">8%</text></g>
+      <text class="more" x="1075" y="372">un poco mejor que antes</text>
+    </g>
+    <g class="fileout only" data-only="4" transform="translate(1080,40)">
+      <path d="M0 0 H250 L300 50 V350 H0 Z"/><path class="fold" d="M250 0 V50 H300"/>
+      <text class="num" x="18" y="32" style="opacity:0.42"><tspan x="18">-0,76</tspan><tspan x="72">0,01</tspan><tspan x="126">0,02</tspan><tspan x="180">0,72</tspan></text>
+      <text class="num" x="18" y="51" style="opacity:0.71"><tspan x="18">-0,55</tspan><tspan x="72">0,20</tspan><tspan x="126">0,11</tspan><tspan x="180">0,57</tspan></text>
+      <text class="num" x="18" y="70" style="opacity:0.75"><tspan x="18">0,46</tspan><tspan x="72">0,54</tspan><tspan x="126">0,50</tspan><tspan x="180">0,17</tspan><tspan x="234">-0,52</tspan></text>
+      <text class="num" x="18" y="89" style="opacity:0.79"><tspan x="18">-0,78</tspan><tspan x="72">0,63</tspan><tspan x="126">-0,10</tspan><tspan x="180">0,63</tspan><tspan x="234">0,37</tspan></text>
+      <text class="num" x="18" y="108" style="opacity:1.00"><tspan x="18">-0,58</tspan><tspan x="72">-0,50</tspan><tspan x="126">0,96</tspan><tspan x="180">0,86</tspan><tspan x="234">0,61</tspan></text>
+      <text class="num" x="18" y="127" style="opacity:0.65"><tspan x="18">0,03</tspan><tspan x="72">-0,85</tspan><tspan x="126">-0,32</tspan><tspan x="180">0,11</tspan><tspan x="234">-0,42</tspan></text>
+      <text class="num" x="18" y="146" style="opacity:0.59"><tspan x="18">0,75</tspan><tspan x="72">0,41</tspan><tspan x="126">0,15</tspan><tspan x="180">-0,95</tspan><tspan x="234">0,42</tspan></text>
+      <text class="num" x="18" y="165" style="opacity:0.68"><tspan x="18">-0,16</tspan><tspan x="72">-0,20</tspan><tspan x="126">0,17</tspan><tspan x="180">0,01</tspan><tspan x="234">-0,77</tspan></text>
+      <text class="dots" x="150" y="198" text-anchor="middle">⋮</text>
+      <text class="num" x="18" y="228" style="opacity:0.62"><tspan x="18">0,50</tspan><tspan x="72">0,20</tspan><tspan x="126">-0,02</tspan><tspan x="180">0,83</tspan><tspan x="234">-0,48</tspan></text>
+      <text class="num" x="18" y="247" style="opacity:0.43"><tspan x="18">0,85</tspan><tspan x="72">-0,04</tspan><tspan x="126">0,04</tspan><tspan x="180">-0,95</tspan><tspan x="234">-0,55</tspan></text>
+      <text class="num" x="18" y="266" style="opacity:0.66"><tspan x="18">-0,90</tspan><tspan x="72">0,41</tspan><tspan x="126">0,77</tspan><tspan x="180">-0,79</tspan><tspan x="234">0,24</tspan></text>
+      <text class="num" x="18" y="285" style="opacity:0.66"><tspan x="18">-0,04</tspan><tspan x="72">-0,54</tspan><tspan x="126">0,77</tspan><tspan x="180">0,25</tspan><tspan x="234">-0,09</tspan></text>
+      <text class="num" x="18" y="304" style="opacity:0.55"><tspan x="18">0,86</tspan><tspan x="72">0,97</tspan><tspan x="126">0,09</tspan><tspan x="180">0,12</tspan><tspan x="234">0,34</tspan></text>
+      <text class="num" x="18" y="323" style="opacity:0.54"><tspan x="18">0,60</tspan><tspan x="72">0,01</tspan><tspan x="126">-0,04</tspan><tspan x="180">0,77</tspan><tspan x="234">-0,13</tspan></text>
+      <text class="ext" x="150" y="386" text-anchor="middle">model.safetensors</text>
+    </g>
+  </svg>
+  <div class="cap">
+    <p class="only" data-only="0">Se toma texto real y se tapa la palabra que sigue.</p>
+    <p class="only" data-only="1">Al principio, los pesos son números al azar: el modelo adivina mal.</p>
+    <p class="only" data-only="2">Se compara con la respuesta correcta y el error viaja hacia atrás, por toda la red.</p>
+    <p class="only" data-only="3">Cada peso se ajusta un poquito para equivocarse menos la próxima vez.</p>
+    <p class="only" data-only="4">Billones de veces, durante meses. Lo que queda son <b>los pesos</b>: el archivo que vamos a descargar.</p>
+  </div>
+  <aside class="notes" data-min="2"><ul><li>(Por decidir si se mantiene.)</li><li>Adivina, compara, el error viaja hacia atrás, ajusta pesos. Billones de veces.</li><li>Lo que queda es el archivo de pesos.</li></ul></aside>
+</section>
+
+<!-- 8 ─ ¿Cómo nace el archivo Open Weights? -->
 <section class="slide" data-era="neutral" data-steps="3">
   <div class="where">El origen</div>
   <h2 class="title">¿Cómo nace un archivo Open Weights?</h2>
@@ -566,151 +1266,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       <div class="branch"><h4>Afinadas</h4><p>Ajustadas para una tarea o un estilo específico.</p><div class="ex">fine-tuning, el Taller 2</div></div>
     </div>
   </div>
-</section>
-
-<!-- 6 ─ Lado claro -->
-<section class="slide" data-era="claro" data-steps="4">
-  <div class="where">Breve historia de la galaxia</div>
-  <h2 class="title">El lado claro de la Fuerza</h2>
-  <div class="tl">
-    <div class="tl-line"></div>
-    <div class="tl-node frag" data-step="1" style="--x:8%"><span class="logo" data-logo="google">Google</span><span class="yr">2017</span><span class="nm">Transformer</span></div>
-    <div class="tl-node frag" data-step="2" style="--x:35%"><span class="logo" data-logo="google">Google</span><span class="yr">2018</span><span class="nm">BERT</span></div>
-    <div class="tl-node frag" data-step="3" style="--x:62%"><span class="logo" data-logo="openai">OpenAI</span><span class="yr">2018</span><span class="nm">GPT-1</span></div>
-    <div class="tl-node frag" data-step="4" style="--x:89%"><span class="logo" data-logo="openai">OpenAI</span><span class="yr">2019</span><span class="nm">GPT-2</span></div>
-    __SHIP__
-  </div>
-  <div class="detail">
-    <div class="d only" data-only="0"><div><p>Cuando todos los laboratorios publicaban sus descubrimientos.</p></div></div>
-    <div class="d only" data-only="1">
-      <div><h4>La receta de todos los LLM</h4><p>Google publica la arquitectura Transformer, abierta desde el primer día.</p></div>
-      <div class="attn"><svg viewBox="0 0 620 170" aria-hidden="true">
-        <g fill="none" stroke="#E6B95E" stroke-width="2" opacity=".85">
-          <path d="M60 120 Q 160 20 260 120"/><path d="M60 120 Q 260 -30 460 120"/><path d="M260 120 Q 360 40 460 120"/><path d="M460 120 Q 510 60 560 120"/><path d="M160 120 Q 360 10 560 120" opacity=".5"/>
-        </g>
-        <g font-family="IBM Plex Sans, sans-serif" font-size="22" fill="#ECF1F6" text-anchor="middle">
-          <text x="60" y="152">el</text><text x="160" y="152">gato</text><text x="260" y="152">se</text><text x="360" y="152">subió</text><text x="460" y="152">al</text><text x="560" y="152">techo</text>
-        </g>
-        <g fill="#E6B95E"><circle cx="60" cy="120" r="5"/><circle cx="160" cy="120" r="5"/><circle cx="260" cy="120" r="5"/><circle cx="360" cy="120" r="5"/><circle cx="460" cy="120" r="5"/><circle cx="560" cy="120" r="5"/></g>
-      </svg></div>
-    </div>
-    <div class="d only" data-only="2">
-      <div><h4>Un modelo entrenado, para cualquiera</h4><p>Pesos y código de BERT, listos para descargar.</p><div class="aside">No fue el primero (ELMo y ULMFiT lo hicieron antes), pero sí el más influyente.</div></div>
-      <div class="chips">
-        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E6B95E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>Pesos</div>
-        <div class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="#E6B95E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m-5-5 5 5 5-5M4 20h16"/></svg>Código</div>
-      </div>
-    </div>
-    <div class="d only" data-only="3">
-      <div><h4>OpenAI también publicaba todo</h4><p>Su primer modelo sale con código y pesos. Todavía era un Jedi.</p></div>
-      <div class="openword"><span class="o">Open</span>AI</div>
-    </div>
-    <div class="d only" data-only="4">
-      <div><h4>La primera duda</h4><p>Por miedo al mal uso lo liberó por partes. Al final lo publicó completo.</p></div>
-      <div class="staged">
-        <div><b>124M</b><i style="height:12%"></i>feb.</div>
-        <div><b>355M</b><i style="height:30%"></i>may.</div>
-        <div><b>774M</b><i style="height:55%"></i>ago.</div>
-        <div><b>1.500M</b><i style="height:100%"></i>nov.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 7 ─ Lado oscuro -->
-<section class="slide" data-era="oscuro" data-steps="4">
-  <div class="where">Breve historia de la galaxia</div>
-  <h2 class="title">El lado oscuro: OpenAI se convierte en Imperio</h2>
-  <div class="tl">
-    <div class="tl-line"></div>
-    <div class="tl-node frag" data-step="1" style="--x:10%"><span class="logo" data-logo="openai">OpenAI</span><span class="yr">2020</span><span class="nm">GPT-3</span></div>
-    <div class="tl-node frag" data-step="2" style="--x:47%"><span class="logo" data-logo="openai">OpenAI</span><span class="yr">nov. 2022</span><span class="nm">ChatGPT</span></div>
-    <div class="tl-node frag" data-step="3" style="--x:84%"><span class="logo" data-logo="openai">OpenAI</span><span class="yr">2023</span><span class="nm">GPT-4</span></div>
-    __SHIP__
-  </div>
-  <div class="detail">
-    <div class="d only" data-only="0"><div><p>No fue un anuncio dramático. Fue paso a paso.</p></div></div>
-    <div class="d only" data-only="1">
-      <div><h4>Se cierra la puerta</h4><p>Por primera vez, sin pesos públicos. Solo acceso pagado por API.</p></div>
-      <div class="flowrow">
-        <div class="node">Tu empresa</div><div class="arrow"></div>
-        <div class="node hot lockbox"><svg viewBox="0 0 24 24" fill="none" stroke="#E4493E" stroke-width="2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Servidor de OpenAI</div>
-      </div>
-    </div>
-    <div class="d only" data-only="2">
-      <div><h4>Gigante y cerrado a la vez</h4><p>ChatGPT es GPT-3.5 ajustado para conversar. En dos meses, 100 millones de usuarios. Nace el Imperio.</p><div class="aside">Meses hasta 100 millones de usuarios. UBS vía Reuters, feb. 2023.</div></div>
-      <div class="hbars">
-        <div class="hbar hot"><span>ChatGPT</span><i style="width:6.7%" data-v="2 meses"></i></div>
-        <div class="hbar"><span>TikTok</span><i style="width:30%" data-v="9 meses"></i></div>
-        <div class="hbar"><span>Instagram</span><i style="width:85%" data-v="30 meses"></i></div>
-      </div>
-    </div>
-    <div class="d only" data-only="3">
-      <div><h4>Todo clasificado</h4><p>El reporte técnico de GPT-4 no revela cómo está hecho. Y con el Imperio llega la regulación: en Chile, la Ley 21.719 rige desde el 1 de diciembre de 2026.</p></div>
-      <div class="redacted">Arquitectura<span></span><br>Tamaño del modelo<span></span><br>Datos de entrenamiento<span></span><br><div class="stamp">Clasificado</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8 ─ Alianza rebelde -->
-<section class="slide" data-era="rebelde" data-steps="5">
-  <div class="where">Breve historia de la galaxia</div>
-  <h2 class="title">La alianza rebelde de Open Weights</h2>
-  <div class="tl">
-    <div class="tl-line"></div>
-    <div class="tl-node frag" data-step="1" style="--x:7%"><span class="logo" data-logo="meta">Meta</span><span class="yr">mar. 2023</span><span class="nm">LLaMA se filtra</span></div>
-    <div class="tl-node frag" data-step="2" style="--x:28%"><span class="logo" data-logo="mistral">Mistral AI</span><span class="yr">sep. 2023</span><span class="nm">Mistral 7B</span></div>
-    <div class="tl-node frag" data-step="3" style="--x:49%"><span class="logo" data-logo="deepseek">DeepSeek</span><span class="yr">ene. 2025</span><span class="nm">DeepSeek R1</span></div>
-    <div class="tl-node frag" data-step="4" style="--x:70%"><span class="logo" data-logo="openai">OpenAI</span><span class="yr">ago. 2025</span><span class="nm">gpt-oss</span></div>
-    <div class="tl-node frag" data-step="5" style="--x:91%"><span class="logo" data-logo="qwen">Alibaba Qwen</span><span class="yr">abr. 2026</span><span class="nm">Qwen3.6</span></div>
-    __SHIP__
-  </div>
-  <div class="detail">
-    <div class="d only" data-only="0"><div><p>El Imperio pensó que había apagado las luces para siempre. Se equivocó.</p></div></div>
-    <div class="d only" data-only="1">
-      <div><h4>Le duró una semana</h4><p>Meta lo lanzó solo para investigadores. Alguien publicó los pesos en internet y ya no hubo vuelta atrás. Meta respondió con Llama 2, abierto de verdad.</p></div>
-      <div class="spread"><svg viewBox="0 0 560 240" aria-hidden="true">
-        <g stroke="#F28D3C" stroke-width="1.5" opacity=".55">
-          <line x1="280" y1="120" x2="160" y2="60"/><line x1="280" y1="120" x2="400" y2="50"/><line x1="280" y1="120" x2="420" y2="170"/><line x1="280" y1="120" x2="150" y2="180"/><line x1="280" y1="120" x2="280" y2="215"/>
-          <line x1="160" y1="60" x2="60" y2="40"/><line x1="160" y1="60" x2="80" y2="110"/><line x1="400" y1="50" x2="500" y2="30"/><line x1="400" y1="50" x2="510" y2="100"/><line x1="420" y1="170" x2="520" y2="200"/><line x1="150" y1="180" x2="50" y2="200"/><line x1="280" y1="215" x2="370" y2="230"/><line x1="280" y1="215" x2="190" y2="232"/>
-        </g>
-        <circle cx="280" cy="120" r="16" fill="#F28D3C"/>
-        <g fill="#ECF1F6"><circle cx="160" cy="60" r="8"/><circle cx="400" cy="50" r="8"/><circle cx="420" cy="170" r="8"/><circle cx="150" cy="180" r="8"/><circle cx="280" cy="215" r="8"/></g>
-        <g fill="#8494A5"><circle cx="60" cy="40" r="5"/><circle cx="80" cy="110" r="5"/><circle cx="500" cy="30" r="5"/><circle cx="510" cy="100" r="5"/><circle cx="520" cy="200" r="5"/><circle cx="50" cy="200" r="5"/><circle cx="370" cy="230" r="5"/><circle cx="190" cy="232" r="5"/></g>
-      </svg></div>
-    </div>
-    <div class="d only" data-only="2">
-      <div><h4>Europa se suma</h4><p>El laboratorio francés publica sus modelos con Apache 2.0, la licencia más permisiva que existe.</p></div>
-      <div class="chips"><div class="chip">Uso comercial libre</div><div class="chip">Modificable</div></div>
-    </div>
-    <div class="d only" data-only="3">
-      <div><h4>Salto al hiperespacio</h4><p>Hoy la rebelión la lideran laboratorios chinos. DeepSeek razona al nivel de OpenAI o1, con pesos abiertos.</p></div>
-      <div class="stats"><div class="stat"><strong>671B</strong><span>parámetros</span></div><div class="stat"><strong>MIT</strong><span>licencia</span></div></div>
-    </div>
-    <div class="d only" data-only="4">
-      <div><h4>Hasta el Imperio cambia de bando</h4><p>OpenAI vuelve a publicar pesos, seis años después de GPT-2.</p></div>
-      <div class="openword" style="font-size:96px"><span class="o">Open</span>AI<span style="color:var(--mute)">?</span></div>
-    </div>
-    <div class="d only" data-only="5">
-      <div><h4>Chico pero matón</h4><p>Cabe en una sola GPU de 24 GB y supera en programación a su hermano 15 veces más grande.</p></div>
-      <div class="hbars">
-        <div class="hbar hot"><span>Qwen3.6</span><i style="width:6.8%" data-v="27B"></i></div>
-        <div class="hbar"><span>Qwen3.5</span><i style="width:88%" data-v="397B"></i></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 9 ─ Resumen: tres categorías -->
-<section class="slide" data-era="rebelde">
-  <div class="where">Breve historia de la galaxia</div>
-  <h2 class="title">En resumen: tres tipos de modelo</h2>
-  <div class="summary">
-    <div><strong>API cerrada</strong><span>No descargas nada. Tus datos viajan al servidor del proveedor.</span><em>GPT, Claude, Gemini</em></div>
-    <div><strong>Open weights</strong><span>Descargas el archivo de pesos y lo corres en tu equipo.</span><em>Llama, Mistral, DeepSeek, Qwen, gpt-oss</em></div>
-    <div><strong>Open source</strong><span>Además de los pesos, el código y los datos de entrenamiento.</span><em>OLMo</em></div>
-  </div>
-  <div class="summary-scale"><span>Menos control</span><span>Más control</span></div>
+  <aside class="notes" data-min="2"><ul><li>(Por decidir si se mantiene.)</li><li>Pre-entrenamiento → post-entrenamiento (instruct) → publicación.</li><li>Derivadas: cuantizadas, destiladas, afinadas (Taller 2).</li></ul></aside>
 </section>
 
 <!-- 10 ─ Divisor Parte 2 -->
@@ -718,6 +1274,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
   <div class="part">Parte 2, 60 minutos</div>
   <h2>Práctica Jedi</h2>
   <p>Usar modelos Open Weights localmente.</p>
+  <aside class="notes" data-min="0.5"><ul><li>Cambio a la práctica. Liberar VRAM antes de abrir LM Studio (ollama ps / ollama stop).</li><li>Compartir pantalla desde el PC Ubuntu.</li></ul></aside>
 </section>
 
 <!-- 11 ─ Ollama -->
@@ -740,6 +1297,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       <div class="layer"><span class="k">4</span><div>Tu GPU</div></div>
     </div>
   </div>
+  <aside class="notes" data-min="8"><ul><li>(Provisorio: Parte 2 por reestructurar.)</li></ul></aside>
 </section>
 
 <!-- 12 ─ Hardware -->
@@ -758,6 +1316,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     </tbody>
   </table>
   <div class="foot note">GPU dedicada: más velocidad, techo fijo de memoria. Mac: más techo, menos velocidad.</div>
+  <aside class="notes" data-min="4"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 13 ─ Cuantización -->
@@ -771,20 +1330,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     <div class="qrow hot"><div class="lab">Q4_K_M<small>el más usado</small></div><i style="width:32%" data-v="~4,5 GB"></i></div>
   </div>
   <div class="foot note">El mismo modelo de 7 mil millones de parámetros en tres niveles de cuantización.</div>
-</section>
-
-<!-- 14 ─ KV cache -->
-<section class="slide" data-era="jedi" data-steps="1">
-  <div class="where">Práctica Jedi: ¿qué hardware necesito?</div>
-  <h2 class="title">El archivo cabe. ¿Y la conversación?</h2>
-  <p class="lead">Además de los pesos, el modelo necesita memoria para el texto que le das: la caché KV. Crece con el largo del documento.</p>
-  <div class="vram">
-    <div class="limit" style="left:calc(254px + (100% - 254px) * 0.8)"><b>RTX 3090: 24 GB</b></div>
-    <div class="vrow"><div class="lab">Pregunta corta</div><div class="vbar"><span class="w" style="width:56%">pesos 16,8 GB</span><span class="kv" style="width:6%">KV</span><span class="ov" style="width:8%">margen</span></div></div>
-    <div class="vrow frag" data-step="1"><div class="lab">Documento largo</div><div class="vbar"><span class="w" style="width:56%">pesos 16,8 GB</span><span class="kv" style="width:17%">caché KV</span><span class="ov" style="width:7%">margen</span><span class="spill" style="width:13%">a la RAM</span></div></div>
-  </div>
-  <div class="legend"><span><i style="background:var(--jedi)"></i>Pesos del modelo</span><span><i style="background:#9FD9CE"></i>Caché KV</span><span><i style="background:#d9e2ea"></i>Margen</span><span><i style="background:rgba(228,73,62,.8)"></i>Se desborda: muy lento</span></div>
-  <div class="foot note">Esquema ilustrativo con Qwen3.6-27B en Q4_K_M.</div>
+  <aside class="notes" data-min="4"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 15 ─ LM Studio: elegir modelo -->
@@ -803,6 +1349,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     <div><b>Offload a CPU</b>Si no cabe en la GPU, una parte corre en CPU. Funciona, pero lento.</div>
   </div>
   <div class="foot note">Esquema de lo que muestra LM Studio. En la demo lo vemos en vivo.</div>
+  <aside class="notes" data-min="10"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 16 ─ Benchmarks -->
@@ -830,6 +1377,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       <div class="warn">Las más útiles para una empresa.</div>
     </div>
   </div>
+  <aside class="notes" data-min="3"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 17 ─ Panorama de hoy -->
@@ -846,6 +1394,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
   </div>
   <div class="gap-note"><strong>9 pts</strong><span>de distancia entre el mejor abierto y el mejor cerrado</span></div>
   <div class="foot note">Artificial Analysis Intelligence Index, 7 de septiembre de 2026. Una semana después ya había cambiado: importa el criterio, no el ranking. Y revisa la licencia: Llama 4, por ejemplo, limita el uso comercial sobre 700 millones de usuarios al mes.</div>
+  <aside class="notes" data-min="2"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 18 ─ Cinco filtros -->
@@ -860,6 +1409,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     <div class="st hot"><div class="n">5</div><span>Pruébalo con 20 a 30 casos reales</span></div>
   </div>
   <div class="foot"><p class="lead" style="margin:0">El quinto es el que decide. Nadie más puede evaluar tu caso de uso.</p></div>
+  <aside class="notes" data-min="3"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 19 ─ Caso de uso: presentación -->
@@ -889,6 +1439,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     </div>
   </div>
   <div class="foot note">Fuente: Dirección ChileCompra, julio y agosto de 2026. El plazo de ofertas se extendió al 25 de septiembre por modificaciones a las bases.</div>
+  <aside class="notes" data-min="2"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 20 ─ Camino 1: RAG de texto -->
@@ -913,6 +1464,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       <div><h3>Uso de herramientas</h3><p>El modelo decide cuándo buscar y llama a una función de búsqueda, como un agente. Requiere un modelo que sepa usar herramientas.</p></div>
     </div>
   </div>
+  <aside class="notes" data-min="8"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 21 ─ Camino 2: multimodal -->
@@ -946,6 +1498,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     <div><b>Texto y RAG</b>documentos largos con texto digital</div>
     <div><b>Imagen</b>tablas, gráficos y escaneos; cada imagen ocupa cientos de tokens</div>
   </div>
+  <aside class="notes" data-min="6"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 22 ─ Tabla en vivo -->
@@ -962,6 +1515,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     </tbody>
   </table>
   <div class="foot note">Los números los anotamos durante la demo, en una RTX 3090 de 24 GB.</div>
+  <aside class="notes" data-min="5"><ul><li>(Provisorio.)</li></ul></aside>
 </section>
 
 <!-- 23 ─ Cierre -->
@@ -974,6 +1528,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
     <div class="code"><img alt="Código QR al repositorio del taller" src="data:image/png;base64,__QR__"></div>
     <p>Material del taller</p>
   </div>
+  <aside class="notes" data-min="3"><ul><li>Qué llevarse, QR al repo, invitación al Taller 2 (fine-tuning).</li><li>Preguntas.</li></ul></aside>
 </section>
 
 </main>
@@ -1027,18 +1582,190 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
   window.addEventListener('resize', () => { fit(); drawStars(); });
   fit();
 
+  // ---------- redes neuronales en SVG (data-nn) y embeddings (data-emb) ----------
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs){
+    const e = document.createElementNS(SVGNS, tag);
+    for (const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  document.querySelectorAll('[data-nn]').forEach((g, gi) => {
+    const spec = JSON.parse(g.dataset.nn);
+    let seed = 1234 + gi * 0;   // misma semilla: las capas superpuestas coinciden
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const ys = spec.n.map((n, k) => (spec.y && spec.y[k]) ||
+      Array.from({length: n}, (_, i) => n === 1 ? (spec.y0 + spec.y1) / 2 : spec.y0 + i * (spec.y1 - spec.y0) / (n - 1)));
+    const edges = el('g', {}), nodes = el('g', {});
+    if (spec.inX) ys[0].forEach(y => {
+      const l = el('line', {x1: spec.inX, y1: y, x2: spec.x[0], y2: y});
+      l.style.setProperty('--k', 0); l.style.setProperty('--w', '.8');
+      edges.appendChild(l);
+    });
+    for (let k = 0; k < spec.n.length - 1; k++){
+      ys[k].forEach((ya, i) => ys[k + 1].forEach((yb, j) => {
+        const l = el('line', {x1: spec.x[k], y1: ya, x2: spec.x[k + 1], y2: yb});
+        l.style.setProperty('--k', k + 1);
+        l.style.setProperty('--w', (0.15 + rnd() * 0.75).toFixed(2));
+        if (spec.hi && spec.hi[0] === k && spec.hi[1] === i && spec.hi[2] === j) l.classList.add('hi');
+        edges.appendChild(l);
+      }));
+    }
+    if (!spec.bare) spec.n.forEach((n, k) => ys[k].forEach(y => {
+      const c = el('circle', {cx: spec.x[k], cy: y, r: 9});
+      c.style.setProperty('--k', k + (spec.inX ? 1 : 0));
+      nodes.appendChild(c);
+    }));
+    g.appendChild(edges); g.appendChild(nodes);
+  });
+  document.querySelectorAll('[data-emb]').forEach(g => {
+    let seed = 99;
+    const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+    const x0 = parseFloat(g.dataset.x), sz = parseFloat(g.dataset.size || 16), gap = sz / 4;
+    g.dataset.emb.split(',').map(Number).forEach(y => {
+      for (let i = 0; i < 6; i++){
+        const r = el('rect', {x: x0 + i * (sz + gap), y: y - sz / 2, width: sz, height: sz, rx: sz / 5});
+        r.style.opacity = (0.15 + rnd() * 0.85).toFixed(2);
+        g.appendChild(r);
+      }
+    });
+  });
+
   // ---------- navigation ----------
   const slides = Array.from(document.querySelectorAll('.slide'));
   const counter = document.getElementById('counter');
   const progress = document.getElementById('progress');
   let cur = 0, step = 0;
   const maxStep = s => parseInt(s.dataset.steps || '0', 10);
+  let afterRender = () => {};
+  // ---------- modo presentador ----------
+  // P abre una ventana de presentador sincronizada (diapositiva actual, siguiente, notas y cronómetros).
+  // Modos por URL:  ?presenter  ventana del presentador ·  ?embed  vista dentro del presentador.
+  const Q = new URLSearchParams(location.search);
+  const MODE = Q.has('presenter') ? 'presenter' : Q.has('embed') ? 'embed' : 'deck';
+  const chan = ('BroadcastChannel' in window) ? new BroadcastChannel('deck-taller1') : null;
+  let peer = null;   // la otra ventana (presentador u opener)
+  function send(msg){
+    try { if (peer && !peer.closed) peer.postMessage(msg, '*'); } catch (e) {}
+    try { if (chan) chan.postMessage(msg); } catch (e) {}
+  }
+  function go(c, s, quiet){
+    cur = Math.max(0, Math.min(slides.length - 1, c));
+    step = Math.max(0, Math.min(maxStep(slides[cur]), s));
+    render(quiet);
+  }
+  function onMsg(d){
+    if (!d || typeof d !== 'object') return;
+    if (d.type === 'state' && (d.cur !== cur || d.step !== step)) go(d.cur, d.step, true);
+    else if (d.type === 'hello' && MODE === 'deck') send({type: 'state', cur, step});
+    else if (d.type === 'nav' && MODE !== 'embed') (d.dir > 0 ? next : prev)();
+  }
+  window.addEventListener('message', e => {
+    if (MODE === 'deck' && e.data && e.data.type === 'hello') peer = e.source;
+    onMsg(e.data);
+  });
+  if (chan) chan.onmessage = e => { if (MODE !== 'embed') onMsg(e.data); };
+  afterRender = quiet => { if (!quiet && MODE !== 'embed') send({type: 'state', cur, step}); if (MODE === 'presenter') paint(); };
 
-  function render(){
+  if (MODE === 'deck'){
+    document.addEventListener('keydown', e => {
+      if (e.key === 'p' || e.key === 'P'){
+        const u = location.href.split('#')[0].split('?')[0];
+        peer = window.open(u + '?presenter#' + (cur + 1), 'deck-presenter', 'width=1400,height=860');
+      }
+    });
+  }
+
+  if (MODE === 'embed'){
+    document.documentElement.classList.add('embed');
+    // las teclas dentro de la vista previa avanzan el presentador
+    document.addEventListener('keydown', e => {
+      const f = ['ArrowRight','PageDown',' ','Enter'].includes(e.key) ? 1 : ['ArrowLeft','PageUp','Backspace'].includes(e.key) ? -1 : 0;
+      if (f) parent.postMessage({type: 'nav', dir: f}, '*');
+    }, true);
+  }
+
+  // ---------- ventana del presentador ----------
+  let paint = () => {};
+  if (MODE === 'presenter'){
+    document.documentElement.classList.add('presenter');
+    document.title = 'Presentador — ' + document.title;
+    peer = window.opener || null;
+    const base = location.href.split('#')[0].split('?')[0] + '?embed';
+    const mins = slides.map(s => { const n = s.querySelector('aside.notes'); return n ? parseFloat(n.dataset.min || '0') : 0; });
+    const planTotal = mins.reduce((a, b) => a + b, 0);
+    const pv = document.createElement('div');
+    pv.className = 'pv';
+    pv.innerHTML = `
+      <header class="pv-top">
+        <div class="pv-clock"><small>Total</small><b id="pvTotal">0:00</b></div>
+        <div class="pv-clock"><small>Esta diapositiva</small><b id="pvSlide">0:00</b><em id="pvTarget"></em></div>
+        <div class="pv-plan"><small>Plan</small><div class="pv-bar"><i id="pvPlanBar"></i><span id="pvNowBar"></span></div><em id="pvDelta"></em></div>
+        <div class="pv-btns"><button id="pvStart">Iniciar</button><button id="pvReset">Reiniciar</button><span id="pvCount"></span></div>
+      </header>
+      <section class="pv-cur"><iframe id="pvCur" title="Diapositiva actual"></iframe></section>
+      <aside class="pv-side">
+        <div class="pv-next"><small id="pvNextLab">Siguiente</small><iframe id="pvNext" title="Siguiente" tabindex="-1"></iframe></div>
+        <div class="pv-notes"><small>Notas</small><div id="pvNotes"></div></div>
+      </aside>`;
+    document.body.appendChild(pv);
+    const $ = id => document.getElementById(id);
+    const fCur = $('pvCur'), fNext = $('pvNext');
+    fCur.src = base + '#1'; fNext.src = base + '#1';
+    const ready = new Set();
+    [fCur, fNext].forEach(f => f.addEventListener('load', () => { ready.add(f); paint(); }));
+    const fmt = ms => { const t = Math.max(0, Math.round(ms / 1000)); const h = Math.floor(t / 3600), m = Math.floor(t / 60) % 60, s = t % 60;
+      return (h ? h + ':' + String(m).padStart(2, '0') : m) + ':' + String(s).padStart(2, '0'); };
+    // cronómetro (se guarda para sobrevivir a una recarga)
+    const KEY = 'deck-taller1-timer';
+    let T = {acc: 0, t0: null};
+    try { T = JSON.parse(localStorage.getItem(KEY)) || T; } catch (e) {}
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(T)); } catch (e) {} };
+    const total = () => T.acc + (T.t0 ? Date.now() - T.t0 : 0);
+    let slideT0 = Date.now(), slideAcc = 0, lastCur = -1;
+    const slideElapsed = () => slideAcc + (T.t0 ? Date.now() - slideT0 : 0);
+    function start(){ if (!T.t0){ T.t0 = Date.now(); slideT0 = Date.now(); save(); } }
+    function pause(){ if (T.t0){ T.acc += Date.now() - T.t0; slideAcc += Date.now() - slideT0; T.t0 = null; save(); } }
+    $('pvStart').onclick = () => { T.t0 ? pause() : start(); tick(); };
+    $('pvReset').onclick = () => { T = {acc: 0, t0: null}; slideAcc = 0; slideT0 = Date.now(); save(); tick(); };
+    function tick(){
+      $('pvStart').textContent = T.t0 ? 'Pausar' : (total() ? 'Reanudar' : 'Iniciar');
+      $('pvTotal').textContent = fmt(total());
+      const se = slideElapsed(), tgt = mins[cur] * 60000;
+      $('pvSlide').textContent = fmt(se);
+      $('pvSlide').className = !tgt ? '' : se > tgt * 1.5 ? 'over' : se > tgt ? 'warn' : '';
+      $('pvTarget').textContent = tgt ? 'objetivo ' + fmt(tgt) : '';
+      // plan: dónde debería ir al terminar esta diapositiva vs. tiempo real
+      const planHere = mins.slice(0, cur).reduce((a, b) => a + b, 0) * 60000;
+      const delta = total() - planHere - Math.min(se, tgt);
+      $('pvPlanBar').style.width = (planHere / (planTotal * 60000) * 100) + '%';
+      $('pvNowBar').style.left = Math.min(100, total() / (planTotal * 60000) * 100) + '%';
+      $('pvDelta').textContent = total() ? (Math.abs(delta) < 30000 ? 'a tiempo' : (delta > 0 ? '+' : '−') + fmt(Math.abs(delta)) + (delta > 0 ? ' atrasado' : ' adelantado')) : 'plan total ' + fmt(planTotal * 60000);
+      $('pvDelta').className = delta > 120000 ? 'over' : delta > 30000 ? 'warn' : '';
+    }
+    setInterval(tick, 500);
+    paint = () => {
+      if (cur !== lastCur){ lastCur = cur; slideAcc = 0; slideT0 = Date.now(); }
+      if (lastCur !== -1 && (cur > 0 || step > 0)) start();   // el cronómetro parte al primer avance
+      let nc = cur, ns = step + 1;
+      if (ns > maxStep(slides[cur])){ nc = cur + 1; ns = 0; }
+      const end = nc >= slides.length;
+      $('pvNextLab').textContent = end ? 'Fin de la presentación' : (nc === cur ? 'Siguiente paso' : 'Siguiente diapositiva');
+      if (ready.has(fCur)) fCur.contentWindow.postMessage({type: 'state', cur, step}, '*');
+      if (ready.has(fNext) && !end) fNext.contentWindow.postMessage({type: 'state', cur: nc, step: ns}, '*');
+      fNext.style.visibility = end ? 'hidden' : 'visible';
+      const n = slides[cur].querySelector('aside.notes');
+      $('pvNotes').innerHTML = n ? n.innerHTML : '<p class="pv-empty">Sin notas.</p>';
+      $('pvCount').textContent = (cur + 1) + ' / ' + slides.length + (maxStep(slides[cur]) ? ' · paso ' + step + '/' + maxStep(slides[cur]) : '');
+      tick();
+    };
+    send({type: 'hello'});
+  }
+
+  function render(quiet){
     slides.forEach((s, i) => s.classList.toggle('active', i === cur));
     const s = slides[cur];
     s.querySelectorAll('[data-step]').forEach(el => el.classList.toggle('in', step >= parseInt(el.dataset.step, 10)));
-    s.querySelectorAll('[data-only]').forEach(el => el.classList.toggle('in', step === parseInt(el.dataset.only, 10)));
+    s.querySelectorAll('[data-only]').forEach(el => el.classList.toggle('in', el.dataset.only.split(',').map(Number).includes(step)));
     const tl = s.querySelector('.tl');
     if (tl){
       const nodes = Array.from(tl.querySelectorAll('.tl-node'));
@@ -1049,12 +1776,18 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
       ship.style.left = x;
       nodes.forEach((n, i) => { n.classList.toggle('current', i === step - 1); n.classList.toggle('visited', i < step); });
     }
+    s.dataset.cur = step;   // para estilos que dependen del paso actual
+    if (s.dataset.eras){   // la era (color) cambia con cada paso
+      const eras = s.dataset.eras.split(',');
+      s.dataset.era = eras[Math.min(step, eras.length - 1)];
+    }
     const era = s.dataset.era || 'neutral';
     document.querySelectorAll('.neb').forEach(n => n.classList.toggle('on', n.dataset.era === era));
     progress.style.width = ((cur + 1) / slides.length * 100) + '%';
     progress.style.setProperty('--bar', getComputedStyle(s).getPropertyValue('--accent'));
     counter.textContent = (cur + 1) + ' / ' + slides.length;
-    try { history.replaceState(null, '', '#' + (cur + 1)); } catch (e) {}
+    if (MODE !== 'embed') try { history.replaceState(null, '', '#' + (cur + 1)); } catch (e) {}
+    afterRender(quiet);
   }
   function next(){
     if (step < maxStep(slides[cur])) step++;
@@ -1069,6 +1802,7 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
   document.getElementById('next').addEventListener('click', next);
   document.getElementById('prev').addEventListener('click', prev);
   document.addEventListener('keydown', e => {
+    if (MODE === 'embed') return;
     if (['ArrowRight','PageDown',' ','Enter'].includes(e.key)){ e.preventDefault(); next(); }
     else if (['ArrowLeft','PageUp','Backspace'].includes(e.key)){ e.preventDefault(); prev(); }
     else if (e.key === 'Home'){ cur = 0; step = 0; render(); }

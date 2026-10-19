@@ -5,30 +5,35 @@
 
 **Notas de estructura y diseño (acordadas):**
 - Dos partes: Parte 1, *Breve historia de la galaxia* (30 min), y Parte 2, *Práctica Jedi: usar modelos Open Weights localmente* (60 min).
-- Las diapositivas se hacen en **HTML** (fondo espacial, nave que recorre las líneas de tiempo). Exportar a PowerPoint se evalúa después.
-- Menos texto y más diagramas. En la Parte 1, cada sección es una diapositiva.
-- Humor de Star Wars con moderación: un par de guiños por sección.
-- Ley 21.719: solo una mención de una línea. DashAI, el caso Samsung y el gancho del "JSON mal formateado" quedaron fuera.
-- En la Parte 2 **manda el software en vivo**; las diapositivas son puentes cortos y diagramas que se muestran justo después de cada demo (y sirven de respaldo si algo falla).
-- Todo lo que se muestre en vivo queda en el **repo de GitHub** (scripts, notebooks, guías) para que los asistentes lo repitan en su equipo.
+- Las diapositivas se hacen en **HTML** (fondo espacial, nave que recorre las líneas de tiempo). Para compartir después: exportar a PDF y a PPTX plano (una imagen por diapositiva).
+- **Un concepto por diapositiva, con un diagrama animado y el mínimo texto.** El diagrama tiene que explicar el concepto por sí solo.
+- La presentación va **de lo general a lo detallado**. La Parte 1 deja muy claro cómo funciona un LLM; los conceptos más técnicos (cuantización, variantes, capacidades, contexto) se explican **durante las demos**, cuando aparecen en pantalla.
+- La historia es una anécdota rápida (una sola diapositiva, tres actos) que sirve para el chiste del lado claro y el lado oscuro.
+- Humor de Star Wars con moderación.
+- DashAI, el caso Samsung y el gancho del "JSON mal formateado" quedaron fuera.
+- En la Parte 2 **manda el software en vivo**; las diapositivas resumen un concepto cada una y sirven de guía al speaker (pueden llevar capturas de LM Studio y Ollama) y de respaldo si algo falla.
+- Todo lo que se muestre en vivo queda en el **repo de GitHub** para que los asistentes lo repitan en su equipo.
 
 ---
 
 ## Resumen de temas
 
 **Parte 1 — Breve historia de la galaxia (30 min)**
-- El origen: ¿qué es un LLM?
+- Temario (Chiletec presenta al speaker antes de empezar)
+- El origen: ¿qué es un LLM? (tokens, embeddings, red neuronal, probabilidades, un token a la vez)
+- El origen: en realidad, un Transformer (atención + red feed-forward, repetidos decenas de veces)
+- El origen: ¿qué es un parámetro? (pesos, tamaño en B y tamaño del archivo)
+- El origen: token, embedding, capacidades (herramientas, razonamiento, visión) y ventana de contexto, una diapositiva cada uno
+- El origen: ¿cómo aprende? *(por decidir si se mantiene)* (adivina, compara, ajusta los pesos; lo que queda es el archivo de pesos)
 - El origen: ¿cómo nace un archivo Open Weights? (pre-entrenamiento, post-entrenamiento, publicación; versiones cuantizadas, destiladas y afinadas)
-- El lado claro de la Fuerza: Transformer, BERT, GPT-1, GPT-2
-- El lado oscuro: GPT-3, ChatGPT, GPT-4 (y una línea sobre regulación)
-- La alianza rebelde: la filtración de LLaMA, Mistral 7B, DeepSeek R1, gpt-oss, Qwen3.6
-- Resumen: API cerrada, open weights y open source
+- Tres tipos de modelo: API cerrada, open weights y open source
+- Breve historia en tres actos: el lado claro (GPT-2), el lado oscuro (GPT-3 y ChatGPT) y la rebelión (LLaMA se filtra)
 
-**Parte 2 — Práctica Jedi (60 min)**
-- Bloque A, LM Studio (~22 min): el catálogo y sus variantes (cuantización, instruct, denso contra MoE), qué cabe en la GPU, cómo elegir modelo (rankings y cinco filtros), el PDF de las bases con RAG simple y la lectura de imágenes con un modelo multimodal
-- Bloque B, Ollama (~18 min): el API por debajo del chat, de dónde salen los tokens por segundo, ventana de contexto y caché KV, offload GPU contra CPU con el mismo modelo, hardware, costos y benchmark de hardware
-- Bloque C, RAG sobre una carpeta (~15 min): notebooks con LangChain que indexan la carpeta de la licitación, inyección en el contexto contra agente con herramientas
-- Cierre (~5 min): qué llevarse, repo y Taller 2
+**Parte 2 — Práctica Jedi (60 min)** — *estructura preliminar, el detalle se define en la próxima revisión*
+- **LM Studio:** anatomía de un modelo usando la interfaz: catálogo, variantes (base, instruct, destiladas, denso contra MoE), cuantización, capacidades (razonamiento, uso de herramientas, visión), ventana de contexto y offload GPU/CPU.
+- **Benchmarks: cómo elegir.** Con los conceptos ya vistos en LM Studio: factores de hardware y capacidades del modelo.
+- **Ollama + RAG (caso de uso):** notebook interactivo que conecta Ollama con la carpeta de la licitación (bases, anexos, foro). Muestra que el código para una aplicación empresarial es poco, qué hacer cuando la información no cabe en la ventana de contexto, y el uso de herramientas (agente).
+- Cierre: qué llevarse, repo y Taller 2.
 
 **Hilo conductor de la Parte 2:** las bases del nuevo Convenio Marco de software de ChileCompra (ID 2239-2-LR26).
 
@@ -36,24 +41,83 @@
 
 ## Parte 1 — Breve historia de la galaxia (30 min)
 
-### El origen (1): ¿Qué es un LLM?
+**Orden de la Parte 1 (acordado el 19 oct. 2026):** ¿Qué es un LLM? (chat) → token → embedding → parámetro → Entonces, ¿qué es un LLM? → En realidad, un Transformer → capacidades (razonamiento, herramientas, visión) → ventana de contexto → tres tipos de modelo → breve historia. "¿Cómo aprende?" y "¿Cómo nace un archivo Open Weights?" quedaron al final de la Parte 1, por decidir.
 
-Un LLM (*Large Language Model*, o modelo de lenguaje de gran escala) es, en el fondo, un algoritmo entrenado con un objetivo bien simple: **adivinar la palabra que sigue**, dado un pedazo de texto. No hay razonamiento programado a mano: se le entrena una y otra vez, con enormes cantidades de texto, a completar frases.
+### El origen (0): ¿Qué es un LLM? (la ventana de chat)
 
-Lo interesante es que, con suficientes datos y parámetros, empieza a mostrar capacidades que nadie le programó: traducir, resumir, responder preguntas, escribir código. Aparecen como efecto secundario de ser muy bueno prediciendo la siguiente palabra.
+Ventana de chat lo más parecida a ChatGPT (sin logos). Paso 0: ventana vacía. Paso 1 (al avanzar): el usuario escribe "¿Cuál es la capital de Chile?" y el asistente responde "La capital de Chile es Santiago." token a token. Paso 2: junto al título aparece "…no, esto es un chatbot": la aplicación no es el modelo; por dentro, un LLM procesa el texto. Corrige el error común de pensar que ChatGPT *es* el modelo.
 
-**¿Qué tan "grande"?** El tamaño se mide en parámetros, y "B" significa miles de millones:
-- **3B**: corre en un notebook.
-- **27B**: cabe en una GPU de 24 GB (por ejemplo, Qwen3.6-27B [21]).
-- **671B**: requiere un centro de datos (por ejemplo, DeepSeek R1 [18]).
+### El origen (1): Entonces, ¿qué es un LLM?
 
-Por dentro, casi todos los LLM usan la arquitectura **Transformer**, publicada por Google en 2017 [1]. El detalle técnico queda para otro taller.
+Un LLM (*Large Language Model*, o modelo de lenguaje de gran escala) recibe texto y **predice qué viene después**. El ejemplo de la diapositiva es *"La capital de Chile es ___"*, y la animación recorre el camino completo:
 
-*Diapositiva:* diagrama de "El gato se subió al ___" con las probabilidades de la siguiente palabra, y una escala visual 3B / 27B / 671B.
+1. **Tokens.** El texto se corta en pedazos y cada pedazo es un número de un vocabulario fijo. Con el tokenizador de Qwen3, la frase queda en cinco tokens: `La` (8747), `capital` (6722), `de` (409), `Chile` (33000), `es` (1531). El vocabulario de Qwen3 tiene 151.669 tokens [65]. Ojo: no siempre un token es una palabra; "gato" se corta en `g` + `ato`, y "Valparaíso" en cuatro pedazos [65].
+2. **Embeddings.** Cada token se convierte en una lista de números que representa su significado.
+3. **La red neuronal.** Esos números atraviesan capa tras capa; cada conexión multiplica por un **peso**. *(Simplificación: el diagrama dibuja una red tradicional de capas; la arquitectura real es Transformer [1], pero la idea de pesos y capas es la misma.)*
+4. **Probabilidades.** A la salida hay una probabilidad para cada token del vocabulario. Medido con Llama 3.2 3B en el PC del taller: `Santiago` 68 %, `la` 12 %, `una` 10 %, `un` 2 % [66].
+5. **Un token a la vez.** Se elige un token, se agrega al texto y se repite todo el proceso. Así escribe un LLM.
 
-### El origen (2): ¿Cómo nace un archivo Open Weights?
+*Diapositiva:* animación en seis pasos, una frase de pie por paso.
 
-Cuando el entrenamiento termina, lo que queda es un archivo lleno de números: los **pesos**, los parámetros que el modelo ajustó y que codifican todo lo que aprendió. No hay servidor ni cuenta: el modelo completo es ese archivo. "Open weights" significa que ese archivo está disponible para descargar.
+### El origen (1b): En realidad, un Transformer
+
+La red de la diapositiva anterior es una simplificación. Casi todos los LLM de hoy, abiertos o cerrados, usan la arquitectura **Transformer** [1]. Versión simplificada, sin entrar en detalle:
+- **Tokens → embeddings → bloques Transformer → probabilidades.**
+- Cada **bloque** tiene dos partes: **atención**, donde cada token mira a los anteriores para entender el contexto (en el ejemplo, "es" mira sobre todo a "Chile" y "capital"), y una **red feed-forward**, que es la red de capas que dibujamos antes.
+- El bloque se repite decenas de veces: 28 en Llama 3.2 3B, 30 en Gemma 4 26B, 36 en Qwen3-8B [68]. Todos esos números son los pesos.
+
+*Diapositiva:* la arquitectura Transformer original (Vaswani et al., 2017 [1]), redibujada a partir del video de ByteByteGo "Transformers Step-by-Step Explained", con las etiquetas en inglés como en el paper. Animación en tres pasos: (0) el diagrama completo, pensado para traducir; (1) se marcan las dos mitades: el **codificador** lee la frase completa y el **decodificador** escribe un token a la vez; (2) desaparecen el codificador y la atención cruzada, y el decodificador queda solo: así son los LLM actuales (*decoder-only*: Llama, Qwen, Gemma, DeepSeek, gpt-oss). Notas: Feed Forward = la red de capas; Masked Attention = cada token solo mira hacia atrás; Nx = 28 en Llama 3.2 3B [68].
+
+**Para explicarlo:** el Transformer original tenía dos mitades porque se inventó para traducir. GPT-1 (2018) mostró que para generar texto basta con apilar bloques del decodificador; desde entonces casi todos los LLM son *decoder-only*. La mitad izquierda sobrevive en modelos como BERT, que sirven para clasificar texto o generar embeddings (como los del RAG de la Parte 2), no para conversar.
+
+### El origen (2): ¿Qué es un parámetro?
+
+Cada conexión de la red es un número aprendido: un **peso**. Al total de pesos le llamamos **parámetros**, y "B" significa miles de millones. Si cada número se guarda en 16 bits (2 bytes), el archivo pesa unos 2 GB por cada mil millones de parámetros [39][40]:
+
+| Modelo | Parámetros | Archivo a 16 bits |
+|---|---|---|
+| Pequeño (p. ej. Llama 3.2 3B) | 3.000 millones | ~6 GB |
+| Mediano (p. ej. Qwen3.6-27B [21]) | 27.000 millones | ~54 GB |
+| Gigante (p. ej. DeepSeek R1 [18]) | 671.000 millones | ~1,3 TB |
+
+Cómo achicar ese archivo (cuantización) se explica en la Parte 2, con LM Studio.
+
+### El origen (2b): ¿Qué es un token?
+
+El modelo no lee letras ni palabras: lee **tokens**, pedazos de texto con un número. *Diapositiva:* arriba, "La capital de Chile es Santiago" palabra por palabra (simplificación para mantener el mismo ejemplo en todo el deck). Al avanzar, la frase "La licitación cierra en septiembre" según el tokenizador de tres modelos que se usan en el taller [65][71]:
+- **Llama 3.2** (vocabulario de 128.256): 9 tokens — `La` `lic` `it` `ación` `ci` `erra` `en` `sept` `iembre`.
+- **Gemma 4** (262.144): 6 tokens — `La` `lic` `itación` `cierra` `en` `septiembre`.
+- **Qwen3** (151.669): 9 tokens, con cortes parecidos a Llama pero **otros números**: "La" es 8921 en Llama, 4967 en Gemma y 8747 en Qwen.
+Cada tokenizador corta distinto y asigna sus propios IDs. Todo se mide en tokens: el contexto, la velocidad (tokens/s) y el precio de las APIs.
+
+### El origen (2c): ¿Qué es un embedding?
+
+Cada token se convierte en una lista de números que representa su significado: 1.024 números en `qwen3-embedding:0.6b`, 3.072 en Llama 3.2 3B [68]. Significados parecidos quedan cerca. *Diapositiva:* embeddings reales de 12 palabras (lugares, animales, compras públicas) con `qwen3-embedding:0.6b` en Ollama, proyectados a 2D con PCA [70]. Similitud coseno: Santiago–Lima 0,93; Santiago–perro 0,63. Así encuentra un RAG los fragmentos relevantes.
+
+### El origen (2d): Capacidades de un modelo
+
+Tres ejemplos ilustrativos con el caso de la licitación:
+- **Uso de herramientas:** el modelo no busca; pide que tu sistema ejecute una función (p. ej. `buscar_licitacion("2239-2-LR26")`) y responde con el resultado.
+- **Razonamiento:** escribe sus pasos antes de responder (más tokens, mejores respuestas).
+- **Visión:** la imagen se corta en parches y cada parche se vuelve tokens (LLaVA-1.5: 576 tokens visuales por imagen).
+No todos los modelos tienen las tres; LM Studio las muestra como íconos en el catálogo.
+
+### El origen (2e): Ventana de contexto
+
+Todo lo que el modelo considera a la vez, medido en tokens: instrucciones, conversación, documentos y respuesta. Lo que no cabe, el modelo no lo ve (por eso existe el RAG). Máximos: Llama 3.2 3B 131.072 tokens; Gemma 4 26B 262.144 [68]. Cada token de contexto ocupa memoria (caché KV): memoria total de Llama 3.2 3B con `num_ctx` 4.096 / 32.768 / 131.072 = 2,6 / 6,1 / 18 GB, columna SIZE de `ollama ps` [70]. *(Esta diapositiva reemplaza a la antigua de caché KV de la Parte 2.)*
+
+### El origen (3): ¿Cómo aprende?
+
+Animación con la misma red y la misma frase:
+1. Se toma texto real y se tapa la palabra que sigue.
+2. Al principio los pesos son números al azar: el modelo adivina mal *(probabilidades ilustrativas)*.
+3. Se compara con la respuesta correcta y el error viaja hacia atrás por toda la red.
+4. Cada peso se ajusta un poquito para equivocarse menos la próxima vez.
+5. Esto se repite con billones de tokens durante meses (Llama 3 se pre-entrenó con más de 15 billones de tokens [67]). Lo que queda al final son **los pesos**: el archivo que vamos a descargar.
+
+### El origen (4): ¿Cómo nace un archivo Open Weights?
+
+Cuando el entrenamiento termina, lo que queda es un archivo lleno de números: los **pesos**. No hay servidor ni cuenta: el modelo completo es ese archivo. "Open weights" significa que ese archivo está disponible para descargar.
 
 ¿Cómo se llega a ese archivo? En tres etapas:
 1. **Pre-entrenamiento:** el modelo lee enormes cantidades de texto y aprende a predecir la palabra que sigue. Toma meses de cómputo. El resultado es un **modelo base**, que completa texto pero no conversa.
@@ -65,41 +129,9 @@ Cuando el entrenamiento termina, lo que queda es un archivo lleno de números: l
 - **Destiladas:** un modelo chico que aprende imitando a uno grande. Por ejemplo, DeepSeek publicó versiones destiladas de R1 de 1,5B a 70B [18].
 - **Afinadas (fine-tuning):** ajustadas para una tarea o un estilo específico. Es el tema del Taller 2.
 
-### El lado claro de la Fuerza: cuando "Open" significaba algo (2017–2019)
+### Tres tipos de modelo
 
-La época en que los laboratorios compartían sus descubrimientos sin pensarlo dos veces. Cuatro hitos:
-
-- **2017 — Transformer (Google):** la arquitectura base de casi todos los LLM, publicada abierta desde el primer día [1].
-- **2018 — BERT (Google):** el modelo ya entrenado, con pesos y código, listo para descargar [2]. Se volvió la base de medio mundo del procesamiento de lenguaje.
-  **⚠️ Corrección:** BERT no fue el primero en publicar código y pesos; ELMo (AllenAI) y ULMFiT (fast.ai) lo hicieron meses antes [49][50]. BERT fue el más completo e influyente.
-- **2018 — GPT-1 (OpenAI):** en junio de 2018, OpenAI publicó su primer modelo con código y pesos, bajo licencia MIT [51][52]. No por nada se llamaba "Open"AI: todavía era un Jedi.
-- **2019 — GPT-2 (OpenAI), la primera duda:** por temor al mal uso lo liberó por partes durante 9 meses (124M, 355M, 774M y 1.500M de parámetros) y en noviembre de 2019 lo publicó completo [3][4]. Siguió siendo abierto, pero fue la primera vez que dudaron en voz alta.
-
-*Diapositiva:* línea de tiempo con la nave que avanza hito por hito; cada hito con el logo de la empresa (pendiente) y un diagrama breve.
-
-### El lado oscuro: OpenAI se convierte en Imperio (2020–2023)
-
-Tres hitos:
-
-- **2020 — GPT-3:** por primera vez, el modelo insignia de OpenAI nunca tuvo pesos públicos; solo acceso pagado por API [53].
-- **Noviembre de 2022 — ChatGPT:** es GPT-3.5 ajustado con retroalimentación humana para conversar [54]. **Aclaración:** ChatGPT no es GPT-2 ni GPT-3 a secas. Llegó a 100 millones de usuarios en dos meses, contra ~9 de TikTok y ~30 de Instagram (UBS vía Reuters) [5]. Gigante y cerrado a la vez: nace el Imperio.
-- **2023 — GPT-4:** su reporte técnico no revela arquitectura, tamaño ni datos de entrenamiento, citando "el panorama competitivo" [6]. Contraste total con los papers de GPT-1, 2 y 3.
-
-**Una línea sobre regulación:** con el Imperio llegó la regulación. En Chile, la Ley 21.719 de protección de datos personales rige plenamente desde el 1 de diciembre de 2026 [8]. Da para otra charla.
-
-### La alianza rebelde de Open Weights (2023–2026)
-
-*"El Imperio pensó que había apagado las luces para siempre. Se equivocó."* Cinco hitos:
-
-- **Marzo de 2023 — LLaMA se filtra (Meta):** Meta lo lanzó solo para investigadores [12]; una semana después alguien publicó los pesos completos en internet y ya no hubo vuelta atrás [13][14]. Meta respondió en julio de 2023 con **Llama 2**, con licencia comercial [15].
-- **Septiembre de 2023 — Mistral 7B (Mistral AI):** el laboratorio francés publica sus modelos con Apache 2.0, la licencia más permisiva [16][17].
-- **Enero de 2025 — DeepSeek R1:** 671B parámetros, razonamiento comparable a OpenAI o1, licencia MIT [18]. Hoy la rebelión la lideran laboratorios chinos.
-- **Agosto de 2025 — gpt-oss (OpenAI):** OpenAI vuelve a publicar pesos, seis años después de GPT-2 [19][20]. Hasta el Imperio cambia de bando.
-- **Abril de 2026 — Qwen3.6-27B (Alibaba):** cabe en una sola GPU de 24 GB y supera en programación a su predecesor 15 veces más grande (SWE-bench Verified 77,2 contra 76,2) [21][22].
-
-### En resumen: tres tipos de modelo
-
-Diapositiva propia al cierre de la Parte 1, con una flecha de "menos control" a "más control":
+Va **antes** de la historia, con una flecha de "menos control" a "más control":
 
 | Categoría | Qué recibes | Ejemplos |
 |---|---|---|
@@ -109,9 +141,29 @@ Diapositiva propia al cierre de la Parte 1, con una flecha de "menos control" a 
 
 OLMo es de los pocos proyectos que publican las tres cosas a la vez (incluido el dataset Dolma): es la vara más alta de apertura [23].
 
+### Breve historia en tres actos
+
+Una sola diapositiva con una línea de tiempo de tres hitos; la nave avanza y el título y el color de fondo cambian con cada era: "El lado claro de la Fuerza" → "El lado oscuro" → "La rebelión Open Weights". Cada hito muestra el logo de la empresa (Google y OpenAI, OpenAI, Meta) y su fecha: oct. 2018–nov. 2019, may. 2020–nov. 2022 y mar. 2023. En la rebelión, los modelos que siguieron aparecen con sus logos (Mistral, DeepSeek, Qwen, Llama, GLM, Gemma, gpt-oss, Kimi). Logos: ver `slides/assets/logos/FUENTES.md`.
+
+1. **El lado claro — oct. 2018 a nov. 2019, BERT (Google) y GPT-2 (OpenAI).** Ambos laboratorios publicaban sus modelos completos, con pesos y código [2][3][4]. *(El chiste de "cuando OpenAI era Open" lo cuenta el speaker de palabra; no va escrito en la diapositiva.)*
+2. **El lado oscuro — 2020–2022, GPT-3 y ChatGPT.** GPT-3 fue el primer modelo insignia de OpenAI sin pesos públicos, solo por API [53]. ChatGPT (GPT-3.5 ajustado para conversar [54]) llegó a 1 millón de usuarios en 5 días [69] y a 100 millones en dos meses, contra ~9 meses de TikTok y ~30 de Instagram [5]: nace el Imperio. *Diapositiva:* cifra "1 millón en 5 días" y gráfico de barras de meses hasta 100 millones.
+3. **La rebelión — 2023, LLaMA se filtra (Meta).** Meta lo compartió solo con investigadores [12]; en una semana los pesos estaban en internet [13][14]. Desde ahí, una galaxia de modelos abiertos: Llama, Mistral, DeepSeek, Qwen, Gemma, gpt-oss, GLM, Kimi.
+
+#### Material de respaldo (no va en las diapositivas; útil para preguntas)
+
+- **2017 — Transformer (Google):** la arquitectura base de casi todos los LLM, publicada abierta desde el primer día [1].
+- **2018 — BERT (Google):** modelo entrenado con pesos y código [2]. **⚠️ Corrección:** no fue el primero; ELMo y ULMFiT lo hicieron meses antes [49][50]. Fue el más completo e influyente.
+- **2018 — GPT-1 (OpenAI):** primer modelo de OpenAI, con código y pesos, licencia MIT [51][52].
+- **2019 — GPT-2:** por temor al mal uso se liberó por partes durante 9 meses (124M, 355M, 774M y 1.500M) y en noviembre de 2019 se publicó completo [3][4].
+- **2023 — GPT-4:** su reporte técnico no revela arquitectura, tamaño ni datos de entrenamiento [6].
+- **Regulación:** en Chile, la Ley 21.719 de protección de datos personales rige plenamente desde el 1 de diciembre de 2026 [8]. *(Salió de la diapositiva al simplificar la historia; se puede decir de palabra.)*
+- **Jul. 2023 — Llama 2**, con licencia comercial [15]. **Sep. 2023 — Mistral 7B**, Apache 2.0 [16][17]. **Ene. 2025 — DeepSeek R1**, 671B, MIT [18]. **Ago. 2025 — gpt-oss**, OpenAI vuelve a publicar pesos [19][20]. **Abr. 2026 — Qwen3.6-27B**, cabe en una GPU de 24 GB y supera a Qwen3.5-397B-A17B en SWE-bench Verified (77,2 contra 76,2) [21][22].
+
 ---
 
 ## Parte 2 — Práctica Jedi: usar modelos Open Weights localmente (60 min)
+
+> ⚠️ **Por reestructurar:** los bloques de esta Parte 2 son la versión anterior (orden LM Studio → Ollama → RAG). El nuevo orden está en el Resumen de temas y se detallará en la próxima revisión.
 
 **Principio:** se muestra el software funcionando en vivo, de lo más simple a lo más complejo. Cada concepto se explica justo cuando aparece en pantalla. Las diapositivas son puentes entre bloques y diagramas de apoyo.
 
@@ -332,3 +384,10 @@ Pensados para personas que no programan: instalación de un solo comando por sis
 62. DEV Community, "Ollama Not Using GPU?" (`num_gpu` limita las capas en GPU). https://dev.to/mrsaynothing/ollama-not-using-gpu-fix-it-on-linux-windows-and-wsl-3jb8
 63. LangChain, documentación de `OllamaEmbeddings` e `InMemoryVectorStore`. https://docs.langchain.com/oss/python/integrations/text_embedding/ollama
 64. LangChain, ejemplo de RAG con `create_agent` y herramientas. https://docs.langchain.com/oss/python/langchain/multi-agent/custom-workflow
+65. Qwen, tokenizador de Qwen3-8B (`tokenizer.json`, vocabulario de 151.669 tokens); tokenización de la frase de ejemplo calculada con la librería `tokenizers` el 18 oct. 2026. https://huggingface.co/Qwen/Qwen3-8B/blob/main/tokenizer.json
+66. Medición propia: Ollama 0.31.2, modelo `llama3.2:3b`, `/api/generate` con `raw: true`, `logprobs: true`, `top_logprobs: 6`, prompt "La capital de Chile es", 18 oct. 2026, RTX 3090. Documentación del parámetro: https://docs.ollama.com/api/generate
+67. Meta, "Introducing Meta Llama 3" (abr. 2024): "Llama 3 is pretrained on over 15T tokens". https://ai.meta.com/blog/meta-llama-3/
+68. Número de bloques: `ollama show --verbose` (`llama.block_count` 28 para llama3.2:3b, `gemma4.block_count` 30 para gemma4:26b), 18 oct. 2026; Qwen3-8B, `num_hidden_layers` 36 en https://huggingface.co/Qwen/Qwen3-8B/blob/main/config.json
+69. Sam Altman (@sama), publicación del 5 dic. 2022: "ChatGPT launched on wednesday. today it crossed 1 million users!" (lanzamiento el 30 nov. 2022). Reproducida en https://techstartups.com/2022/12/05/chatgpt-crosses-1-million-users-five-days-launch/
+70. Mediciones propias, 19 oct. 2026, Ollama 0.31.2, RTX 3090: embeddings de `qwen3-embedding:0.6b` (`/api/embed`) proyectados con PCA; memoria por contexto con `ollama ps` tras cargar `llama3.2:3b` con distintos `num_ctx`.
+71. Tokenizadores oficiales (`tokenizer.json`) de Llama 3.2 3B Instruct (https://huggingface.co/unsloth/Llama-3.2-3B-Instruct) y Gemma 4 26B A4B (https://huggingface.co/google/gemma-4-26b-a4b-it), procesados con la librería `tokenizers` el 19 oct. 2026.
