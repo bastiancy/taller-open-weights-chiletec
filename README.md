@@ -1,31 +1,34 @@
 # Modelos "Open Weights": privacidad de tus datos ejecutando LLMs localmente
 
-Material del **Taller 1** de la Mesa de Inteligencia Artificial y Ética de Chiletec.
+Material del **Taller 1** de la Mesa de Inteligencia Artificial y Ética de [Chiletec](https://chiletec.org), 20 de octubre de 2026.
 
-**Speaker:** Bastian Carvajal — Master en Tecnologías de la Información, fundador de [Afentu](https://afentu.com/)
-**Duración:** 90 minutos · **Modalidad:** online · No requiere saber programar
+**Speaker:** Bastián Carvajal Yáñez, fundador de [Afentu](https://afentu.com) (IA para Licitaciones Públicas).
 
-> 🚧 Repositorio en construcción: los notebooks, benchmarks y guías actualizadas se agregarán antes del taller.
+El objetivo del taller: que puedas responder, para tu propio caso, **¿qué modelo elijo?**
 
-## Qué hay en este repositorio
+## Las diapositivas
 
-| Carpeta | Qué contiene |
+| Archivo | Cómo usarlo |
 |---|---|
-| [`slides/`](slides/) | La presentación en HTML. Ábrela con `slides/dist/index.html` en cualquier navegador (flechas para avanzar, **F** para pantalla completa). |
-| [`docs/`](docs/) | El contenido completo del taller, con fuentes verificadas. |
-| [`para-asistentes/`](para-asistentes/) | Guías simples para instalar LM Studio y Ollama en Windows, macOS o Linux. |
-| [`demo/`](demo/) | Guías técnicas de la demostración en vivo. |
-| [`notebooks/`](notebooks/) | *(próximamente)* Notebooks de JupyterLab: benchmarks y RAG sobre tus propios documentos. |
-| [`benchmarks/`](benchmarks/) | *(próximamente)* Benchmark de hardware y de modelos, con resultados de referencia en una RTX 3090. |
+| [`slides/index.html`](slides/index.html) | La presentación original, con animaciones. Descárgala y ábrela con doble clic en cualquier navegador. Flechas para avanzar, **F** para pantalla completa, **P** para ver las notas del speaker. |
+| [`slides/taller-open-weights.pdf`](slides/taller-open-weights.pdf) | La misma presentación en PDF, una página por diapositiva. |
 
 ## Temario
 
-**Parte 1 — Breve historia de la galaxia (30 min):** qué es un LLM, cómo nace un archivo Open Weights, y la historia del lado claro, el lado oscuro y la alianza rebelde de los modelos abiertos.
+1. **El origen de la galaxia** — ¿Qué es un LLM? Tokens, embeddings, parámetros, el Transformer, capacidades (razonamiento, herramientas, visión) y ventana de contexto.
+2. **Interludio: breve historia del Imperio** — cómo pasamos de modelos abiertos a cerrados, y de vuelta.
+3. **Práctica Jedi: ejecuta LLMs localmente** — LM Studio, Ollama y cómo elegir un modelo según inteligencia, velocidad, costo y memoria.
 
-**Parte 2 — Práctica Jedi (60 min):** LM Studio y cómo elegir un modelo; Ollama, el hardware y la memoria; y RAG sobre una carpeta de documentos. Caso de uso: las bases del nuevo Convenio Marco de software de ChileCompra.
+## Repite la demo en tu equipo
 
-El Taller 2 profundizará en fine-tuning.
+- [Instalar LM Studio](guias/instalar-lmstudio.md) — la forma más simple, con interfaz gráfica.
+- [Instalar Ollama](guias/instalar-ollama.md) — el motor por la terminal.
+- [Comandos de Ollama usados en la demo](guias/comandos-ollama.md)
+- [Glosario](guias/glosario.md) — los conceptos de la charla, en lenguaje simple.
+- [Enlaces y fuentes](guias/enlaces.md) — documentación oficial, rankings y lecturas para profundizar.
 
-## Licencia y uso
+Todo lo que se muestra corrió en un PC con una NVIDIA RTX 3090 (24 GB) y Ubuntu. En un notebook sin GPU dedicada también funciona, con modelos más chicos y más lento.
 
-El material se comparte libremente para los asistentes del taller y la comunidad de Chiletec. Puedes reutilizarlo citando la fuente.
+## Licencia
+
+El material (diapositivas y guías) se comparte bajo [CC BY 4.0](LICENSE): puedes reutilizarlo y adaptarlo citando la fuente. Los logos y marcas de terceros pertenecen a sus dueños; los datos de rankings citados pertenecen a sus fuentes (Artificial Analysis, LMArena).
