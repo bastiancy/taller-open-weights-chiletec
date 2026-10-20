@@ -1,0 +1,7 @@
+modelo,reparto,gpu_offload,tok_s,ttft_s,tokens,gpu_w_prom,gpu_w_reposo
+google/gemma-4-26b-a4b-qat,GPU completa,max,138.8,0.04,300,265.0,165.62
+google/gemma-4-26b-a4b-qat,Mitad GPU,0.5,39.3,0.27,300,144.0,156.33
+google/gemma-4-26b-a4b-qat,Solo CPU,off,19.4,0.51,150,121.0,144.04
+qwen/qwen3.8-27b,GPU completa,max,51.7,0.11,300,316.0,217.01
+qwen/qwen3.8-27b,Mitad GPU,0.5,9.7,1.13,300,151.0,171.94
+qwen/qwen3.8-27b,Solo CPU,off,4.3,2.12,130,124.0,123.78

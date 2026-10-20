@@ -87,13 +87,15 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
 .speaker{margin-top:64px;padding-top:28px;border-top:1px solid var(--line);max-width:1150px;display:flex;flex-direction:column;gap:6px;}
 .speaker strong{font-size:28px;font-weight:600;}
 .speaker span{font-size:21px;color:var(--soft);}
-.brand{position:absolute;left:96px;bottom:60px;display:flex;align-items:center;gap:14px;font-family:var(--f-head);font-size:30px;font-weight:600;letter-spacing:.01em;}
-.brand img{height:52px;width:auto;display:block;}
-.chiletec{position:absolute;right:96px;bottom:66px;font-size:19px;color:var(--mute);text-align:right;}
+.brand{position:absolute;left:96px;bottom:60px;display:flex;flex-direction:column;align-items:flex-start;gap:12px;font-family:var(--f-head);font-size:30px;font-weight:600;letter-spacing:.01em;}
+.brand img{height:46px;width:auto;display:block;}
+.brand span{font-family:var(--f-body);font-size:19px;font-weight:400;color:var(--soft);letter-spacing:0;}
+.chiletec{position:absolute;right:96px;bottom:60px;display:flex;flex-direction:column;align-items:flex-end;gap:12px;font-size:19px;color:var(--soft);text-align:right;}
+.chiletec img{height:34px;width:auto;display:block;}
 
 /* ---------- agenda ---------- */
-.agenda{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px;gap:56px;margin-top:90px;align-items:start;}
-.route h3{font-family:var(--f-head);font-weight:600;font-size:34px;line-height:1.15;margin:8px 0 26px;min-height:80px;}
+.agenda{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.9fr) minmax(0,1fr) 250px;gap:44px;margin-top:90px;align-items:start;}
+.route h3{font-family:var(--f-head);font-weight:600;font-size:34px;line-height:1.15;margin:8px 0 26px;min-height:118px;}
 .route .len{font-size:19px;color:var(--mute);}
 .route ol{list-style:none;margin:0;padding:0 0 0 6px;position:relative;}
 .route ol::before{content:"";position:absolute;left:12px;top:14px;bottom:14px;border-left:2px dotted rgba(236,241,246,.28);}
@@ -101,9 +103,9 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
 .route li::before{content:"";position:absolute;left:5px;top:9px;width:16px;height:16px;border-radius:50%;background:var(--c,var(--jedi));box-shadow:0 0 12px var(--c,var(--jedi));}
 .qr{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;}
 .qr .code{background:#fff;padding:14px;border-radius:14px;}
-.qr img{display:block;width:230px;height:230px;image-rendering:pixelated;}
+.qr img{display:block;width:200px;height:200px;image-rendering:pixelated;}
 .qr p{margin:0;font-size:21px;line-height:1.35;}
-.qr small{font-size:16px;color:#E9B86A;}
+.qr small{font-size:15px;color:var(--soft);line-height:1.4;}
 
 /* ---------- dividers ---------- */
 .s-divider{display:flex;flex-direction:column;justify-content:center;}
@@ -343,8 +345,9 @@ body{margin:0;height:100%;background:var(--space);color:var(--ink);font-family:v
 .hw td{padding:16px 22px 16px 0;border-bottom:1px solid rgba(236,241,246,.08);vertical-align:top;}
 .hw td:first-child{font-weight:500;}
 .hw tr.me td{color:var(--jedi);}
-.hw tr.me td:first-child::after{content:"  (mi equipo)";color:var(--mute);font-weight:400;font-size:18px;}
+
 .hw .tbd{color:#E9B86A;font-size:18px;}
+.hw .hwm{display:block;font-size:16px;color:var(--mute);font-weight:400;margin-top:2px;}
 
 /* LM Studio model list mock */
 .mlist{margin-top:40px;border:1px solid rgba(236,241,246,.16);border-radius:14px;background:rgba(4,7,12,.72);overflow:hidden;}
@@ -660,6 +663,153 @@ aside.notes{display:none;}
 .pv-empty{color:var(--mute);}
 @media (max-width:1100px){ .pv{grid-template-columns:1fr;grid-template-rows:auto auto minmax(0,1fr);} .pv-side{flex-direction:row;} .pv-next{width:42%;} }
 
+/* ---------- v3: Parte 2 ---------- */
+.shotwrap{position:absolute;left:96px;top:214px;width:1040px;aspect-ratio:16/9;border-radius:10px;overflow:visible;box-shadow:0 20px 60px rgba(0,0,0,.55);}
+.shotwrap img{display:block;width:100%;height:100%;border-radius:10px;border:1px solid rgba(236,241,246,.18);}
+.pin{position:absolute;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:3px solid var(--rebelde);box-shadow:0 0 14px rgba(242,141,60,.7);font-size:0;}
+.pin::after{content:attr(data-n);position:absolute;left:-24px;top:-24px;width:30px;height:30px;border-radius:50%;background:var(--rebelde);color:#140b04;font-weight:700;font-size:17px;display:grid;place-items:center;box-shadow:0 3px 10px rgba(0,0,0,.6);}
+.shotleg{position:absolute;left:1172px;right:72px;top:214px;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;}
+.shotleg li{display:flex;gap:14px;align-items:flex-start;}
+.pn2{flex:none;width:32px;height:32px;border-radius:50%;background:var(--rebelde);color:#140b04;font-weight:700;font-size:17px;display:grid;place-items:center;}
+.shotleg b{display:block;font-size:22px;font-weight:600;line-height:1.2;}
+.shotleg small{display:block;font-size:17px;color:var(--soft);line-height:1.35;margin-top:4px;}
+.nmrows{display:flex;flex-direction:column;gap:46px;margin-top:64px;}
+.nmrow{display:flex;align-items:flex-start;flex-wrap:wrap;row-gap:10px;}
+.nm-seg{display:flex;flex-direction:column;align-items:center;}
+.nm-seg b{font-family:var(--f-mono);font-size:36px;font-weight:500;padding:6px 10px;border-bottom:4px solid var(--c);color:var(--ink);}
+.nm-seg small{font-size:16px;color:var(--c);margin-top:10px;max-width:170px;text-align:center;line-height:1.3;}
+.nm-sep{font-family:var(--f-mono);font-size:36px;color:var(--mute);padding:6px 2px;}
+.moe{top:210px;height:420px;}
+.moe text{font-size:20px;}
+.moe text.mt{font-family:var(--f-head);font-size:26px;font-weight:600;}
+.moe circle{fill:var(--space);stroke:rgba(236,241,246,.5);stroke-width:1.5;}
+.moe circle.on{fill:var(--jedi);stroke:var(--jedi);}
+.moe rect{fill:#0a0f1a;stroke:rgba(236,241,246,.3);stroke-width:1.5;}
+.moe rect.on{fill:#123a36;stroke:var(--jedi);stroke-width:2.5;}
+.moe rect.router{fill:rgba(242,141,60,.18);stroke:var(--rebelde);}
+.moe .rl{fill:none;stroke:var(--jedi);stroke-width:2.5;stroke-dasharray:6 6;}
+.moe-foot{position:absolute;left:96px;width:760px;top:640px;}
+.moe-foot .hbar{grid-template-columns:260px 1fr;}
+.offl{display:flex;flex-direction:column;gap:30px;margin-top:56px;}
+.ofrow{display:grid;grid-template-columns:200px minmax(0,1fr) 150px;gap:24px;align-items:center;}
+.ofrow .lab{font-size:23px;}
+.ofrow b{font-family:var(--f-head);font-size:34px;font-weight:600;color:var(--jedi);text-align:right;}
+.lay{display:grid;grid-template-columns:repeat(30,minmax(0,1fr));gap:4px;}
+.lay i{display:block;height:46px;border-radius:4px;}
+.lay i.g{background:var(--jedi);}
+.lay i.c{background:#5b6572;}
+
+/* ---------- v3: Ollama ---------- */
+.ogrid{display:flex;flex-direction:column;gap:16px;margin-top:40px;}
+.og{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:28px;align-items:center;}
+.term.ot{padding:14px 22px;font-size:20px;line-height:1.6;}
+.otag{font-size:24px;font-weight:600;color:var(--rebelde);}
+.otag small{display:block;font-size:14px;font-weight:400;color:var(--mute);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;}
+.term.apij{font-size:18px;line-height:1.65;}
+.term.apij b{color:var(--claro);font-weight:600;}
+.term .jn{color:var(--rebelde);font-family:var(--f-body);font-size:16px;margin-left:8px;}
+
+/* ---------- v3: benchmarks ---------- */
+.m2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;margin-top:40px;}
+.m2c h3{font-family:var(--f-head);font-size:32px;font-weight:600;margin:0 0 10px;}
+.m2c h3 small{font-family:var(--f-body);font-size:17px;font-weight:400;color:var(--mute);margin-left:8px;}
+.m2c p{font-size:21px;line-height:1.5;color:var(--soft);margin:0;}
+.m2k{margin-top:12px;font-size:21px;color:var(--jedi);}
+.elo{position:absolute;left:96px;right:96px;top:425px;}
+.elo .glab span,.aachart .glab span,.scat .glab span{font-size:18px;}
+.elo svg{width:760px;height:auto;display:block;margin-top:-10px;}
+.elo svg .bl,.aachart svg .bx{font-family:var(--f-body);font-size:18px;fill:var(--ink);}
+.elo svg .bv,.aachart svg .bv{font-family:var(--f-body);font-size:17px;fill:var(--ink);}
+.elo svg .rk{fill:var(--mute);font-size:15px;}
+.aachart{position:absolute;left:96px;top:205px;width:1040px;}
+.aachart svg{width:1000px;height:auto;display:block;}
+.aachart svg .bx2{font-family:var(--f-body);font-size:15px;fill:var(--mute);}
+.gl{stroke:rgba(236,241,246,.12);stroke-width:1;}
+.gt{font-family:var(--f-body);font-size:15px;fill:var(--mute);}
+.rl{font-family:var(--f-body);font-size:16px;paint-order:stroke;stroke:#060911;stroke-width:5px;stroke-linejoin:round;}
+.aaside{position:absolute;left:1180px;right:72px;top:250px;display:flex;flex-direction:column;gap:28px;}
+.aaside strong{display:block;font-family:var(--f-head);font-size:56px;font-weight:600;line-height:1;color:var(--jedi);}
+.aaside div:nth-child(2) strong{color:var(--mute);}
+.aaside strong.gem{color:#3DB46D;}
+.aaside span{display:block;font-size:18px;color:var(--soft);margin-top:6px;line-height:1.35;}
+.aanote{font-size:18px;color:var(--soft);line-height:1.45;border-left:3px solid var(--rebelde);padding-left:14px;}
+.scat{position:absolute;left:96px;right:96px;top:214px;}
+.scat svg{width:1250px;height:auto;display:block;}
+.scat .quad{fill:rgba(74,198,179,.07);}
+.scat .qt{font-family:var(--f-body);font-size:16px;fill:var(--jedi);}
+.scat .pl{font-family:var(--f-body);font-size:16px;fill:var(--ink);}
+.scat-k{position:absolute;left:96px;right:96px;top:722px;font-size:22px;color:var(--soft);}
+.scat-k b{color:var(--ink);}
+
+/* ---------- v3: dimensiones ---------- */
+.dims{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px;margin-top:64px;}
+.dim svg{width:64px;height:64px;fill:none;stroke:var(--jedi);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;}
+.dim h3{font-family:var(--f-head);font-size:34px;font-weight:600;margin:18px 0 10px;}
+.dim p{font-size:21px;line-height:1.45;color:var(--soft);margin:0;}
+.dim em{display:block;font-style:normal;font-size:17px;color:var(--jedi);margin-top:14px;}
+.foot.note b{color:var(--ink);}
+
+/* ---------- v3: tres dimensiones ---------- */
+.tri-lab{margin:14px 0 0 -12px;}
+.lg{display:inline-flex;align-items:center;gap:6px;margin-left:12px;font-size:16px;white-space:nowrap;}
+.lg i{display:inline-block;width:12px;height:12px;border-radius:2px;}
+.tri-p small.rk2{color:var(--soft);margin-top:6px;}
+.ln{display:inline-block;width:22px;border-top:2px dashed;vertical-align:middle;margin-right:6px;}
+.tri-p .bx.op{fill:var(--ink);font-weight:600;}
+.tri{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin-top:14px;}
+.tri-p{border:1px solid rgba(236,241,246,.14);border-radius:12px;padding:18px 18px 0;background:rgba(6,9,17,.5);}
+.tri-p h3{font-family:var(--f-head);font-size:28px;font-weight:600;margin:0;}
+.tri-p small{display:block;font-size:15px;color:var(--mute);margin-top:4px;}
+.tri-p svg{width:100%;height:auto;display:block;margin-top:0;overflow:visible;}
+.tri-p .bv{font-family:var(--f-body);font-size:13.5px;fill:var(--ink);}
+.tri-p .bx{font-family:var(--f-body);font-size:14px;fill:var(--soft);}
+.tri-k{position:absolute;left:96px;right:96px;top:742px;height:64px;font-size:21px;color:var(--soft);line-height:1.4;}
+.tri-k p{position:absolute;inset:0;margin:0;}
+.tri-k b{color:var(--ink);}
+
+/* ---------- v3: costo ---------- */
+.cost-lab{margin-top:10px;}
+.scat2{position:absolute;left:96px;top:240px;width:790px;}
+.scat2 svg{width:790px;height:auto;display:block;}
+.scat2 .quad{fill:rgba(74,198,179,.07);}
+.scat2 .qt{font-family:var(--f-body);font-size:15px;fill:var(--jedi);}
+.scat2 .pl{font-family:var(--f-body);font-size:15px;fill:var(--ink);}
+.mtok{position:absolute;left:1010px;right:72px;top:250px;}
+.mtok svg{width:100%;height:auto;display:block;margin-top:14px;}
+.mtok .bl{font-family:var(--f-body);font-size:16px;fill:var(--soft);}
+.mtok .bv{font-family:var(--f-body);font-size:16px;fill:var(--ink);}
+.mtok-n{font-size:15px;color:var(--mute);line-height:1.4;margin-top:6px;}
+
+.agenda2{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:80px;margin-top:56px;align-items:start;}
+.ag-rows{display:flex;flex-direction:column;}
+.ag-row{display:grid;grid-template-columns:210px minmax(0,1fr);align-items:baseline;gap:28px;padding:20px 0;border-top:1px solid var(--line);}
+.ag-row:last-child{border-bottom:1px solid var(--line);}
+.ag-len{font-size:18px;color:var(--mute);}
+.ag-row h3{font-family:var(--f-head);font-size:36px;font-weight:600;margin:0;}
+.ag-b{list-style:none;margin:10px 0 0;padding:0;display:flex;column-gap:24px;row-gap:4px;flex-wrap:wrap;font-size:20px;color:var(--soft);}
+.ag-b li::before{content:"·";margin-right:10px;color:var(--jedi);}
+.ag-goal{margin-top:34px;font-family:var(--f-head);font-size:32px;font-weight:600;line-height:1.3;}
+.ag-goal b{color:var(--jedi);}
+.ag-q{font-family:var(--f-head);font-size:34px;font-weight:600;color:var(--jedi);white-space:nowrap;}
+.ag-mini h3{font-size:26px;color:var(--soft);font-weight:400;font-style:italic;}
+/* ---------- v3: gancho Taller 2, portada y logo ---------- */
+.hook2{margin-top:60px;}
+.h2-yes{font-family:var(--f-head);font-size:38px;font-weight:600;}
+.h2-yes b{color:var(--jedi);}
+.h2-cols{display:grid;grid-template-columns:1fr 1fr;gap:64px;margin-top:44px;}
+.h2c{padding-left:24px;border-left:4px solid var(--jedi);}
+.h2c h3{font-family:var(--f-head);font-size:40px;font-weight:600;margin:0 0 10px;}
+.h2c p{font-size:24px;color:var(--soft);margin:0;line-height:1.45;}
+.h2c em{display:block;font-style:normal;font-size:22px;color:var(--jedi);margin-top:12px;}
+.speaker.with-photo{flex-direction:row;align-items:center;gap:26px;}
+.speaker.with-photo > div{display:flex;flex-direction:column;gap:6px;}
+.sp-photo{width:112px;height:112px;border-radius:50%;object-fit:cover;border:2px solid rgba(134,191,220,.6);box-shadow:0 0 30px rgba(134,191,220,.25);}
+.corner-logo{position:absolute;right:40px;top:30px;display:flex;align-items:center;gap:18px;opacity:.6;z-index:2;pointer-events:none;}
+.corner-logo img{height:22px;width:auto;display:block;}
+.corner-logo img + img{height:11px;}
+.stage:has(.s-title.active) .corner-logo,.stage:has(.s-end.active) .corner-logo{display:none;}
+.qa{margin-top:70px;padding-top:26px;border-top:1px solid var(--line);font-family:var(--f-head);font-size:44px;font-weight:600;color:var(--soft);min-width:700px;}
+
 /* ---------- v3: parámetros ---------- */
 .params{display:grid;grid-template-columns:560px minmax(0,1fr);gap:110px;margin-top:56px;align-items:start;}
 .pnet{position:relative;height:420px;}
@@ -702,67 +852,57 @@ aside.notes{display:none;}
 <div class="neb" data-era="jedi"></div>
 
 <main class="stage" id="stage">
+<div class="corner-logo"><img src="__ASSET:brand/afentu-dark-bg.svg__" alt="Afentu"><img src="__ASSET:logos/chiletec-dark-bg.png__" alt="Chiletec"></div>
 
 <!-- 1 ─ Portada -->
 <section class="slide s-title" data-era="neutral">
-  <div class="org">Mesa de Inteligencia Artificial y Ética de Chiletec</div>
   <h1 class="hero">Modelos “Open Weights”</h1>
   <p class="hero-sub">Privacidad de tus datos ejecutando LLMs localmente</p>
-  <div class="speaker">
-    <strong>Bastian Carvajal</strong>
-    <span>Master en Tecnologías de la Información, fundador de Afentu</span>
+  <div class="speaker with-photo">
+    <img class="sp-photo" src="__ASSET:brand/speaker.jpg__" alt="Bastián Carvajal Yáñez">
+    <div><strong>Bastián Carvajal Yáñez</strong>
+    <span>Master en Tecnologías de la Información, fundador de Afentu</span></div>
   </div>
   <div class="brand">
     <img src="__ASSET:brand/afentu-dark-bg.svg__" alt="Afentu">
+    <span>IA para Licitaciones Públicas</span>
   </div>
-  <div class="chiletec">Taller online, 90 minutos<br>No requiere saber programar</div>
+  <div class="chiletec"><img src="__ASSET:logos/chiletec-dark-bg.png__" alt="Chiletec"><span>Mesa de Inteligencia Artificial y Ética</span></div>
   <aside class="notes" data-min="1"><ul><li>Saludo y agradecimiento a Chiletec y a la Mesa de IA y Ética.</li><li>Promesa: al final sabrán cómo correr un modelo en su propio equipo, sin enviar datos a nadie.</li></ul></aside>
 </section>
 
-<!-- 3 ─ Temario -->
+<!-- 3 ─ Temario: setear expectativas (dos preguntas clave) -->
 <section class="slide" data-era="neutral">
   <div class="where">Temario</div>
-  <h2 class="title">Hoy vamos a recorrer esto</h2>
-  <div class="agenda">
-    <div class="route">
-      <span class="len">Parte 1, 30 minutos</span>
-      <h3>Breve historia de la galaxia</h3>
-      <ol>
-        <li style="--c:var(--neutral)">El origen: cómo funciona un LLM</li>
-        <li style="--c:var(--neutral)">Tres tipos de modelo</li>
-        <li style="--c:var(--rebelde)">Lado claro, lado oscuro y la rebelión</li>
-      </ol>
-    </div>
-    <div class="route">
-      <span class="len">Parte 2, 60 minutos</span>
-      <h3>Práctica Jedi: usar modelos Open Weights localmente</h3>
-      <ol>
-        <li>LM Studio: anatomía de un modelo</li>
-        <li>Benchmarks: cómo elegir</li>
-        <li>Ollama y RAG: el caso Convenio Marco</li>
-      </ol>
+  <h2 class="title">¿De qué se trata este taller?</h2>
+  <div class="agenda2">
+    <div class="ag-rows">
+      <div class="ag-row"><span class="ag-len">Parte 1 · ~25 min</span><div><h3>El origen de la galaxia</h3><ul class="ag-b"><li>¿Qué es un LLM?</li><li>Tokens, embeddings, parámetros</li><li>Capacidades y contexto</li></ul></div></div>
+      <div class="ag-row ag-mini"><span class="ag-len">Interludio · ~5 min</span><h3>Breve historia del Imperio</h3></div>
+      <div class="ag-row"><span class="ag-len">Parte 2 · ~45 min</span><div><h3>Práctica Jedi: ejecuta LLMs localmente</h3><ul class="ag-b"><li>LM Studio</li><li>Ollama</li><li>¿Qué modelo elijo?</li></ul></div></div>
+      <div class="ag-goal">Objetivo: que puedas responder, para tu propio caso, <b>¿qué modelo elijo?</b></div>
     </div>
     <div class="qr">
       <div class="code"><img alt="Código QR al repositorio del taller" src="data:image/png;base64,__QR__"></div>
       <p>Todo el material del taller, en GitHub</p>
-      <small>Enlace provisorio: falta la URL real</small>
+      <small>github.com/bastiancy/<br>taller-open-weights-chiletec</small>
     </div>
   </div>
-  <aside class="notes" data-min="1"><ul><li>Dos partes: 30 min de conceptos e historia, 60 min de práctica en vivo.</li><li>Todo el material queda en GitHub (QR). No hace falta tomar notas.</li></ul></aside>
+  <aside class="notes" data-min="1.5"><ul><li>Setear expectativas: el objetivo es que cada uno pueda responder “¿qué modelo elijo?” para su caso.</li><li>Parte 1: los fundamentos (qué es un LLM). Parte 2: LM Studio y Ollama en vivo, y cómo elegir.</li><li>En medio, un interludio (no adelantar el chiste). Al final, tiempo para preguntas. Material en GitHub (QR).</li></ul></aside>
 </section>
 
 <!-- 4 ─ Divisor Parte 1 -->
 <section class="slide s-divider" data-era="neutral">
-  <div class="part">Parte 1, 30 minutos</div>
-  <h2>Breve historia<br>de la galaxia</h2>
-  <p>Cómo llegamos a poder descargar un modelo de IA.</p>
+  <div class="part">Parte 1, ~25 minutos</div>
+  <h2>El origen<br>de la galaxia</h2>
+  <p>Qué hay dentro de un modelo de IA, antes de descargarlo.</p>
   <aside class="notes" data-min="0.5"><ul><li>Parte 1: entender qué estamos descargando antes de usarlo.</li></ul></aside>
 </section>
 
 <!-- 5 ─ ¿Qué es un LLM? (chat) Ventana de chat animada (sin logos). La respuesta aparece token a token (tokens de Qwen3).
      Paso 1: corre la animación. Paso 2: "…no, esto es un chatbot" junto al título. -->
 <section class="slide" data-era="neutral" data-steps="2">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">¿Qué es un LLM?<span class="aside-t frag" data-step="2">…no, esto es un chatbot</span></h2>
   <div class="chatwin">
     <div class="ch-top"><span class="ch-model">ChatGPT <i>▾</i></span><span class="ch-dots">⋯</span></div>
@@ -789,7 +929,7 @@ aside.notes{display:none;}
 <!-- 6a ─ ¿Qué es un token? Tokenizadores oficiales (tokenizer.json en Hugging Face) de Llama 3.2, Gemma 4 y Qwen3, 19 oct. 2026 [65][71].
      La frase de arriba se muestra palabra por palabra a propósito, igual que en el resto de las diapositivas. -->
 <section class="slide" data-era="neutral" data-steps="1">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">¿Qué es un token?</h2>
   <div class="tokrow"><span class="tk c0">La</span><span class="tk c1"> capital</span><span class="tk c2"> de</span><span class="tk c3"> Chile</span><span class="tk c0"> es</span><span class="tk c1"> Santiago</span></div>
   <div class="tzcmp frag" data-step="1">
@@ -810,7 +950,7 @@ aside.notes{display:none;}
 <!-- 6b ─ ¿Qué es un embedding? Embeddings reales de qwen3-embedding:0.6b (1.024 dimensiones) vía Ollama, proyectados a 2D con PCA, 19 oct. 2026.
      Similitud coseno: Santiago–Lima 0,93 · Santiago–perro 0,63. Llama 3.2 3B usa 3.072 números por token (ollama show). -->
 <section class="slide" data-era="neutral" data-steps="2">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">¿Qué es un embedding?</h2>
   <div class="embl">
     <span class="tk c3 big">Santiago</span>
@@ -839,7 +979,7 @@ aside.notes{display:none;}
 
 <!-- 6 ─ ¿Qué es un parámetro? -->
 <section class="slide" data-era="neutral" data-steps="2">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">¿Qué es un parámetro?</h2>
   <div class="params">
     <div class="pnet">
@@ -865,7 +1005,7 @@ aside.notes{display:none;}
 <!-- 5e ─ Entonces, ¿qué es un LLM? (animación: tokens → embeddings → red → probabilidades → bucle)
      Tokens e IDs: tokenizador de Qwen3. Probabilidades: Llama 3.2 3B vía Ollama (logprobs), 18 oct 2026. -->
 <section class="slide" data-era="neutral" data-steps="5">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">Entonces, ¿qué es un LLM?</h2>
   <div class="sent">La capital de Chile es <span class="blank"><b class="frag" data-step="5">Santiago</b></span></div>
   <svg class="nnsvg" viewBox="0 0 1408 500" aria-hidden="true">
@@ -914,7 +1054,7 @@ aside.notes{display:none;}
 <!-- 5b ─ En realidad: un Transformer. Arquitectura original (Vaswani et al., 2017), etiquetas en inglés.
      Referencia visual: video de ByteByteGo "Transformers Step-by-Step Explained" (redibujado en SVG). -->
 <section class="slide" data-era="neutral" data-steps="2">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">En realidad: un Transformer</h2>
   <svg class="nnsvg tf2" viewBox="0 -12 1408 598" aria-hidden="true">
     <defs><marker id="tf-a" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0 0.5 L9 5 L0 9.5" fill="none" stroke="#ECF1F6" stroke-width="1.7"/></marker></defs>
@@ -1027,7 +1167,7 @@ aside.notes{display:none;}
 
 <!-- 6c ─ Capacidades: razonamiento, uso de herramientas y visión. Ejemplos ilustrativos. -->
 <section class="slide" data-era="neutral" data-steps="2">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">Capacidades de un modelo</h2>
   <div class="caps">
     <div class="capc">
@@ -1064,7 +1204,7 @@ aside.notes{display:none;}
      Memoria total medida con `ollama ps` (columna SIZE) el 19 oct. 2026: llama3.2:3b 2,6 / 6,1 / 18 GB con num_ctx 4.096 / 32.768 / 131.072;
      gemma4:26b 18 / 19 / 19 GB. -->
 <section class="slide" data-era="neutral" data-steps="2">
-  <div class="where">El origen</div>
+  <div class="where">El origen de la galaxia</div>
   <h2 class="title">Ventana de contexto</h2>
   <div class="ctxwin">
     <div class="ctxbar">
@@ -1090,23 +1230,18 @@ aside.notes{display:none;}
   <aside class="notes" data-min="2.5"><ul><li>Todo lo que el modelo ve a la vez, en tokens: instrucciones + conversación + documento + respuesta.</li><li>Paso 1: lo que no cabe, no lo ve. Por eso existe el RAG.</li><li>Paso 2: el contexto ocupa memoria. Llama 3B: 2,6 GB con 4 mil tokens, 18 GB con 131 mil (medido).</li></ul></aside>
 </section>
 
-<!-- 9 ─ Resumen: tres categorías -->
-<section class="slide" data-era="neutral">
-  <div class="where">El origen</div>
-  <h2 class="title">Tres tipos de modelo</h2>
-  <div class="summary">
-    <div><strong>API cerrada</strong><span>No descargas nada. Tus datos viajan al servidor del proveedor.</span><em>GPT, Claude, Gemini</em></div>
-    <div><strong>Open weights</strong><span>Descargas el archivo de pesos y lo corres en tu equipo.</span><em>Llama, Mistral, DeepSeek, Qwen, gpt-oss</em></div>
-    <div><strong>Open source</strong><span>Además de los pesos, el código y los datos de entrenamiento.</span><em>OLMo</em></div>
-  </div>
-  <div class="summary-scale"><span>Menos control</span><span>Más control</span></div>
-  <aside class="notes" data-min="1.5"><ul><li>API cerrada: tus datos viajan al proveedor.</li><li>Open weights: descargas el archivo y lo corres tú. De esto trata el taller.</li><li>Open source: además, código y datos (OLMo).</li></ul></aside>
+<!-- 11b ─ Divisor del interludio (tecla S salta a la siguiente sección) -->
+<section class="slide s-divider" data-era="neutral">
+  <div class="part">Interludio, ~5 minutos</div>
+  <h2>Breve historia<br>del Imperio</h2>
+  <p>Una historia sobre quién controla los pesos.</p>
+  <aside class="notes" data-min="0.5"><ul><li>Pausa entre la teoría y la práctica: la historia es una anécdota.</li><li><b>¿Vas atrasado?</b> Tecla <b>S</b>: salta directo a la Parte 2.</li></ul></aside>
 </section>
 
 <!-- 10 ─ Breve historia: una línea de tiempo, tres eras. El título y el color cambian con cada hito.
      Fechas: BERT oct. 2018 [2], GPT-2 por etapas feb.–nov. 2019 [3][4]; GPT-3 (paper may. 2020) a ChatGPT (30 nov. 2022) [53][54]; LLaMA se filtra el 3 mar. 2023 [13]. -->
 <section class="slide" data-era="claro" data-steps="3" data-eras="claro,claro,oscuro,rebelde">
-  <div class="where">Breve historia de la galaxia</div>
+  <div class="where">Interludio: breve historia del Imperio</div>
   <h2 class="title steps-title">
     <span class="only" data-only="0,1">El lado claro de la Fuerza</span>
     <span class="only" data-only="2">El lado oscuro</span>
@@ -1162,373 +1297,364 @@ aside.notes{display:none;}
   <aside class="notes" data-min="3"><ul><li>Breve: es una anécdota.</li><li>Lado claro: Google (BERT) y OpenAI (GPT-2) publicaban sus pesos. Chiste: “cuando OpenAI era Open”.</li><li>Lado oscuro: GPT-3 solo por API; ChatGPT 1 millón en 5 días, 100 millones en 2 meses.</li><li>Rebelión: LLaMA se filtra en una semana → Mistral, DeepSeek, Qwen, Gemma, gpt-oss…</li></ul></aside>
 </section>
 
-<!-- 7 ─ ¿Cómo aprende? (animación: adivina → compara → ajusta pesos hacia atrás) -->
-<section class="slide" data-era="neutral" data-steps="4">
-  <div class="where">El origen</div>
-  <h2 class="title">¿Cómo aprende?</h2>
-  <div class="sent">La capital de Chile es <span class="blank mask"><b class="only" data-only="0">?</b><b class="only" data-only="1">?</b><b class="frag ok" data-step="2">Santiago</b></span></div>
-  <svg class="nnsvg" viewBox="0 0 1408 500" aria-hidden="true">
-    <g class="col-lab">
-      <text x="0" y="24">Texto de entrenamiento</text>
-      <text x="740" y="24" text-anchor="middle">Red neuronal</text>
-      <text class="only" data-only="1" x="1075" y="24">Lo que adivina</text><text class="only" data-only="2" x="1075" y="24">Lo que adivina</text><text class="only" data-only="3" x="1075" y="24">Lo que adivina</text><text class="only" data-only="4" x="1075" y="24">El resultado</text>
-    </g>
-    <g class="toks">
-      <g transform="translate(0,80)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">La</text><text class="id" x="186" y="6">8747</text></g>
-      <g transform="translate(0,150)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">capital</text><text class="id" x="186" y="6">6722</text></g>
-      <g transform="translate(0,220)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">de</text><text class="id" x="186" y="6">409</text></g>
-      <g transform="translate(0,290)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">Chile</text><text class="id" x="186" y="6">33000</text></g>
-      <g transform="translate(0,360)"><rect y="-22" width="200" height="44" rx="8"/><text x="14" y="8">es</text><text class="id" x="186" y="6">1531</text></g>
-    </g>
-    <g class="emb" data-emb="80,150,220,290,360" data-x="232"></g>
-    <g class="nn" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"hi":[2,3,4]}'></g>
-    <g class="nn fwd ov only" data-only="1" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"bare":true}'></g>
-    <g class="nn back ov only" data-only="2" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"bare":true}'></g>
-    <g class="nn fwd ov only" data-only="3" data-nn='{"x":[440,590,740,890,1040],"n":[5,8,8,8,4],"y":[[80,150,220,290,360],null,null,null,[100,170,240,310]],"y0":60,"y1":400,"inX":352,"bare":true}'></g>
-    <g class="wcall only" data-only="2"><rect x="754" y="160" width="122" height="46" rx="10"/><text x="815" y="191" text-anchor="middle">0,0371</text></g>
-    <g class="wcall up only" data-only="3"><rect x="754" y="160" width="122" height="46" rx="10"/><text x="815" y="191" text-anchor="middle">0,0412</text></g>
-    <g class="probs only" data-only="1">
-      <g transform="translate(1075,100)"><text class="w" y="8">azul</text><rect x="128" y="-9" width="33" height="18" rx="3"/><text class="pct" x="171" y="7">22%</text></g>
-      <g transform="translate(1075,170)"><text class="w" y="8">grande</text><rect x="128" y="-9" width="26" height="18" rx="3"/><text class="pct" x="164" y="7">17%</text></g>
-      <g transform="translate(1075,240)"><text class="w" y="8">la</text><rect x="128" y="-9" width="14" height="18" rx="3"/><text class="pct" x="152" y="7">9%</text></g>
-      <g transform="translate(1075,310)"><text class="w" y="8">Santiago</text><rect x="128" y="-9" width="3" height="18" rx="1"/><text class="pct" x="141" y="7">2%</text></g>
-    </g>
-    <g class="probs only" data-only="2">
-      <g transform="translate(1075,100)"><text class="w bad" y="8">azul</text><rect class="bad" x="128" y="-9" width="33" height="18" rx="3"/><text class="pct" x="171" y="7">22%</text></g>
-      <g transform="translate(1075,170)"><text class="w" y="8">grande</text><rect x="128" y="-9" width="26" height="18" rx="3"/><text class="pct" x="164" y="7">17%</text></g>
-      <g transform="translate(1075,240)"><text class="w" y="8">la</text><rect x="128" y="-9" width="14" height="18" rx="3"/><text class="pct" x="152" y="7">9%</text></g>
-      <g transform="translate(1075,310)"><text class="w hot" y="8">Santiago</text><rect class="hot" x="128" y="-9" width="3" height="18" rx="1"/><text class="pct" x="141" y="7">2%</text></g>
-      <text class="err" x="1075" y="372">Error: debía ser «Santiago»</text>
-    </g>
-    <g class="probs only" data-only="3">
-      <g transform="translate(1075,100)"><text class="w hot" y="8">Santiago</text><rect class="hot" x="128" y="-9" width="40" height="18" rx="3"/><text class="pct" x="178" y="7">27%</text></g>
-      <g transform="translate(1075,170)"><text class="w" y="8">azul</text><rect x="128" y="-9" width="24" height="18" rx="3"/><text class="pct" x="162" y="7">16%</text></g>
-      <g transform="translate(1075,240)"><text class="w" y="8">grande</text><rect x="128" y="-9" width="18" height="18" rx="3"/><text class="pct" x="156" y="7">12%</text></g>
-      <g transform="translate(1075,310)"><text class="w" y="8">la</text><rect x="128" y="-9" width="12" height="18" rx="3"/><text class="pct" x="150" y="7">8%</text></g>
-      <text class="more" x="1075" y="372">un poco mejor que antes</text>
-    </g>
-    <g class="fileout only" data-only="4" transform="translate(1080,40)">
-      <path d="M0 0 H250 L300 50 V350 H0 Z"/><path class="fold" d="M250 0 V50 H300"/>
-      <text class="num" x="18" y="32" style="opacity:0.42"><tspan x="18">-0,76</tspan><tspan x="72">0,01</tspan><tspan x="126">0,02</tspan><tspan x="180">0,72</tspan></text>
-      <text class="num" x="18" y="51" style="opacity:0.71"><tspan x="18">-0,55</tspan><tspan x="72">0,20</tspan><tspan x="126">0,11</tspan><tspan x="180">0,57</tspan></text>
-      <text class="num" x="18" y="70" style="opacity:0.75"><tspan x="18">0,46</tspan><tspan x="72">0,54</tspan><tspan x="126">0,50</tspan><tspan x="180">0,17</tspan><tspan x="234">-0,52</tspan></text>
-      <text class="num" x="18" y="89" style="opacity:0.79"><tspan x="18">-0,78</tspan><tspan x="72">0,63</tspan><tspan x="126">-0,10</tspan><tspan x="180">0,63</tspan><tspan x="234">0,37</tspan></text>
-      <text class="num" x="18" y="108" style="opacity:1.00"><tspan x="18">-0,58</tspan><tspan x="72">-0,50</tspan><tspan x="126">0,96</tspan><tspan x="180">0,86</tspan><tspan x="234">0,61</tspan></text>
-      <text class="num" x="18" y="127" style="opacity:0.65"><tspan x="18">0,03</tspan><tspan x="72">-0,85</tspan><tspan x="126">-0,32</tspan><tspan x="180">0,11</tspan><tspan x="234">-0,42</tspan></text>
-      <text class="num" x="18" y="146" style="opacity:0.59"><tspan x="18">0,75</tspan><tspan x="72">0,41</tspan><tspan x="126">0,15</tspan><tspan x="180">-0,95</tspan><tspan x="234">0,42</tspan></text>
-      <text class="num" x="18" y="165" style="opacity:0.68"><tspan x="18">-0,16</tspan><tspan x="72">-0,20</tspan><tspan x="126">0,17</tspan><tspan x="180">0,01</tspan><tspan x="234">-0,77</tspan></text>
-      <text class="dots" x="150" y="198" text-anchor="middle">⋮</text>
-      <text class="num" x="18" y="228" style="opacity:0.62"><tspan x="18">0,50</tspan><tspan x="72">0,20</tspan><tspan x="126">-0,02</tspan><tspan x="180">0,83</tspan><tspan x="234">-0,48</tspan></text>
-      <text class="num" x="18" y="247" style="opacity:0.43"><tspan x="18">0,85</tspan><tspan x="72">-0,04</tspan><tspan x="126">0,04</tspan><tspan x="180">-0,95</tspan><tspan x="234">-0,55</tspan></text>
-      <text class="num" x="18" y="266" style="opacity:0.66"><tspan x="18">-0,90</tspan><tspan x="72">0,41</tspan><tspan x="126">0,77</tspan><tspan x="180">-0,79</tspan><tspan x="234">0,24</tspan></text>
-      <text class="num" x="18" y="285" style="opacity:0.66"><tspan x="18">-0,04</tspan><tspan x="72">-0,54</tspan><tspan x="126">0,77</tspan><tspan x="180">0,25</tspan><tspan x="234">-0,09</tspan></text>
-      <text class="num" x="18" y="304" style="opacity:0.55"><tspan x="18">0,86</tspan><tspan x="72">0,97</tspan><tspan x="126">0,09</tspan><tspan x="180">0,12</tspan><tspan x="234">0,34</tspan></text>
-      <text class="num" x="18" y="323" style="opacity:0.54"><tspan x="18">0,60</tspan><tspan x="72">0,01</tspan><tspan x="126">-0,04</tspan><tspan x="180">0,77</tspan><tspan x="234">-0,13</tspan></text>
-      <text class="ext" x="150" y="386" text-anchor="middle">model.safetensors</text>
-    </g>
-  </svg>
-  <div class="cap">
-    <p class="only" data-only="0">Se toma texto real y se tapa la palabra que sigue.</p>
-    <p class="only" data-only="1">Al principio, los pesos son números al azar: el modelo adivina mal.</p>
-    <p class="only" data-only="2">Se compara con la respuesta correcta y el error viaja hacia atrás, por toda la red.</p>
-    <p class="only" data-only="3">Cada peso se ajusta un poquito para equivocarse menos la próxima vez.</p>
-    <p class="only" data-only="4">Billones de veces, durante meses. Lo que queda son <b>los pesos</b>: el archivo que vamos a descargar.</p>
+<!-- 9 ─ Tres tipos de modelo: resumen de la historia -->
+<section class="slide" data-era="rebelde">
+  <div class="where">Interludio: breve historia del Imperio</div>
+  <h2 class="title">Tres tipos de modelo</h2>
+  <div class="summary">
+    <div><strong>API cerrada</strong><span>No descargas nada. Tus datos viajan al servidor del proveedor.</span><em>GPT, Claude, Gemini</em></div>
+    <div><strong>Open weights</strong><span>Descargas el archivo de pesos y lo corres en tu equipo.</span><em>Llama, Mistral, DeepSeek, Qwen, gpt-oss</em></div>
+    <div><strong>Open source</strong><span>Además de los pesos, el código y los datos de entrenamiento.</span><em>OLMo</em></div>
   </div>
-  <aside class="notes" data-min="2"><ul><li>(Por decidir si se mantiene.)</li><li>Adivina, compara, el error viaja hacia atrás, ajusta pesos. Billones de veces.</li><li>Lo que queda es el archivo de pesos.</li></ul></aside>
+  <div class="summary-scale"><span>Menos control</span><span>Más control</span></div>
+  <aside class="notes" data-min="1.5"><ul><li>Resumen de la historia que acabamos de contar.</li><li>API cerrada (el Imperio): tus datos viajan al proveedor.</li><li>Open weights (la rebelión): descargas el archivo y lo corres tú. De esto trata el taller.</li><li>Open source: además, código y datos (OLMo).</li></ul></aside>
 </section>
 
-<!-- 8 ─ ¿Cómo nace el archivo Open Weights? -->
-<section class="slide" data-era="neutral" data-steps="3">
-  <div class="where">El origen</div>
-  <h2 class="title">¿Cómo nace un archivo Open Weights?</h2>
-  <div class="train">
-    <div class="stg frag" data-step="0" style="opacity:1;transform:none"><span class="n">1</span>
-      <h3>Pre-entrenamiento</h3>
-      <p>Lee enormes cantidades de texto y aprende a predecir la palabra que sigue. Meses de cómputo.</p>
-      <div class="out">Resultado: un modelo base, que completa texto</div>
-    </div>
-    <div class="stg frag" data-step="1"><span class="n">2</span>
-      <h3>Post-entrenamiento</h3>
-      <p>Se ajusta con ejemplos de instrucciones y retroalimentación humana para que converse.</p>
-      <div class="out">Resultado: un modelo que sigue instrucciones</div>
-    </div>
-    <div class="stg frag" data-step="2"><span class="n">3</span>
-      <h3>Publicación</h3>
-      <p>El laboratorio sube los pesos a Hugging Face, en precisión completa.</p>
-      <div class="out">Resultado: el archivo Open Weights original</div>
-    </div>
-  </div>
-  <div class="branches frag" data-step="3">
-    <div class="lbl">Y de ese archivo nacen versiones derivadas:</div>
-    <div class="branch-row">
-      <div class="branch hot"><h4>Cuantizadas</h4><p>Comprimidas para que quepan en tu equipo. Son las que descargas en Ollama o LM Studio.</p><div class="ex">formato GGUF, Q8, Q4</div></div>
-      <div class="branch"><h4>Destiladas</h4><p>Un modelo chico que aprende imitando a uno grande.</p><div class="ex">DeepSeek R1, de 1,5B a 70B</div></div>
-      <div class="branch"><h4>Afinadas</h4><p>Ajustadas para una tarea o un estilo específico.</p><div class="ex">fine-tuning, el Taller 2</div></div>
-    </div>
-  </div>
-  <aside class="notes" data-min="2"><ul><li>(Por decidir si se mantiene.)</li><li>Pre-entrenamiento → post-entrenamiento (instruct) → publicación.</li><li>Derivadas: cuantizadas, destiladas, afinadas (Taller 2).</li></ul></aside>
-</section>
-
-<!-- 10 ─ Divisor Parte 2 -->
+<!-- P2 ─ Divisor Parte 2 -->
 <section class="slide s-divider" data-era="jedi">
   <div class="part">Parte 2, 60 minutos</div>
   <h2>Práctica Jedi</h2>
-  <p>Usar modelos Open Weights localmente.</p>
-  <aside class="notes" data-min="0.5"><ul><li>Cambio a la práctica. Liberar VRAM antes de abrir LM Studio (ollama ps / ollama stop).</li><li>Compartir pantalla desde el PC Ubuntu.</li></ul></aside>
+  <p>Los mismos conceptos, ahora en vivo.</p>
+  <aside class="notes" data-min="0.5"><ul><li>Cambiar a compartir la pantalla entera del PC Ubuntu (Mac: dejar de compartir).</li><li>Antes: VRAM libre (ollama ps vacío) y LM Studio abierto en Library.</li><li>Orden: LM Studio (visual) → cómo elegir → Ollama y RAG (por debajo).</li></ul></aside>
 </section>
 
-<!-- 11 ─ Ollama -->
+<!-- P2-A1 ─ LM Studio: la biblioteca (captura del PC del speaker, 19 oct. 2026) -->
+<section class="slide" data-era="jedi" data-steps="5">
+  <div class="where">Práctica Jedi · LM Studio</div>
+  <h2 class="title">LM Studio: la biblioteca</h2>
+  <div class="shotwrap"><img src="__ASSET:demo/lmstudio-library.jpg__" alt="Captura de LM Studio"><span class="pin frag" data-step="1" data-n="1" style="left:18.59%;top:31.85%"></span><span class="pin frag" data-step="2" data-n="2" style="left:34.11%;top:27.78%"></span><span class="pin frag" data-step="3" data-n="3" style="left:42.81%;top:27.78%"></span><span class="pin frag" data-step="4" data-n="4" style="left:86.04%;top:35.37%"></span><span class="pin frag" data-step="5" data-n="5" style="left:89.38%;top:18.61%"></span></div>
+  <ol class="shotleg"><li class="frag" data-step="1"><span class="pn2">1</span><div><b>Parámetros</b><small>26B-A4B: 26 mil millones en total, 4 mil millones activos (MoE)</small></div></li><li class="frag" data-step="2"><span class="pn2">2</span><div><b>Capacidades</b><small>visión · uso de herramientas · razonamiento</small></div></li><li class="frag" data-step="3"><span class="pn2">3</span><div><b>Tamaño en disco</b><small>27B en 17,7 GB: comprimido (cuantizado)</small></div></li><li class="frag" data-step="4"><span class="pn2">4</span><div><b>Cuantización y formato</b><small>Q4_K_M, archivo GGUF</small></div></li><li class="frag" data-step="5"><span class="pn2">5</span><div><b>Pestaña Load</b><small>contexto y capas en GPU</small></div></li></ol>
+  <aside class="notes" data-min="6"><ul><li>Library → LLMs. Recorrer la tabla de arriba abajo.</li><li>1 Params: es el “¿qué es un parámetro?”. Mostrar 26B-A4B y 30B-A3B (MoE, siguiente diapositiva).</li><li>2 Íconos: ojo = visión, llave = herramientas, bombilla = razonamiento. deepseek-r1…qwen3-8b solo razona.</li><li>3 Size: 27B en 17,7 GB → no son 2 bytes por parámetro. Pista de cuantización.</li><li>4 Clic en gemma-4-12b → panel Info: Quantization Q4_K_M, Format GGUF, Capabilities.</li><li>5 Pestaña Load: la vemos al cargar (contexto y GPU offload).</li></ul></aside>
+</section>
+
+<!-- P2-A2 ─ El nombre de un modelo: nombres reales de los archivos GGUF del PC del speaker -->
+<section class="slide" data-era="jedi" data-steps="2">
+  <div class="where">Práctica Jedi · LM Studio</div>
+  <h2 class="title">El nombre lo dice todo</h2>
+  <div class="nmrows">
+    <div class="nmrow"><span class="nm-seg" style="--c:#86BFDC"><b>gemma-4</b><small>familia y versión</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#E6B95E"><b>26B</b><small>parámetros totales</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#F28D3C"><b>A4B</b><small>4B activos: MoE</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#4AC6B3"><b>it</b><small>instruct: conversa</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#B79CF2"><b>QAT</b><small>entrenado para comprimirse</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#E6B95E"><b>Q4_0</b><small>4 bits por peso</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#86BFDC"><b>.gguf</b><small>formato</small></span></div>
+    <div class="nmrow frag" data-step="1"><span class="nm-seg" style="--c:#86BFDC"><b>Meta-Llama-3.1</b><small>familia y versión</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#E6B95E"><b>8B</b><small>parámetros</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#4AC6B3"><b>Instruct</b><small>post-entrenado para conversar</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#E6B95E"><b>Q4_K_M</b><small>cuantización</small></span></div>
+    <div class="nmrow frag" data-step="2"><span class="nm-seg" style="--c:#F28D3C"><b>DeepSeek-R1-0528</b><small>el maestro (671B)</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#4AC6B3"><b>Qwen3-8B</b><small>el alumno: destilado</small></span><span class="nm-sep">-</span><span class="nm-seg" style="--c:#E6B95E"><b>Q4_K_M</b><small>cuantización</small></span></div>
+  </div>
+  <aside class="notes" data-min="3"><ul><li>Los nombres de archivo resumen todo lo de la Parte 1.</li><li>Gemma: MoE (A4B), it = instruct (post-entrenamiento), QAT = entrenado sabiendo que lo iban a cuantizar.</li><li>Llama 3.1 8B Instruct: existe también la versión base, que solo completa texto.</li><li>DeepSeek R1 destilado: un Qwen3 de 8B que aprendió imitando a R1 (671B). Por eso razona.</li><li>Mostrar en LM Studio: Model Search, buscar “gemma 4” y ver las variantes.</li></ul></aside>
+</section>
+
+<!-- P2-A3 ─ Cuantización. Llama 3.1 8B: 8.030 millones de parámetros; FP16 = 2 bytes/peso (~16 GB);
+     Q8_0 ~8,5 bits/peso (~8,5 GB, estimado); Q4_K_M = archivo real de 4,92 GB en LM Studio. -->
+<section class="slide" data-era="jedi">
+  <div class="where">Práctica Jedi · LM Studio</div>
+  <h2 class="title">Cuantizar: comprimir los pesos</h2>
+  <p class="lead">Como pasar una foto de RAW a JPEG: pesa mucho menos y casi no se nota.</p>
+  <div class="qbars">
+    <div class="qrow"><div class="lab">FP16<small>original, 16 bits</small></div><i style="width:100%" data-v="~16 GB"></i></div>
+    <div class="qrow"><div class="lab">Q8<small>8 bits</small></div><i style="width:53%" data-v="~8,5 GB"></i></div>
+    <div class="qrow hot"><div class="lab">Q4_K_M<small>~4,5 bits, el más usado</small></div><i style="width:31%" data-v="4,9 GB"></i></div>
+  </div>
+  <div class="foot note">Llama 3.1 8B Instruct. El archivo Q4_K_M es el que está en LM Studio; FP16 y Q8 son estimaciones (bits × parámetros).</div>
+  <aside class="notes" data-min="2"><ul><li>Volver a la columna Size: 8B en 4,9 GB.</li><li>Cada peso pasa de 16 bits a ~4,5 bits. Pérdida de calidad pequeña en Q4_K_M; notable bajo Q3.</li><li>Regla práctica: GB ≈ parámetros (B) × bits / 8, más un margen.</li><li>QAT (Gemma): el modelo se entrenó sabiendo que lo iban a cuantizar; pierde menos.</li></ul></aside>
+</section>
+
+<!-- P2-A4 ─ Denso vs MoE. gemma4:26b: 25,8B parámetros, 128 expertos (ollama show); tok/s medidos 18 oct. 2026 (Ollama, RTX 3090 / i9-12900K). -->
 <section class="slide" data-era="jedi" data-steps="1">
-  <div class="where">Práctica Jedi: Ollama</div>
-  <h2 class="title">Ollama</h2>
-  <p class="lead">El motor. Corre en tu equipo, por consola, sin ventanas ni botones.</p>
-  <div class="two">
-    <div class="term">
-      <div class="bar"><i></i><i></i><i></i></div>
-<div><span class="p">$</span> curl -fsSL https://ollama.com/install.sh | sh</div>
-<div><span class="p">$</span> ollama run gpt-oss:20b</div>
-<div><span class="p">&gt;&gt;&gt;</span> Resume este contrato en tres puntos</div>
-<div class="c">1. Plazo de 24 meses con renovación...</div>
-    </div>
-    <div class="stack frag" data-step="1">
-      <div class="layer"><span class="k">1</span><div>Tu aplicación, script o chat</div></div>
-      <div class="layer"><span class="k">2</span><div>localhost:11434<small>La misma API que usa OpenAI: migrar puede ser cambiar una URL</small></div></div>
-      <div class="layer"><span class="k">3</span><div>El modelo en formato GGUF</div></div>
-      <div class="layer"><span class="k">4</span><div>Tu GPU</div></div>
+  <div class="where">Práctica Jedi · LM Studio</div>
+  <h2 class="title">Denso contra MoE</h2>
+  <svg class="nnsvg moe" viewBox="0 0 1408 420" aria-hidden="true">
+    <text class="mt" x="215" y="40" text-anchor="middle">Denso: todo el modelo trabaja</text>
+    <circle cx="110" cy="120" r="13" class="on"/><circle cx="110" cy="172" r="13" class="on"/><circle cx="110" cy="224" r="13" class="on"/><circle cx="110" cy="276" r="13" class="on"/><circle cx="110" cy="328" r="13" class="on"/><circle cx="180" cy="120" r="13" class="on"/><circle cx="180" cy="172" r="13" class="on"/><circle cx="180" cy="224" r="13" class="on"/><circle cx="180" cy="276" r="13" class="on"/><circle cx="180" cy="328" r="13" class="on"/><circle cx="250" cy="120" r="13" class="on"/><circle cx="250" cy="172" r="13" class="on"/><circle cx="250" cy="224" r="13" class="on"/><circle cx="250" cy="276" r="13" class="on"/><circle cx="250" cy="328" r="13" class="on"/><circle cx="320" cy="120" r="13" class="on"/><circle cx="320" cy="172" r="13" class="on"/><circle cx="320" cy="224" r="13" class="on"/><circle cx="320" cy="276" r="13" class="on"/><circle cx="320" cy="328" r="13" class="on"/>
+    <text class="mt" x="900" y="40" text-anchor="middle">MoE (mezcla de expertos): solo algunos</text>
+    <rect class="router" x="600" y="220" width="110" height="60" rx="30"/><text x="655" y="257" text-anchor="middle">router</text>
+    <path class="rl" d="M710 250 C 740 250, 760 165, 888 165"/><path class="rl" d="M710 250 C 740 250, 760 305, 1016 305"/>
+    <rect x="760" y="110" width="104" height="110" rx="12" class=""/><text x="812" y="172" text-anchor="middle">experto 1</text><rect x="888" y="110" width="104" height="110" rx="12" class="on"/><text x="940" y="172" text-anchor="middle">experto 2</text><rect x="1016" y="110" width="104" height="110" rx="12" class=""/><text x="1068" y="172" text-anchor="middle">experto 3</text><rect x="1144" y="110" width="104" height="110" rx="12" class=""/><text x="1196" y="172" text-anchor="middle">experto 4</text><rect x="760" y="250" width="104" height="110" rx="12" class=""/><text x="812" y="312" text-anchor="middle">experto 5</text><rect x="888" y="250" width="104" height="110" rx="12" class=""/><text x="940" y="312" text-anchor="middle">experto 6</text><rect x="1016" y="250" width="104" height="110" rx="12" class="on"/><text x="1068" y="312" text-anchor="middle">experto 7</text><rect x="1144" y="250" width="104" height="110" rx="12" class=""/><text x="1196" y="312" text-anchor="middle">experto 8</text>
+  </svg>
+  <div class="moe-foot frag" data-step="1">
+    <div class="glab">Solo CPU, tokens por segundo (medido en mi PC)</div>
+    <div class="hbars">
+      <div class="hbar"><span>Llama 3.2 3B · denso</span><i style="width:54%" data-v="27"></i></div>
+      <div class="hbar hot"><span>Gemma 4 26B · MoE</span><i style="width:39%" data-v="19"></i></div>
     </div>
   </div>
-  <aside class="notes" data-min="8"><ul><li>(Provisorio: Parte 2 por reestructurar.)</li></ul></aside>
+  <div class="cap"><p>Ocupa memoria como uno de <b>26B</b>, pero cada token usa solo <b>~4B</b>: corre casi como uno chico.</p></div>
+  <aside class="notes" data-min="3"><ul><li>En la biblioteca: 26B-A4B y 30B-A3B. La A = parámetros activos por token.</li><li>Un router elige unos pocos expertos para cada token; el resto no trabaja.</li><li>Ojo: igual hay que cargar los 26B en memoria (15,6 GB en disco).</li><li>Paso 1: en CPU pura, el MoE de 26B va a 19 tok/s y un denso de 3B a 27. Por eso MoE es bueno para equipos sin GPU grande.</li></ul></aside>
+</section>
+
+<!-- P2-A5 ─ GPU offload. gemma4:26b tiene 30 bloques (ollama show). tok/s de generación medidos con num_gpu = todas / 15 / 0, 18 oct. 2026. -->
+<section class="slide" data-era="jedi" data-steps="1">
+  <div class="where">Práctica Jedi · LM Studio</div>
+  <h2 class="title">¿No cabe? Una parte va a la CPU</h2>
+  <p class="lead">Los 30 bloques de Gemma 4 26B: cuántos van en la GPU y cuántos en la CPU.</p>
+  <div class="offl">
+    <div class="ofrow"><span class="lab">Todo en GPU</span><div class="lay"><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i></div><b>125 tok/s</b></div>
+    <div class="ofrow frag" data-step="1"><span class="lab">Mitad y mitad</span><div class="lay"><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i></div><b>41 tok/s</b></div>
+    <div class="ofrow frag" data-step="1"><span class="lab">Solo CPU</span><div class="lay"><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i><i class="c"></i></div><b>19 tok/s</b></div>
+  </div>
+  <div class="legend" style="margin-left:0;margin-top:30px"><span><i style="background:var(--jedi)"></i>Bloque en la GPU (VRAM)</span><span><i style="background:#5b6572"></i>Bloque en la CPU (RAM)</span></div>
+  <div class="foot note">Medido en una RTX 3090 con un i9-12900K. En LM Studio: pestaña Load, “GPU Offload”.</div>
+  <aside class="notes" data-min="3"><ul><li>LM Studio: elegir gemma-4-26b → Load. Mostrar Context Length y GPU Offload.</li><li>Context Length = la ventana de contexto de la Parte 1 (máximo 262 mil en Gemma 4).</li><li>GPU Offload = cuántos bloques del Transformer van a la GPU.</li><li>Paso 1: basta con que la mitad se vaya a la CPU para perder dos tercios de la velocidad.</li><li>El catálogo de LM Studio avisa si el modelo cabe completo en la GPU.</li></ul></aside>
+</section>
+
+<!-- P2-A6 ─ LM Studio: el chat (captura del PC del speaker, 19 oct. 2026) -->
+<section class="slide" data-era="jedi" data-steps="5">
+  <div class="where">Práctica Jedi · LM Studio</div>
+  <h2 class="title">LM Studio: el chat</h2>
+  <div class="shotwrap"><img src="__ASSET:demo/lmstudio-chat.jpg__" alt="Captura de LM Studio"><span class="pin frag" data-step="1" data-n="1" style="left:27.86%;top:95.83%"></span><span class="pin frag" data-step="2" data-n="2" style="left:67.40%;top:17.41%"></span><span class="pin frag" data-step="3" data-n="3" style="left:23.59%;top:29.17%"></span><span class="pin frag" data-step="4" data-n="4" style="left:35.16%;top:95.83%"></span><span class="pin frag" data-step="5" data-n="5" style="left:82.29%;top:29.35%"></span></div>
+  <ol class="shotleg"><li class="frag" data-step="1"><span class="pn2">1</span><div><b>Modelo cargado</b><small>gemma-4-26b-a4b-qat</small></div></li><li class="frag" data-step="2"><span class="pn2">2</span><div><b>La misma pregunta</b><small>“La capital de Chile es” → Santiago</small></div></li><li class="frag" data-step="3"><span class="pn2">3</span><div><b>Estadísticas</b><small>tokens por segundo y tiempo al primer token</small></div></li><li class="frag" data-step="4"><span class="pn2">4</span><div><b>Think</b><small>activar o apagar el razonamiento</small></div></li><li class="frag" data-step="5"><span class="pn2">5</span><div><b>System Prompt</b><small>instrucciones fijas para el modelo</small></div></li></ol>
+  <aside class="notes" data-min="5"><ul><li>Chat → elegir el modelo abajo (gemma-4-26b) y cargarlo.</li><li>Escribir “La capital de Chile es”: el mismo ejemplo de la Parte 1.</li><li>Ícono de cronómetro bajo la respuesta: tokens/s y tiempo al primer token.</li><li>Activar Think y repetir una pregunta con cálculo (1.200 UF con 15 % de descuento): se ve el razonamiento y cuántos tokens más gasta.</li><li>System Prompt: “Responde siempre en español de Chile y cita la sección de las bases”.</li></ul></aside>
+</section>
+
+<!-- P2-O1 ─ Ollama: lo mismo, en la terminal. Salidas reales de `ollama list`, `ollama show gemma4:26b` y `ollama ps` (19–20 oct. 2026). -->
+<section class="slide" data-era="jedi" data-steps="3">
+  <div class="where">Práctica Jedi · Ollama</div>
+  <h2 class="title">Ollama: lo mismo, en la terminal</h2>
+  <div class="ogrid">
+    <div class="og"><div class="term ot"><div><span class="p">$</span> ollama list</div><div class="c">gemma4:26b &nbsp;&nbsp;&nbsp;17 GB</div><div class="c">llama3.2:3b &nbsp;&nbsp;2.0 GB</div></div><div class="otag"><small>En LM Studio</small>Library</div></div>
+    <div class="og frag" data-step="1"><div class="term ot"><div><span class="p">$</span> ollama show gemma4:26b</div><div class="c">parameters 25.8B · quantization Q4_K_M</div><div class="c">context length 262144</div><div class="c">vision · tools · thinking</div></div><div class="otag"><small>En LM Studio</small>Panel Info y capacidades</div></div>
+    <div class="og frag" data-step="2"><div class="term ot"><div><span class="p">$</span> ollama run gemma4:26b --verbose</div><div><span class="p">&gt;&gt;&gt;</span> La capital de Chile es</div><div class="c">La capital de Chile es Santiago. &nbsp;·&nbsp; eval rate: … tokens/s</div></div><div class="otag"><small>En LM Studio</small>Chat y estadísticas</div></div>
+    <div class="og frag" data-step="3"><div class="term ot"><div><span class="p">$</span> ollama ps</div><div class="c">gemma4:26b &nbsp;17 GB &nbsp;100% GPU &nbsp;4096</div></div><div class="otag"><small>En LM Studio</small>Pestaña Load: memoria, GPU y contexto</div></div>
+  </div>
+  <aside class="notes" data-min="6"><ul>
+    <li>Antes: expulsar el modelo en LM Studio (Eject) para liberar VRAM. Si no, Ollama queda repartido en CPU y va lento.</li>
+    <li>Mismos conceptos, sin explicarlos de nuevo: solo la equivalencia con LM Studio.</li>
+    <li>ollama list = Library. ollama show = panel Info: 25.8B, Q4_K_M, contexto 262 mil, capacidades.</li>
+    <li>ollama run --verbose: la misma pregunta; leer el eval rate (tokens/s) en vivo.</li>
+    <li>ollama ps: SIZE (pesos + caché KV), PROCESSOR (% GPU/CPU), CONTEXT.</li>
+    <li>Opcional: /set parameter num_ctx 32768 y volver a ollama ps: crece la memoria (ventana de contexto).</li>
+  </ul></aside>
+</section>
+
+<!-- P2-O2 ─ El API de Ollama. Respuesta real de /api/chat (gemma4:26b, 20 oct. 2026), recortada. -->
+<section class="slide" data-era="jedi" data-steps="1">
+  <div class="where">Práctica Jedi · Ollama</div>
+  <h2 class="title">Por debajo de todo: un API</h2>
+  <div class="two">
+    <div class="term apij">
+      <div class="bar"><i></i><i></i><i></i></div>
+<div><span class="p">$</span> curl localhost:11434/api/chat -d '{</div>
+<div>&nbsp;&nbsp;"model": "gemma4:26b",</div>
+<div>&nbsp;&nbsp;"messages": [{"role": "user",</div>
+<div>&nbsp;&nbsp;&nbsp;&nbsp;"content": "La capital de Chile es"}]}'</div>
+<div class="c">{ "message": { "role": "assistant",</div>
+<div class="c">&nbsp;&nbsp;&nbsp;&nbsp;"content": "La capital de Chile es Santiago…" },</div>
+<div class="c">&nbsp;&nbsp;"prompt_eval_count": <b>18</b>, <span class="jn">← tokens de entrada</span></div>
+<div class="c">&nbsp;&nbsp;"eval_count": <b>17</b>, <span class="jn">← tokens generados</span></div>
+<div class="c">&nbsp;&nbsp;"eval_duration": 520268000 } <span class="jn">← nanosegundos</span></div>
+    </div>
+    <div class="stack frag" data-step="1">
+      <div class="layer"><span class="k">1</span><div>Tu aplicación, script o notebook</div></div>
+      <div class="layer"><span class="k">2</span><div>Un API local<small>Ollama: localhost:11434 · LM Studio: Model Server, localhost:1234. Ambos compatibles con el API de OpenAI.</small></div></div>
+      <div class="layer"><span class="k">3</span><div>El modelo en formato GGUF</div></div>
+      <div class="layer"><span class="k">4</span><div>Tu GPU (o tu CPU)</div></div>
+    </div>
+  </div>
+  <aside class="notes" data-min="3"><ul>
+    <li>Lo que hacen LM Studio y Ollama por debajo: un servidor local con un API.</li>
+    <li>Correr el curl en vivo. La respuesta trae el texto y los contadores de tokens.</li>
+    <li>tokens/s = eval_count ÷ eval_duration (en segundos).</li>
+    <li>Paso 1: cualquier aplicación que hoy usa OpenAI puede apuntar a tu equipo cambiando la URL. Ahí entran los notebooks (bonus: RAG).</li>
+  </ul></aside>
+</section>
+
+<!-- B0 ─ ¿Qué modelo elijo? Título de sección con las dimensiones a considerar -->
+<section class="slide" data-era="jedi">
+  <div class="where">Práctica Jedi</div>
+  <h2 class="title">¿Qué modelo elijo?</h2>
+  <p class="lead">Cuatro dimensiones, y mejorar una suele empeorar otra: más inteligencia pide más memoria, es más lenta o más cara.</p>
+  <div class="dims">
+    <div class="dim"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6a12 12 0 0 0-7 21.8V33h14v-5.2A12 12 0 0 0 24 6zM18 38h12M20 43h8"/></svg><h3>Inteligencia</h3><p>¿Acierta? Benchmarks y votaciones.</p><em>los 10 mejores · top 10 para mi hardware</em></div>
+    <div class="dim"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="17"/><path d="M29 17.5c-1.2-1.6-3-2.5-5-2.5-3 0-5 1.7-5 4s2 3.4 5 4.2 5 1.9 5 4.3-2.2 4-5 4c-2.3 0-4.3-1-5.4-2.7M24 11v4M24 33v4"/></svg><h3>Costo</h3><p>En la nube pagas por token. En local, el equipo y la luz.</p><em>los 10 mejores · inteligencia vs costo</em></div>
+    <div class="dim"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34a17 17 0 1 1 32 0"/><path d="M24 34l9-12"/><circle cx="24" cy="34" r="3"/></svg><h3>Velocidad</h3><p>Tokens por segundo. Gemma 4 26B en mi 3090: 125 tok/s.</p><em>los 10 mejores · lo medimos en vivo</em></div>
+    <div class="dim"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="14" width="32" height="20" rx="3"/><path d="M14 14v-5M20 14v-5M28 14v-5M34 14v-5M14 34v5M20 34v5M28 34v5M34 34v5"/></svg><h3>Memoria</h3><p>¿Cabe en tu GPU? Parámetros × bits + contexto.</p><em>qué hardware necesito</em></div>
+  </div>
+  <div class="foot note">Y además: la licencia, las capacidades (razonamiento, herramientas, visión) y, sobre todo, cómo rinde en <b>tu</b> tarea.</div>
+  <aside class="notes" data-min="1.5"><ul><li>Las cuatro dimensiones compiten entre sí: más inteligencia suele ser más memoria, más lento o más caro. No existe el mejor modelo, existe el mejor para tu caso.</li><li>Las vamos a ver una por una con datos reales.</li><li>Además: licencia (Apache/MIT vs licencias propias) y capacidades.</li></ul></aside>
+</section>
+
+<!-- B1b ─ Los 10 más inteligentes en tres dimensiones. Valores de artificialanalysis.ai (captura del speaker, 20 oct. 2026). Colores por empresa.
+     Abiertos (en negrita): MiMo-V2.6-Pro, DeepSeek V4.1 Flash, GLM-5.3. Línea: Gemma 4 26B medido en la RTX 3090 del speaker (125 tok/s). -->
+<section class="slide" data-era="jedi" data-steps="2">
+  <div class="where">¿Qué modelo elijo? · Abiertos contra cerrados</div>
+  <h2 class="title">Los más inteligentes, en tres dimensiones</h2>
+  <div class="glab tri-lab"><span class="lg"><i style="background:#D08A6E"></i>Anthropic</span> <span class="lg"><i style="background:#E6E8EC"></i>OpenAI</span> <span class="lg"><i style="background:#3DB46D"></i>Google</span> <span class="lg"><i style="background:#2D8CFF"></i>Meta</span> <span class="lg"><i style="background:#8B7BE6"></i>xAI</span> <span class="lg"><i style="background:#FF7A1A"></i>Xiaomi</span> <span class="lg"><i style="background:#5B6CFF"></i>DeepSeek</span> <span class="lg"><i style="background:#7FB3F5"></i>Z.ai</span> <span class="lg"><b>negrita</b> = abierto</span></div>
+  <div class="tri">
+    <div class="tri-p"><h3>Inteligencia</h3><small>Índice de Artificial Analysis · más alto es mejor</small><small class="rk2">&nbsp;</small><svg viewBox="0 0 440 432" aria-hidden="true"><line class="gl" x1="52" x2="442" y1="300" y2="300"/><rect x="52" y="58" width="30" height="242" rx="3" fill="#D08A6E"/><text class="bv" x="67.0" y="50" text-anchor="middle">58</text><text class="bx" transform="translate(72.0,314) rotate(-50)" text-anchor="end">Claude Opus 5.5</text><rect x="91" y="79" width="30" height="221" rx="3" fill="#D08A6E"/><text class="bv" x="106.0" y="71" text-anchor="middle">53</text><text class="bx" transform="translate(111.0,314) rotate(-50)" text-anchor="end">Claude Fable 5.1</text><rect x="130" y="79" width="30" height="221" rx="3" fill="#E6E8EC"/><text class="bv" x="145.0" y="71" text-anchor="middle">53</text><text class="bx" transform="translate(150.0,314) rotate(-50)" text-anchor="end">GPT-6 Astra</text><rect x="169" y="79" width="30" height="221" rx="3" fill="#3DB46D"/><text class="bv" x="184.0" y="71" text-anchor="middle">53</text><text class="bx" transform="translate(189.0,314) rotate(-50)" text-anchor="end">Gemini 4 Argon</text><rect x="208" y="83" width="30" height="217" rx="3" fill="#2D8CFF"/><text class="bv" x="223.0" y="75" text-anchor="middle">52</text><text class="bx" transform="translate(228.0,314) rotate(-50)" text-anchor="end">Muse Wonder</text><rect x="247" y="83" width="30" height="217" rx="3" fill="#E6E8EC"/><text class="bv" x="262.0" y="75" text-anchor="middle">52</text><text class="bx" transform="translate(267.0,314) rotate(-50)" text-anchor="end">GPT-6.1 Sol</text><rect x="286" y="108" width="30" height="192" rx="3" fill="#8B7BE6"/><text class="bv" x="301.0" y="100" text-anchor="middle">46</text><text class="bx" transform="translate(306.0,314) rotate(-50)" text-anchor="end">Grok 4.7</text><rect x="325" y="108" width="30" height="192" rx="3" fill="#FF7A1A"/><text class="bv" x="340.0" y="100" text-anchor="middle">46</text><text class="bx op" transform="translate(345.0,314) rotate(-50)" text-anchor="end">MiMo-V2.6-Pro</text><rect x="364" y="112" width="30" height="188" rx="3" fill="#5B6CFF"/><text class="bv" x="379.0" y="104" text-anchor="middle">45</text><text class="bx op" transform="translate(384.0,314) rotate(-50)" text-anchor="end">DeepSeek V4.1 Flash</text><rect x="403" y="112" width="30" height="188" rx="3" fill="#7FB3F5"/><text class="bv" x="418.0" y="104" text-anchor="middle">45</text><text class="bx op" transform="translate(423.0,314) rotate(-50)" text-anchor="end">GLM-5.3</text></svg></div>
+    <div class="tri-p frag" data-step="1"><h3>Velocidad</h3><small>Tokens por segundo en la nube · más alto es mejor</small><small class="rk2"><i class="ln" style="border-color:#ECF1F6"></i>en mi 3090: Gemma 4 26B 125 &nbsp;<i class="ln" style="border-color:#F5A13C"></i>Qwen3.8 27B 52</small><svg viewBox="0 0 440 432" aria-hidden="true"><line class="gl" x1="52" x2="442" y1="300" y2="300"/><rect x="52" y="60" width="30" height="240" rx="3" fill="#5B6CFF"/><text class="bv" x="67.0" y="52" text-anchor="middle">211</text><text class="bx op" transform="translate(72.0,314) rotate(-50)" text-anchor="end">DeepSeek V4.1 Flash</text><rect x="91" y="117" width="30" height="183" rx="3" fill="#2D8CFF"/><text class="bv" x="106.0" y="109" text-anchor="middle">161</text><text class="bx" transform="translate(111.0,314) rotate(-50)" text-anchor="end">Muse Wonder</text><rect x="130" y="192" width="30" height="108" rx="3" fill="#D08A6E"/><text class="bv" x="145.0" y="184" text-anchor="middle">95</text><text class="bx" transform="translate(150.0,314) rotate(-50)" text-anchor="end">Claude Opus 5.5</text><rect x="169" y="193" width="30" height="107" rx="3" fill="#8B7BE6"/><text class="bv" x="184.0" y="185" text-anchor="middle">94</text><text class="bx" transform="translate(189.0,314) rotate(-50)" text-anchor="end">Grok 4.7</text><rect x="208" y="200" width="30" height="100" rx="3" fill="#7FB3F5"/><text class="bv" x="223.0" y="192" text-anchor="middle">88</text><text class="bx op" transform="translate(228.0,314) rotate(-50)" text-anchor="end">GLM-5.3</text><rect x="247" y="205" width="30" height="95" rx="3" fill="#3DB46D"/><text class="bv" x="262.0" y="197" text-anchor="middle">84</text><text class="bx" transform="translate(267.0,314) rotate(-50)" text-anchor="end">Gemini 4 Argon</text><rect x="286" y="222" width="30" height="78" rx="3" fill="#D08A6E"/><text class="bv" x="301.0" y="214" text-anchor="middle">69</text><text class="bx" transform="translate(306.0,314) rotate(-50)" text-anchor="end">Claude Fable 5.1</text><rect x="325" y="225" width="30" height="75" rx="3" fill="#E6E8EC"/><text class="bv" x="340.0" y="217" text-anchor="middle">66</text><text class="bx" transform="translate(345.0,314) rotate(-50)" text-anchor="end">GPT-6 Astra</text><rect x="364" y="238" width="30" height="63" rx="3" fill="#E6E8EC"/><text class="bv" x="379.0" y="230" text-anchor="middle">55</text><text class="bx" transform="translate(384.0,314) rotate(-50)" text-anchor="end">GPT-6.1 Sol</text><rect x="403" y="243" width="30" height="57" rx="3" fill="#FF7A1A"/><text class="bv" x="418.0" y="235" text-anchor="middle">50</text><text class="bx op" transform="translate(423.0,314) rotate(-50)" text-anchor="end">MiMo-V2.6-Pro</text><line x1="52" x2="442" y1="158" y2="158" stroke="#ECF1F6" stroke-width="2" stroke-dasharray="6 5"/><line x1="52" x2="442" y1="241" y2="241" stroke="#F5A13C" stroke-width="2" stroke-dasharray="6 5"/></svg></div>
+    <div class="tri-p frag" data-step="2"><h3>Costo por tarea</h3><small>USD por tarea del índice · más bajo es mejor</small><small class="rk2">&nbsp;</small><svg viewBox="0 0 440 432" aria-hidden="true"><line class="gl" x1="52" x2="442" y1="300" y2="300"/><rect x="52" y="296" width="30" height="4" rx="3" fill="#FF7A1A"/><text class="bv" x="67.0" y="288" text-anchor="middle">$0,13</text><text class="bx op" transform="translate(72.0,314) rotate(-50)" text-anchor="end">MiMo-V2.6-Pro</text><rect x="91" y="292" width="30" height="8" rx="3" fill="#5B6CFF"/><text class="bv" x="106.0" y="284" text-anchor="middle">$0,26</text><text class="bx op" transform="translate(111.0,314) rotate(-50)" text-anchor="end">DeepSeek V4.1 Flash</text><rect x="130" y="278" width="30" height="22" rx="3" fill="#E6E8EC"/><text class="bv" x="145.0" y="270" text-anchor="middle">$0,72</text><text class="bx" transform="translate(150.0,314) rotate(-50)" text-anchor="end">GPT-6.1 Sol</text><rect x="169" y="238" width="30" height="62" rx="3" fill="#3DB46D"/><text class="bv" x="184.0" y="230" text-anchor="middle">$1,99</text><text class="bx" transform="translate(189.0,314) rotate(-50)" text-anchor="end">Gemini 4 Argon</text><rect x="208" y="237" width="30" height="63" rx="3" fill="#7FB3F5"/><text class="bv" x="223.0" y="229" text-anchor="middle">$2,01</text><text class="bx op" transform="translate(228.0,314) rotate(-50)" text-anchor="end">GLM-5.3</text><rect x="247" y="198" width="30" height="102" rx="3" fill="#E6E8EC"/><text class="bv" x="262.0" y="190" text-anchor="middle">$3,26</text><text class="bx" transform="translate(267.0,314) rotate(-50)" text-anchor="end">GPT-6 Astra</text><rect x="286" y="183" width="30" height="117" rx="3" fill="#8B7BE6"/><text class="bv" x="301.0" y="175" text-anchor="middle">$3,74</text><text class="bx" transform="translate(306.0,314) rotate(-50)" text-anchor="end">Grok 4.7</text><rect x="325" y="159" width="30" height="141" rx="3" fill="#2D8CFF"/><text class="bv" x="340.0" y="151" text-anchor="middle">$4,52</text><text class="bx" transform="translate(345.0,314) rotate(-50)" text-anchor="end">Muse Wonder</text><rect x="364" y="113" width="30" height="187" rx="3" fill="#D08A6E"/><text class="bv" x="379.0" y="105" text-anchor="middle">$5,98</text><text class="bx" transform="translate(384.0,314) rotate(-50)" text-anchor="end">Claude Opus 5.5</text><rect x="403" y="62" width="30" height="238" rx="3" fill="#D08A6E"/><text class="bv" x="418.0" y="54" text-anchor="middle">$7,63</text><text class="bx" transform="translate(423.0,314) rotate(-50)" text-anchor="end">Claude Fable 5.1</text></svg></div>
+  </div>
+  <div class="tri-k">
+    <p class="only" data-only="0">Inteligencia: los cerrados lideran (Claude Opus 5.5, <b>58</b>); el mejor abierto, MiMo-V2.6-Pro, está a ~12 puntos (<b>46</b>).</p>
+    <p class="only" data-only="1">Velocidad: el más rápido de la nube es abierto (DeepSeek V4.1 Flash, <b>211 tok/s</b>). En mi 3090: Gemma 4 26B <b>125 tok/s</b>, Qwen3.8 27B <b>52</b>.</p>
+    <p class="only" data-only="2">Costo: el mejor abierto es <b>46 veces más barato</b> por tarea que el más inteligente ($0,13 vs $5,98).</p>
+  </div>
+  <div class="foot note">Fuente: artificialanalysis.ai, 20 oct. 2026 (los 10 modelos con mayor índice de inteligencia).</div>
+  <aside class="notes" data-min="4"><ul>
+    <li>Los 10 modelos más inteligentes de hoy, abiertos (en negrita) y cerrados, en las tres dimensiones de Artificial Analysis.</li>
+    <li><b>Índice de inteligencia (0–100):</b> un examen. Un tercero independiente corre la misma batería de pruebas automáticas a todos (razonamiento, conocimiento, matemáticas, programación, tareas de agente) y promedia. Mide si <b>acierta</b>.</li>
+    <li>Inteligencia: Claude Opus 5.5 lidera (58); el mejor abierto, MiMo-V2.6-Pro, saca 46.</li>
+    <li>Velocidad: DeepSeek V4.1 Flash (abierto) es el más rápido en la nube, 211 tok/s.</li>
+    <li>Costo por tarea: lo que cuesta en la API resolver una tarea del índice (tokens de entrada + salida × precio). MiMo $0,13 vs Claude Opus 5.5 $5,98 (~46 veces).</li>
+    <li>Paso 1: en local (medido): Gemma 4 26B 125 tok/s en Ollama y 139 en LM Studio; Qwen3.8 27B 52 tok/s (LM Studio). Qwen es más inteligente, pero ~2,7 veces más lento: es denso (27B activos) vs MoE (4B activos).</li>
+  </ul></aside>
+</section>
+
+<!-- B2 ─ El top 10 para mi hardware: modelos abiertos de 4B a 40B. Artificial Analysis Intelligence Index, página "Small Models (4B-40B)",
+     capturada por el speaker el 20 oct. 2026. Colores por empresa. -->
+<section class="slide" data-era="jedi">
+  <div class="where">¿Qué modelo elijo? · Lo que corre en mi hardware</div>
+  <h2 class="title">El top 10 para mi hardware</h2>
+  <div class="aachart">
+    <div class="glab">Índice de inteligencia (Artificial Analysis) · abiertos de 4B a 40B · <span class="lg"><i style="background:#F5A13C"></i>Alibaba</span> <span class="lg"><i style="background:#3F51C9"></i>MBZUAI</span> <span class="lg"><i style="background:#B57BE0"></i>G9</span> <span class="lg"><i style="background:#2D8CFF"></i>Meta</span> <span class="lg"><i style="background:#3DB46D"></i>Google</span></div>
+    <svg viewBox="0 0 1040 560" aria-hidden="true"><line class="gl" x1="60" x2="910" y1="420" y2="420"/><text class="gt" x="52" y="425" text-anchor="end">0</text><line class="gl" x1="60" x2="910" y1="293" y2="293"/><text class="gt" x="52" y="298" text-anchor="end">20</text><line class="gl" x1="60" x2="910" y1="167" y2="167"/><text class="gt" x="52" y="172" text-anchor="end">40</text><line class="gl" x1="60" x2="910" y1="40" y2="40"/><text class="gt" x="52" y="45" text-anchor="end">60</text><line x1="60" x2="910" y1="53" y2="53" stroke="#D08A6E" stroke-width="2" stroke-dasharray="7 6"/><text class="rl" x="906" y="43" text-anchor="end" fill="#D08A6E">Claude Opus 5.5 (el mejor de todos) · 58</text><line x1="60" x2="910" y1="129" y2="129" stroke="#FF7A1A" stroke-width="2" stroke-dasharray="7 6"/><text class="rl" x="906" y="119" text-anchor="end" fill="#FF7A1A">MiMo-V2.6-Pro (el mejor abierto, 1.020B: no cabe) · 46</text><rect x="70" y="205" width="62" height="215" rx="3" fill="#F5A13C"/><text class="bv" x="101.0" y="195" text-anchor="middle">34</text><text class="bx" style="font-size:16px" transform="translate(107.0,436) rotate(-40)" text-anchor="end">Qwen3.8 27B</text><text class="bx2" transform="translate(107.0,454) rotate(-40)" text-anchor="end">xhigh</text><rect x="154" y="243" width="62" height="177" rx="3" fill="#F5A13C"/><text class="bv" x="185.0" y="233" text-anchor="middle">28</text><text class="bx" style="font-size:16px" transform="translate(191.0,436) rotate(-40)" text-anchor="end">Qwen3.8 27B</text><text class="bx2" transform="translate(191.0,454) rotate(-40)" text-anchor="end">medium</text><rect x="238" y="255" width="62" height="165" rx="3" fill="#F5A13C"/><text class="bv" x="269.0" y="245" text-anchor="middle">26</text><text class="bx" style="font-size:16px" transform="translate(275.0,436) rotate(-40)" text-anchor="end">Qwen3.8 27B</text><text class="bx2" transform="translate(275.0,454) rotate(-40)" text-anchor="end">low</text><rect x="322" y="262" width="62" height="158" rx="3" fill="#3F51C9"/><text class="bv" x="353.0" y="252" text-anchor="middle">25</text><text class="bx" style="font-size:16px" transform="translate(359.0,436) rotate(-40)" text-anchor="end">K2 Horizon MoVA</text><text class="bx2" transform="translate(359.0,454) rotate(-40)" text-anchor="end">36B A4B</text><rect x="406" y="281" width="62" height="139" rx="3" fill="#B57BE0"/><text class="bv" x="437.0" y="271" text-anchor="middle">22</text><text class="bx" style="font-size:16px" transform="translate(443.0,436) rotate(-40)" text-anchor="end">G9v3-39A5B</text><rect x="490" y="287" width="62" height="133" rx="3" fill="#3F51C9"/><text class="bv" x="521.0" y="277" text-anchor="middle">21</text><text class="bx" style="font-size:16px" transform="translate(527.0,436) rotate(-40)" text-anchor="end">K2 Horizon</text><text class="bx2" transform="translate(527.0,454) rotate(-40)" text-anchor="end">7B</text><rect x="574" y="293" width="62" height="127" rx="3" fill="#F5A13C"/><text class="bv" x="605.0" y="283" text-anchor="middle">20</text><text class="bx" style="font-size:16px" transform="translate(611.0,436) rotate(-40)" text-anchor="end">Qwen3.8 27B</text><text class="bx2" transform="translate(611.0,454) rotate(-40)" text-anchor="end">sin razonar</text><rect x="658" y="306" width="62" height="114" rx="3" fill="#F5A13C"/><text class="bv" x="689.0" y="296" text-anchor="middle">18</text><text class="bx" style="font-size:16px" transform="translate(695.0,436) rotate(-40)" text-anchor="end">Qwen3.6 35B A3B</text><rect x="742" y="312" width="62" height="108" rx="3" fill="#2D8CFF"/><text class="bv" x="773.0" y="302" text-anchor="middle">17</text><text class="bx" style="font-size:16px" transform="translate(779.0,436) rotate(-40)" text-anchor="end">Muse Glimmer</text><text class="bx2" transform="translate(779.0,454) rotate(-40)" text-anchor="end">28B</text><rect x="826" y="312" width="62" height="108" rx="3" fill="#3DB46D"/><text class="bv" x="857.0" y="302" text-anchor="middle">17</text><text class="bx" style="font-size:16px" transform="translate(863.0,436) rotate(-40)" text-anchor="end">Gemma 4 26B</text><text class="bx2" transform="translate(863.0,454) rotate(-40)" text-anchor="end">A4B</text></svg>
+  </div>
+  <div class="aaside">
+    <div><strong>34</strong><span>Qwen3.8 27B, el mejor de su tamaño</span></div>
+    <div><strong>~58</strong><span>Claude Opus 5.5, el mejor de todos</span></div>
+    <div><strong class="gem">139 tok/s</strong><span>Gemma 4 26B en mi 3090: no es el más inteligente (17), pero es el más rápido de los que probé (Qwen3.8 27B: 52 tok/s)</span></div>
+  </div>
+  <div class="foot note">Fuente: artificialanalysis.ai, “Comparison of Small Open Source Models”, 20 oct. 2026.</div>
+  <aside class="notes" data-min="3"><ul>
+    <li>Los 10 mejores modelos abiertos de 4B a 40B: todos caben en una GPU de 24 GB como la mía.</li>
+    <li>Qwen3.8 27B lidera (34). Gemma 4 26B-A4B saca 17: la mitad, pero en mi 3090 va a 139 tok/s contra 52 de Qwen (medido). Mitad de inteligencia, 2,7 veces la velocidad.</li>
+    <li>El mismo Qwen sube de 20 a 34 al razonar más: el modo de razonamiento importa tanto como el modelo.</li>
+    <li>Referencias: el mejor abierto de cualquier tamaño (MiMo, 46) y el mejor cerrado (Claude Opus 5.5, 58).</li>
+    <li><b>Otra forma de medir, el Elo de LMArena:</b> votación humana a ciegas entre dos respuestas, como el ranking del ajedrez. 100 puntos de diferencia ≈ el de arriba gana 64 % de los duelos. Mide qué <b>prefiere la gente</b>, no si acierta.</li>
+    <li>Elo (15 oct. 2026): Gemini 4 Argon 1532 (#1), Claude Opus 5.5 1516, GPT-6.1 Sol 1448, <b>Qwen3.8 27B 1441</b>, <b>Gemma 4 26B 1434</b>. Los que corren en mi 3090 están a la altura de GPT-6.1 Sol.</li>
+  </ul></aside>
+</section>
+
+<!-- B3 ─ Inteligencia contra costo. Izquierda: los 10 más inteligentes, valores de las barras "Intelligence" y "Cost per Task" (artificialanalysis.ai, 20 oct. 2026), color por empresa.
+     Derecha: costo por 1M tokens generados. API: precio de salida (fichas de Artificial Analysis, 20 oct. 2026). Luz: medición propia en LM Studio (benchmarks/velocidad_lmstudio.py, 20 oct. 2026):
+     Gemma 4 26B 138,8 tok/s con 265 W de GPU; Qwen3.8 27B 51,7 tok/s con 316 W; + ~100 W del resto del PC (estimado); 245 CLP/kWh (Enel Santiago, estimado); 950 CLP/USD (supuesto). -->
+<section class="slide" data-era="jedi" data-steps="1">
+  <div class="where">¿Qué modelo elijo? · Costo</div>
+  <h2 class="title">Inteligencia contra costo</h2>
+  <div class="glab cost-lab"><span class="lg"><i style="background:#D08A6E"></i>Anthropic</span><span class="lg"><i style="background:#E6E8EC"></i>OpenAI</span><span class="lg"><i style="background:#3DB46D"></i>Google</span><span class="lg"><i style="background:#2D8CFF"></i>Meta</span><span class="lg"><i style="background:#8B7BE6"></i>xAI</span><span class="lg"><i style="background:#FF7A1A"></i>Xiaomi</span><span class="lg"><i style="background:#5B6CFF"></i>DeepSeek</span><span class="lg"><i style="background:#7FB3F5"></i>Z.ai</span><span class="lg"><i style="background:#F5A13C"></i>Alibaba</span><span class="lg">▲ en mi 3090 (luz, estimado)</span></div>
+  <div class="scat2">
+    <div class="glab">Índice de inteligencia vs costo por tarea (USD, escala log.) · ● nube ▲ mi 3090</div>
+    <svg viewBox="0 0 840 510" aria-hidden="true">
+      <rect class="quad" x="60" y="20" width="443" height="158"/>
+      <text class="qt" x="72" y="44">más inteligente y más barato</text>
+      <line class="gl" x1="159" x2="159" y1="20" y2="470"/><text class="gt" x="159" y="496" text-anchor="middle">$0,1</text><line class="gl" x1="317" x2="317" y1="20" y2="470"/><text class="gt" x="317" y="496" text-anchor="middle">$0,3</text><line class="gl" x1="490" x2="490" y1="20" y2="470"/><text class="gt" x="490" y="496" text-anchor="middle">$1</text><line class="gl" x1="647" x2="647" y1="20" y2="470"/><text class="gt" x="647" y="496" text-anchor="middle">$3</text><line class="gl" x1="820" x2="820" y1="20" y2="470"/><text class="gt" x="820" y="496" text-anchor="middle">$10</text><line class="gl" x1="60" x2="820" y1="470" y2="470"/><text class="gt" x="48" y="475" text-anchor="end">10</text><line class="gl" x1="60" x2="820" y1="380" y2="380"/><text class="gt" x="48" y="385" text-anchor="end">20</text><line class="gl" x1="60" x2="820" y1="290" y2="290"/><text class="gt" x="48" y="295" text-anchor="end">30</text><line class="gl" x1="60" x2="820" y1="200" y2="200"/><text class="gt" x="48" y="205" text-anchor="end">40</text><line class="gl" x1="60" x2="820" y1="110" y2="110"/><text class="gt" x="48" y="115" text-anchor="end">50</text><line class="gl" x1="60" x2="820" y1="20" y2="20"/><text class="gt" x="48" y="25" text-anchor="end">60</text><circle cx="746" cy="38" r="9" fill="#D08A6E" stroke="#060911" stroke-width="2"/><text class="pl" x="732" y="44" text-anchor="end">Claude Opus 5.5</text><circle cx="781" cy="83" r="9" fill="#D08A6E" stroke="#060911" stroke-width="2"/><text class="pl" x="781" y="67" text-anchor="middle">Claude Fable 5.1</text><circle cx="659" cy="83" r="9" fill="#E6E8EC" stroke="#060911" stroke-width="2"/><text class="pl" x="659" y="67" text-anchor="middle">GPT-6 Astra</text><circle cx="588" cy="83" r="9" fill="#3DB46D" stroke="#060911" stroke-width="2"/><text class="pl" x="574" y="89" text-anchor="end">Gemini 4 Argon</text><circle cx="706" cy="92" r="9" fill="#2D8CFF" stroke="#060911" stroke-width="2"/><text class="pl" x="706" y="122" text-anchor="middle">Muse Wonder</text><circle cx="443" cy="92" r="9" fill="#E6E8EC" stroke="#060911" stroke-width="2"/><text class="pl" x="429" y="98" text-anchor="end">GPT-6.1 Sol</text><circle cx="679" cy="146" r="9" fill="#8B7BE6" stroke="#060911" stroke-width="2"/><text class="pl" x="679" y="176" text-anchor="middle">Grok 4.7</text><circle cx="197" cy="146" r="9" fill="#FF7A1A" stroke="#060911" stroke-width="2"/><text class="pl" x="183" y="152" text-anchor="end">MiMo-V2.6-Pro</text><circle cx="296" cy="155" r="9" fill="#5B6CFF" stroke="#060911" stroke-width="2"/><text class="pl" x="296" y="185" text-anchor="middle">DeepSeek V4.1 Flash</text><circle cx="590" cy="155" r="9" fill="#7FB3F5" stroke="#060911" stroke-width="2"/><text class="pl" x="590" y="185" text-anchor="middle">GLM-5.3</text><circle cx="490" cy="254" r="9" fill="#F5A13C" stroke="#060911" stroke-width="2"/><text class="pl" x="504" y="260" text-anchor="start">Qwen3.8 27B · nube</text><path d="M253 241 L265 263 L241 263 Z" fill="#F5A13C" stroke="#ECF1F6" stroke-width="2"/><text class="pl" x="267" y="260" text-anchor="start" font-weight="600">Qwen3.8 27B · mi 3090</text><path d="M93 394 L105 416 L81 416 Z" fill="#3DB46D" stroke="#ECF1F6" stroke-width="2"/><text class="pl" x="107" y="413" text-anchor="start" font-weight="600">Gemma 4 26B · mi 3090</text>
+    </svg>
+  </div>
+  <div class="mtok frag" data-step="1">
+    <div class="glab">Costo por millón de tokens generados (USD, escala log.)</div>
+    <svg viewBox="0 0 470 460" aria-hidden="true"><text class="bl" x="0" y="30">Claude Opus 5.5 · API</text><rect x="0" y="40" width="307" height="24" rx="3" fill="#D08A6E"/><text class="bv" x="317" y="58">$20,00</text><text class="bl" x="0" y="104">GPT-5.6 Terra · API</text><rect x="0" y="114" width="277" height="24" rx="3" fill="#E6E8EC"/><text class="bv" x="287" y="132">$12,00</text><text class="bl" x="0" y="178">Gemini 4 Argon · API</text><rect x="0" y="188" width="266" height="24" rx="3" fill="#3DB46D"/><text class="bv" x="276" y="206">$10,00</text><text class="bl" x="0" y="252">Qwen3.8 27B · API</text><rect x="0" y="262" width="197" height="24" rx="3" fill="#F5A13C"/><text class="bv" x="207" y="280">$3,00</text><text class="bl" x="0" y="326">Qwen3.8 27B · luz en mi 3090</text><rect x="0" y="336" width="101" height="24" rx="3" fill="#F5A13C" stroke="#ECF1F6" stroke-width="2" stroke-dasharray="5 4"/><text class="bv" x="111" y="354">$0,58</text><text class="bl" x="0" y="400">Gemma 4 26B · luz en mi 3090</text><rect x="0" y="410" width="37" height="24" rx="3" fill="#3DB46D" stroke="#ECF1F6" stroke-width="2" stroke-dasharray="5 4"/><text class="bv" x="47" y="428">$0,19</text></svg>
+  </div>
+  <div class="foot note">Fuentes: artificialanalysis.ai, 20 oct. 2026 (10 modelos con mayor índice + Qwen3.8 27B). ▲ y luz: consumo medido en mi PC (GPU + ~100 W del resto, estimado) a ~$245/kWh, 1 USD ≈ 950 CLP; no incluye el equipo.</div>
+  <aside class="notes" data-min="3.5"><ul>
+    <li>Izquierda: cuánto cuesta en la API resolver una tarea del índice (tokens de entrada + salida × precio), contra la inteligencia. Arriba a la izquierda = inteligente y barato.</li>
+    <li>Los mismos 10 más inteligentes de la diapositiva anterior. Arriba a la izquierda: MiMo y DeepSeek V4.1 Flash (abiertos) junto a GPT-6.1 Sol. Claude Opus 5.5 es el más inteligente, pero ~46 veces más caro por tarea que MiMo.</li>
+    <li>Paso 1, derecha: ¿y en mi PC? Medí el consumo: Gemma 4 26B gasta ~$0,10 de luz por millón de tokens; Qwen3.8 27B ~$0,59 (es más lento: 52 vs 139 tok/s).</li>
+    <li>Contra $20 por millón de Claude Opus 5.5 o $3 de Qwen3.8 por API. La diferencia la pagas en el equipo (~$1 M la 3090 usada).</li>
+    <li>Triángulos: los mismos modelos corriendo en mi 3090. Costo por tarea estimado = tokens por tarea de Qwen3.8 en la nube (~333 mil) × costo de luz por token. Gemma se estima con la misma cantidad de tokens (no medido).</li>
+    <li>Supuestos: ~100 W del resto del PC (no medido), tarifa ~$245/kWh (Enel Santiago, 2.º semestre 2026, estimada), 1 USD ≈ 950 CLP.</li>
+  </ul></aside>
 </section>
 
 <!-- 12 ─ Hardware -->
 <section class="slide" data-era="jedi">
-  <div class="where">Práctica Jedi: ¿qué hardware necesito?</div>
+  <div class="where">¿Qué modelo elijo? · Memoria</div>
   <h2 class="title">Tu memoria decide el tamaño del modelo</h2>
   <table class="hw">
-    <thead><tr><th>Equipo</th><th>Memoria para el modelo</th><th>Qué corre bien</th><th>Costo aprox.</th></tr></thead>
+    <thead><tr><th>Equipo</th><th>Memoria para el modelo</th><th>Qué corre bien</th><th>Costo aprox. en Chile</th></tr></thead>
     <tbody>
-      <tr><td>Notebook sin GPU dedicada</td><td>RAM del sistema</td><td>Modelos pequeños, lento</td><td class="tbd">por completar</td></tr>
-      <tr><td>GPU de 8 GB</td><td>8 GB</td><td>7 a 8B en Q4</td><td class="tbd">por completar</td></tr>
-      <tr><td>GPU de 12 GB</td><td>12 GB</td><td>12 a 14B en Q4</td><td class="tbd">por completar</td></tr>
-      <tr class="me"><td>RTX 3090</td><td>24 GB</td><td>14 a 32B en Q4</td><td class="tbd">por completar</td></tr>
-      <tr><td>RTX 5090</td><td>32 GB</td><td>27B en Q6 u Q8</td><td class="tbd">por completar</td></tr>
-      <tr><td>Mac con memoria unificada</td><td>64 GB compartidos</td><td>70B o más, más lento</td><td class="tbd">por completar</td></tr>
+      <tr><td>Notebook sin GPU dedicada</td><td>RAM del sistema (16–32 GB)</td><td>Modelos pequeños o MoE, lento</td><td>$500 mil – $1,1 M</td></tr>
+      <tr><td>GPU de 8 GB <small class="hwm">RTX 5060</small></td><td>8 GB</td><td>7 a 8B en Q4</td><td>~$500 mil</td></tr>
+      <tr><td>GPU de 12 a 16 GB <small class="hwm">RTX 3060 · 5060 Ti</small></td><td>12–16 GB</td><td>12 a 14B en Q4</td><td>$420 – 900 mil</td></tr>
+      <tr class="me"><td>RTX 3090 <small class="hwm">usada · mi equipo</small></td><td>24 GB</td><td>14 a 32B en Q4</td><td>~$0,8 – 1,2 M</td></tr>
+      <tr><td>RTX 5090</td><td>32 GB</td><td>27B en Q6 u Q8</td><td>desde ~$3,2 M</td></tr>
+      <tr><td>Mac con memoria unificada <small class="hwm">MacBook Pro M5 Pro</small></td><td>64 GB compartidos</td><td>70B o más, más lento</td><td>~$4,4 M</td></tr>
     </tbody>
   </table>
-  <div class="foot note">GPU dedicada: más velocidad, techo fijo de memoria. Mac: más techo, menos velocidad.</div>
-  <aside class="notes" data-min="4"><ul><li>(Provisorio.)</li></ul></aside>
+  <div class="foot note">Precios de la tarjeta (no el PC completo), IVA incluido, 20 oct. 2026: SoloTodo, PC Factory, Apple/retail Chile. RTX 3090 usada: Mercado Libre, referencial. GPU dedicada: más velocidad, techo fijo de memoria. Mac: más techo, menos velocidad.</div>
+  <aside class="notes" data-min="1.5"><ul><li>Filtro 2: ¿cabe en mi equipo?</li><li>Regla: el modelo cuantizado + el contexto tienen que caber en la VRAM.</li><li>Mac con memoria unificada: más techo, menos velocidad.</li></ul></aside>
 </section>
 
-<!-- 13 ─ Cuantización -->
-<section class="slide" data-era="jedi">
-  <div class="where">Práctica Jedi: ¿qué hardware necesito?</div>
-  <h2 class="title">Cuantizar: comprimir los pesos</h2>
-  <p class="lead">Como pasar una foto de RAW a JPEG: pesa mucho menos y casi no se nota.</p>
-  <div class="qbars">
-    <div class="qrow"><div class="lab">FP16<small>original</small></div><i style="width:100%" data-v="~14 GB"></i></div>
-    <div class="qrow"><div class="lab">Q8</div><i style="width:54%" data-v="~7,5 GB"></i></div>
-    <div class="qrow hot"><div class="lab">Q4_K_M<small>el más usado</small></div><i style="width:32%" data-v="~4,5 GB"></i></div>
-  </div>
-  <div class="foot note">El mismo modelo de 7 mil millones de parámetros en tres niveles de cuantización.</div>
-  <aside class="notes" data-min="4"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 15 ─ LM Studio: elegir modelo -->
-<section class="slide" data-era="jedi" data-steps="1">
-  <div class="where">Práctica Jedi: LM Studio</div>
-  <h2 class="title">LM Studio: el catálogo te dice qué cabe</h2>
-  <div class="mlist">
-    <div class="mhead"><span>Proveedor</span><span>Modelo</span><span>Cuantización</span><span>Tamaño</span><span>¿Cabe en mi GPU?</span></div>
-    <div class="mrow"><span>Meta</span><span>Llama 3.2 3B Instruct</span><span class="q">Q4_K_M</span><span>~2 GB</span><span class="badge ok">Completo en GPU</span></div>
-    <div class="mrow"><span>Alibaba</span><span>Qwen3.6 27B</span><span class="q">Q4_K_M</span><span>16,8 GB</span><span class="badge ok">Completo en GPU</span></div>
-    <div class="mrow"><span>Meta</span><span>Llama 3.3 70B Instruct</span><span class="q">Q4_K_M</span><span>~40 GB</span><span class="badge warn">Parte en CPU</span></div>
-  </div>
-  <div class="anno frag" data-step="1">
-    <div><b>Proveedor y modelo</b>Quién lo entrenó y cuántos parámetros tiene.</div>
-    <div><b>Cuantización</b>Cuánto se comprimió. Menos bits, menos memoria.</div>
-    <div><b>Offload a CPU</b>Si no cabe en la GPU, una parte corre en CPU. Funciona, pero lento.</div>
-  </div>
-  <div class="foot note">Esquema de lo que muestra LM Studio. En la demo lo vemos en vivo.</div>
-  <aside class="notes" data-min="10"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 16 ─ Benchmarks -->
-<section class="slide" data-era="jedi">
-  <div class="where">Práctica Jedi: ¿qué modelo elijo?</div>
-  <h2 class="title">Ningún ranking te dice qué usar</h2>
-  <p class="lead">Solo te dice a quién mirar.</p>
-  <div class="fam">
-    <div>
-      <svg viewBox="0 0 84 84" fill="none" stroke="#4AC6B3" stroke-width="2.5" stroke-linejoin="round" aria-hidden="true"><path d="M8 14h30v20H20l-8 8v-8H8z"/><path d="M76 34H46v20h18l8 8v-8h4z"/><path d="M36 72l6-8 6 8" stroke-linecap="round"/></svg>
-      <h3>Votación humana</h3>
-      <p>LMArena: la gente compara dos respuestas a ciegas y vota la que prefiere.</p>
-      <div class="warn">Mide lo que gusta, no lo que es correcto.</div>
-    </div>
-    <div>
-      <svg viewBox="0 0 84 84" fill="none" stroke="#4AC6B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="14" y="8" width="56" height="68" rx="4"/><path d="M24 26l5 5 9-9M24 46l5 5 9-9M46 28h14M46 48h14M24 64h36"/></svg>
-      <h3>Exámenes automáticos</h3>
-      <p>Hugging Face: preguntas estandarizadas de matemáticas, ciencia y lógica.</p>
-      <div class="warn">Se saturan: la primera versión se retiró en 2024.</div>
-    </div>
-    <div>
-      <svg viewBox="0 0 84 84" fill="none" stroke="#4AC6B3" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="14" width="72" height="56" rx="6"/><path d="M20 34l10 8-10 8M38 52h20"/></svg>
-      <h3>Tareas reales</h3>
-      <p>SWE-bench y similares: ¿resuelve el trabajo o no?</p>
-      <div class="warn">Las más útiles para una empresa.</div>
-    </div>
-  </div>
-  <aside class="notes" data-min="3"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 17 ─ Panorama de hoy -->
-<section class="slide" data-era="jedi">
-  <div class="where">Práctica Jedi: ¿qué modelo elijo?</div>
-  <h2 class="title">Los abiertos ya casi alcanzan a los cerrados</h2>
-  <div class="chart">
-    <div class="crow"><span>GLM-5.3</span><i style="width:66%" data-v="44"></i></div>
-    <div class="crow"><span>Kimi K3</span><i style="width:66%" data-v="44"></i></div>
-    <div class="crow"><span>GLM-5.3-Flash</span><i style="width:63%" data-v="42"></i></div>
-    <div class="crow"><span>Qwen3.8</span><i style="width:60%" data-v="40"></i></div>
-    <div class="crow"><span>DeepSeek V4 Pro</span><i style="width:54%" data-v="36"></i></div>
-    <div class="crow closed"><span>Mejor cerrado</span><i style="width:80%" data-v="53"></i></div>
-  </div>
-  <div class="gap-note"><strong>9 pts</strong><span>de distancia entre el mejor abierto y el mejor cerrado</span></div>
-  <div class="foot note">Artificial Analysis Intelligence Index, 7 de septiembre de 2026. Una semana después ya había cambiado: importa el criterio, no el ranking. Y revisa la licencia: Llama 4, por ejemplo, limita el uso comercial sobre 700 millones de usuarios al mes.</div>
-  <aside class="notes" data-min="2"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 18 ─ Cinco filtros -->
-<section class="slide" data-era="jedi">
-  <div class="where">Práctica Jedi: ¿qué modelo elijo?</div>
-  <h2 class="title">Cinco filtros para elegir</h2>
-  <div class="steps5">
-    <div class="st"><div class="n">1</div><span>¿La licencia me sirve?</span></div>
-    <div class="st"><div class="n">2</div><span>¿Cabe en mi equipo?</span></div>
-    <div class="st"><div class="n">3</div><span>¿Rinde en español?</span></div>
-    <div class="st"><div class="n">4</div><span>¿Rinde en mi tipo de tarea?</span></div>
-    <div class="st hot"><div class="n">5</div><span>Pruébalo con 20 a 30 casos reales</span></div>
-  </div>
-  <div class="foot"><p class="lead" style="margin:0">El quinto es el que decide. Nadie más puede evaluar tu caso de uso.</p></div>
-  <aside class="notes" data-min="3"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 19 ─ Caso de uso: presentación -->
-<section class="slide" data-era="jedi" data-steps="1">
-  <div class="where">Práctica Jedi: caso de uso</div>
-  <h2 class="title">Caso de uso: el nuevo Convenio Marco de software</h2>
-  <div class="case">
-    <div class="doc">
-      <div class="doc-top">Dirección ChileCompra</div>
-      <div class="doc-kind">Bases de licitación</div>
-      <div class="doc-name">Convenio Marco de Servicios de Desarrollo y Mantención de Software, Servicios Profesionales TI y Cloud Computing</div>
-      <div class="doc-id">ID 2239-2-LR26</div>
-      <div class="doc-lines"><i></i><i></i><i style="width:70%"></i><i></i><i style="width:55%"></i></div>
-      <div class="doc-pages">~100 páginas</div>
-    </div>
-    <div>
-      <div class="facts">
-        <div><strong>3</strong><span>categorías de servicios</span></div>
-        <div><strong>18</strong><span>tipos de servicios, de software a IA y cloud</span></div>
-      </div>
-      <div class="asks frag" data-step="1">
-        <p class="note" style="margin:0 0 14px">Le vamos a preguntar, sin que el PDF salga del equipo:</p>
-        <div class="ask">¿Qué categorías y servicios incluye?</div>
-        <div class="ask">¿Cuáles son los criterios de evaluación?</div>
-        <div class="ask">¿Qué garantías se exigen a los proveedores?</div>
-      </div>
-    </div>
-  </div>
-  <div class="foot note">Fuente: Dirección ChileCompra, julio y agosto de 2026. El plazo de ofertas se extendió al 25 de septiembre por modificaciones a las bases.</div>
-  <aside class="notes" data-min="2"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 20 ─ Camino 1: RAG de texto -->
-<section class="slide" data-era="jedi" data-steps="1">
-  <div class="where">Práctica Jedi: caso de uso</div>
-  <h2 class="title">Camino 1: el PDF se convierte en texto</h2>
-  <div class="pipe">
-    <div class="pn"><span class="dotn">PDF</span><b>Documento</b><small>Las bases, 100 páginas</small></div>
-    <div class="pa"></div>
-    <div class="pn"><span class="dotn">MD</span><b>Texto</b><small>Se extrae a texto o Markdown</small></div>
-    <div class="pa"></div>
-    <div class="pn"><span class="dotn">✂</span><b>Fragmentos</b><small>Se corta en trozos</small></div>
-    <div class="pa"></div>
-    <div class="pn"><span class="dotn">⌗</span><b>Índice</b><small>Cada trozo se vuelve un vector</small></div>
-    <div class="pa"></div>
-    <div class="pn hot"><span class="dotn">?</span><b>Búsqueda</b><small>Los trozos más parecidos a tu pregunta</small></div>
-  </div>
-  <div class="ways frag" data-step="1">
-    <p class="note" style="margin:0 0 20px">¿Cómo le llegan esos fragmentos al modelo?</p>
-    <div class="ways-row">
-      <div><h3>Inyección en el contexto</h3><p>Se pegan en el mensaje, junto a tu pregunta. LM Studio pega el documento completo si cabe; si no, solo los fragmentos relevantes.</p></div>
-      <div><h3>Uso de herramientas</h3><p>El modelo decide cuándo buscar y llama a una función de búsqueda, como un agente. Requiere un modelo que sepa usar herramientas.</p></div>
-    </div>
-  </div>
-  <aside class="notes" data-min="8"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 21 ─ Camino 2: multimodal -->
-<section class="slide" data-era="jedi" data-steps="2">
-  <div class="where">Práctica Jedi: caso de uso</div>
-  <h2 class="title">Camino 2: modelos que leen imágenes</h2>
-  <p class="lead">Tablas, firmas y páginas escaneadas se pierden al pasar a texto. Un modelo multimodal las lee directo como imagen.</p>
-  <div class="vision">
-    <div class="vstep">
-      <div class="page"><i></i><i></i><i style="width:60%"></i><div class="tbl"></div></div>
-      <b>Imagen de la página</b>
-    </div>
-    <div class="pa"></div>
-    <div class="vstep frag" data-step="1">
-      <div class="patches"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      <b>Se corta en parches</b>
-    </div>
-    <div class="pa frag" data-step="1"></div>
-    <div class="vstep frag" data-step="1">
-      <div class="enc">Encoder<br>de visión</div>
-      <b>Cada parche, un vector</b>
-    </div>
-    <div class="pa frag" data-step="1"></div>
-    <div class="vstep frag" data-step="1">
-      <div class="toks"><div class="trow"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="trow txt"><span>¿Cuál</span><span>es</span><span>el</span><span>puntaje?</span></div></div>
-      <b>Tokens de imagen junto a los de texto</b>
-    </div>
-  </div>
-  <div class="foot frag" data-step="1"><p class="note" style="margin:0">Ejemplo, LLaVA-1.5: una imagen de 336×336 píxeles se divide en 24×24 parches, es decir, 576 tokens visuales que el LLM lee igual que palabras.</p></div>
-  <div class="when frag" data-step="2">
-    <div><b>Texto y RAG</b>documentos largos con texto digital</div>
-    <div><b>Imagen</b>tablas, gráficos y escaneos; cada imagen ocupa cientos de tokens</div>
-  </div>
-  <aside class="notes" data-min="6"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 22 ─ Tabla en vivo -->
-<section class="slide" data-era="jedi">
-  <div class="where">Práctica Jedi: caso de uso</div>
-  <h2 class="title">Misma pregunta, tres modelos</h2>
-  <p class="lead">“¿Cuáles son los criterios de evaluación de las ofertas?”</p>
-  <table class="live">
-    <thead><tr><th>Modelo</th><th>Tamaño</th><th>¿Dónde corre?</th><th>Velocidad</th><th>¿Respuesta correcta?</th></tr></thead>
-    <tbody>
-      <tr><td>Llama 3.2 3B<small>Q4_K_M</small></td><td>~2 GB</td><td>Completo en GPU</td><td><span class="blank"></span> tokens/s</td><td><span class="blank"></span></td></tr>
-      <tr><td>Qwen3.6 27B<small>Q4_K_M</small></td><td>16,8 GB</td><td>Completo en GPU</td><td><span class="blank"></span> tokens/s</td><td><span class="blank"></span></td></tr>
-      <tr><td>Llama 3.3 70B<small>Q4_K_M</small></td><td>~40 GB</td><td>Parte en CPU</td><td><span class="blank"></span> tokens/s</td><td><span class="blank"></span></td></tr>
-    </tbody>
-  </table>
-  <div class="foot note">Los números los anotamos durante la demo, en una RTX 3090 de 24 GB.</div>
-  <aside class="notes" data-min="5"><ul><li>(Provisorio.)</li></ul></aside>
-</section>
-
-<!-- 23 ─ Cierre -->
+<!-- P2-F ─ Cierre -->
 <section class="slide s-end" data-era="jedi">
   <h2>Gracias</h2>
-  <div class="may">Que la Fuerza, y tu GPU, te acompañen.</div>
-  <div class="speaker" style="margin-top:60px;max-width:700px"><strong>Bastian Carvajal</strong><span>Fundador de Afentu, afentu.com</span></div>
-  <p class="note" style="margin-top:40px;max-width:720px">Próximo taller: fine-tuning, o cómo cambiar el comportamiento de un modelo ajustando sus pesos.</p>
+  <div class="may">Que los teraflops de tu GPU te acompañen.</div>
+  <div class="qa">Espacio para preguntas</div>
+  <div class="brand">
+    <img src="__ASSET:brand/afentu-dark-bg.svg__" alt="Afentu">
+    <span>IA para Licitaciones Públicas</span>
+  </div>
+  <div class="chiletec"><img src="__ASSET:logos/chiletec-dark-bg.png__" alt="Chiletec"><span>Mesa de Inteligencia Artificial y Ética</span></div>
   <div class="qr">
     <div class="code"><img alt="Código QR al repositorio del taller" src="data:image/png;base64,__QR__"></div>
     <p>Material del taller</p>
   </div>
-  <aside class="notes" data-min="3"><ul><li>Qué llevarse, QR al repo, invitación al Taller 2 (fine-tuning).</li><li>Preguntas.</li></ul></aside>
+  <aside class="notes" data-min="3"><ul><li>Para llevarse, cinco filtros: ¿la licencia me sirve? → ¿cabe en mi equipo? → ¿rinde en español? → ¿rinde en mi tipo de tarea? → pruébalo con 20 a 30 casos reales (el que decide).</li><li>QR al repo con todo el material.</li><li>Taller 2: fine-tuning, cambiar el comportamiento ajustando los pesos.</li><li>Preguntas.</li></ul></aside>
+</section>
+
+<!-- G1 ─ Gancho Taller 2: límites del modelo -->
+<section class="slide" data-era="jedi" data-steps="1">
+  <div class="where">Bonus · Lo que viene</div>
+  <h2 class="title">¿Cuáles son los límites del modelo?</h2>
+  <p class="lead">Solo sabe lo que vio al entrenarse: no conoce tus documentos, tus procesos ni tu forma de trabajar. ¿Se puede mejorar?</p>
+  <div class="hook2 frag" data-step="1">
+    <div class="h2-yes">Sí: dándole <b>más datos</b>. Dos caminos, para casos muy distintos.</div>
+    <div class="h2-cols">
+      <div class="h2c"><h3>RAG</h3><p>Le <b>muestras</b> la información en el momento de preguntar.</p><em>Para que sepa cosas nuevas.</em></div>
+      <div class="h2c"><h3>Fine-tuning</h3><p>Le <b>ajustas los pesos</b> con tus ejemplos.</p><em>Para que se comporte distinto.</em></div>
+    </div>
+  </div>
+  <aside class="notes" data-min="0"><ul>
+    <li>Bonus después de “Gracias”: usar si sobra tiempo o en las preguntas. Gancho para el Taller 2. Pregunta al público: ¿qué le falta al modelo para usarlo en su empresa?</li>
+    <li>No conoce mis documentos (fecha de corte del entrenamiento) ni mi formato o tono.</li>
+    <li>Paso 1: dos caminos. RAG = información nueva sin tocar el modelo. Fine-tuning = cambiar el comportamiento cambiando los pesos.</li>
+  </ul></aside>
+</section>
+
+<!-- G2 ─ RAG en un diagrama -->
+<section class="slide" data-era="jedi" data-steps="1">
+  <div class="where">Bonus · Lo que viene · RAG</div>
+  <h2 class="title">RAG: le muestras los documentos</h2>
+  <div class="pipe">
+    <div class="pn"><span class="dotn">📁</span><b>Tus documentos</b><small>Se cortan en fragmentos</small></div>
+    <div class="pa"></div>
+    <div class="pn"><span class="dotn">⌗</span><b>Embeddings</b><small>Cada fragmento, un vector</small></div>
+    <div class="pa"></div>
+    <div class="pn"><span class="dotn">?</span><b>Búsqueda</b><small>Los más parecidos a la pregunta</small></div>
+    <div class="pa"></div>
+    <div class="pn hot"><span class="dotn">LLM</span><b>Respuesta</b><small>Pregunta + fragmentos en el contexto</small></div>
+  </div>
+  <div class="ways frag" data-step="1">
+    <div class="ways-row">
+      <div><h3>Sirve para</h3><p>Preguntar sobre información propia o que cambia: contratos, bases, manuales, normativa. Cita la fuente.</p></div>
+      <div><h3>No cambia</h3><p>El modelo. Los pesos quedan iguales; si borras los documentos, olvida todo.</p></div>
+    </div>
+  </div>
+  <aside class="notes" data-min="0"><ul>
+    <li>Retrieval-Augmented Generation: buscar y luego generar.</li>
+    <li>Es lo que hace LM Studio al adjuntar un PDF que no cabe en el contexto. Conecta con embeddings (Santiago cerca de Lima) y ventana de contexto.</li>
+    <li>Barato y rápido de montar; no requiere GPU grande para entrenar.</li>
+  </ul></aside>
+</section>
+
+<!-- G3 ─ Fine-tuning en un diagrama -->
+<section class="slide" data-era="jedi" data-steps="1">
+  <div class="where">Bonus · Lo que viene · Fine-tuning</div>
+  <h2 class="title">Fine-tuning: le ajustas los pesos</h2>
+  <div class="pipe">
+    <div class="pn"><span class="dotn">GGUF</span><b>Modelo base</b><small>Los pesos que descargaste</small></div>
+    <div class="pa"></div>
+    <div class="pn"><span class="dotn">{ }</span><b>Tus ejemplos</b><small>Cientos o miles de pares pregunta → respuesta ideal</small></div>
+    <div class="pa"></div>
+    <div class="pn"><span class="dotn">⟳</span><b>Entrenamiento</b><small>Se ajustan los pesos (horas de GPU)</small></div>
+    <div class="pa"></div>
+    <div class="pn hot"><span class="dotn">GGUF</span><b>Modelo nuevo</b><small>Un archivo de pesos tuyo</small></div>
+  </div>
+  <div class="ways frag" data-step="1">
+    <div class="ways-row">
+      <div><h3>Sirve para</h3><p>Cambiar cómo responde: formato, tono, estilo, una tarea muy específica, un modelo chico que imite a uno grande.</p></div>
+      <div><h3>No sirve para</h3><p>Enseñarle datos que cambian seguido. Para eso, RAG. Muchas veces se combinan.</p></div>
+    </div>
+  </div>
+  <aside class="notes" data-min="0"><ul>
+    <li>Es el mismo entrenamiento de la Parte 1 (adivina, compara, ajusta pesos), pero partiendo de un modelo ya entrenado y con pocos datos.</li>
+    <li>Técnicas como LoRA ajustan solo una parte de los pesos: cabe en una GPU como la mía.</li>
+    <li>Cierre del gancho: de esto se trata el Taller 2. ¿Les interesa?</li>
+  </ul></aside>
 </section>
 
 </main>
@@ -1805,6 +1931,10 @@ aside.notes{display:none;}
     if (MODE === 'embed') return;
     if (['ArrowRight','PageDown',' ','Enter'].includes(e.key)){ e.preventDefault(); next(); }
     else if (['ArrowLeft','PageUp','Backspace'].includes(e.key)){ e.preventDefault(); prev(); }
+    else if (e.key === 's' || e.key === 'S'){   // saltar a la siguiente sección (divisor)
+      const k = slides.findIndex((x, i) => i > cur && x.classList.contains('s-divider'));
+      if (k > 0){ cur = k; step = 0; render(); }
+    }
     else if (e.key === 'Home'){ cur = 0; step = 0; render(); }
     else if (e.key === 'End'){ cur = slides.length - 1; step = 0; render(); }
     else if (e.key === 'f' || e.key === 'F'){

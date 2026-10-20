@@ -18,13 +18,13 @@
 
 ## Resumen de temas
 
-**Parte 1 — Breve historia de la galaxia (30 min)**
+**Parte 1 — El origen de la galaxia (~25 min, conceptos) + Interludio: breve historia del Imperio (~5 min, se puede saltar con la tecla S)**
 - Temario (Chiletec presenta al speaker antes de empezar)
 - El origen: ¿qué es un LLM? (tokens, embeddings, red neuronal, probabilidades, un token a la vez)
 - El origen: en realidad, un Transformer (atención + red feed-forward, repetidos decenas de veces)
 - El origen: ¿qué es un parámetro? (pesos, tamaño en B y tamaño del archivo)
 - El origen: token, embedding, capacidades (herramientas, razonamiento, visión) y ventana de contexto, una diapositiva cada uno
-- El origen: ¿cómo aprende? *(por decidir si se mantiene)* (adivina, compara, ajusta los pesos; lo que queda es el archivo de pesos)
+- Bonus al final del deck: ¿cómo aprende? (cómo se entrena un LLM) (adivina, compara, ajusta los pesos; lo que queda es el archivo de pesos)
 - El origen: ¿cómo nace un archivo Open Weights? (pre-entrenamiento, post-entrenamiento, publicación; versiones cuantizadas, destiladas y afinadas)
 - Tres tipos de modelo: API cerrada, open weights y open source
 - Breve historia en tres actos: el lado claro (GPT-2), el lado oscuro (GPT-3 y ChatGPT) y la rebelión (LLaMA se filtra)
@@ -39,9 +39,9 @@
 
 ---
 
-## Parte 1 — Breve historia de la galaxia (30 min)
+## Parte 1 — El origen de la galaxia (~25 min) e Interludio (~5 min)
 
-**Orden de la Parte 1 (acordado el 19 oct. 2026):** ¿Qué es un LLM? (chat) → token → embedding → parámetro → Entonces, ¿qué es un LLM? → En realidad, un Transformer → capacidades (razonamiento, herramientas, visión) → ventana de contexto → tres tipos de modelo → breve historia. "¿Cómo aprende?" y "¿Cómo nace un archivo Open Weights?" quedaron al final de la Parte 1, por decidir.
+**Orden de la Parte 1 (acordado el 19 oct. 2026):** ¿Qué es un LLM? (chat) → token → embedding → parámetro → Entonces, ¿qué es un LLM? → En realidad, un Transformer → capacidades (razonamiento, herramientas, visión) → ventana de contexto → breve historia → tres tipos de modelo (resumen de la historia). "¿Cómo aprende?" pasa al final del deck como bonus, después de "Gracias". "¿Cómo nace un archivo Open Weights?" se eliminó del deck (su contenido queda abajo como respaldo).
 
 ### El origen (0): ¿Qué es un LLM? (la ventana de chat)
 
@@ -106,7 +106,7 @@ No todos los modelos tienen las tres; LM Studio las muestra como íconos en el c
 
 Todo lo que el modelo considera a la vez, medido en tokens: instrucciones, conversación, documentos y respuesta. Lo que no cabe, el modelo no lo ve (por eso existe el RAG). Máximos: Llama 3.2 3B 131.072 tokens; Gemma 4 26B 262.144 [68]. Cada token de contexto ocupa memoria (caché KV): memoria total de Llama 3.2 3B con `num_ctx` 4.096 / 32.768 / 131.072 = 2,6 / 6,1 / 18 GB, columna SIZE de `ollama ps` [70]. *(Esta diapositiva reemplaza a la antigua de caché KV de la Parte 2.)*
 
-### El origen (3): ¿Cómo aprende?
+### Bonus (al final del deck): ¿Cómo aprende?
 
 Animación con la misma red y la misma frase:
 1. Se toma texto real y se tapa la palabra que sigue.
@@ -115,7 +115,7 @@ Animación con la misma red y la misma frase:
 4. Cada peso se ajusta un poquito para equivocarse menos la próxima vez.
 5. Esto se repite con billones de tokens durante meses (Llama 3 se pre-entrenó con más de 15 billones de tokens [67]). Lo que queda al final son **los pesos**: el archivo que vamos a descargar.
 
-### El origen (4): ¿Cómo nace un archivo Open Weights?
+### Respaldo (eliminada del deck): ¿Cómo nace un archivo Open Weights?
 
 Cuando el entrenamiento termina, lo que queda es un archivo lleno de números: los **pesos**. No hay servidor ni cuenta: el modelo completo es ese archivo. "Open weights" significa que ese archivo está disponible para descargar.
 
@@ -131,7 +131,7 @@ Cuando el entrenamiento termina, lo que queda es un archivo lleno de números: l
 
 ### Tres tipos de modelo
 
-Va **antes** de la historia, con una flecha de "menos control" a "más control":
+Va **después** de la historia, como resumen, con una flecha de "menos control" a "más control":
 
 | Categoría | Qué recibes | Ejemplos |
 |---|---|---|
@@ -141,7 +141,11 @@ Va **antes** de la historia, con una flecha de "menos control" a "más control":
 
 OLMo es de los pocos proyectos que publican las tres cosas a la vez (incluido el dataset Dolma): es la vara más alta de apertura [23].
 
-### Breve historia en tres actos
+### Interludio: breve historia del Imperio
+
+Sección propia, con su divisor, entre la teoría y la práctica. Si el speaker va atrasado, la tecla **S** salta directo a la Parte 2.
+
+#### Breve historia en tres actos
 
 Una sola diapositiva con una línea de tiempo de tres hitos; la nave avanza y el título y el color de fondo cambian con cada era: "El lado claro de la Fuerza" → "El lado oscuro" → "La rebelión Open Weights". Cada hito muestra el logo de la empresa (Google y OpenAI, OpenAI, Meta) y su fecha: oct. 2018–nov. 2019, may. 2020–nov. 2022 y mar. 2023. En la rebelión, los modelos que siguieron aparecen con sus logos (Mistral, DeepSeek, Qwen, Llama, GLM, Gemma, gpt-oss, Kimi). Logos: ver `slides/assets/logos/FUENTES.md`.
 
@@ -163,124 +167,46 @@ Una sola diapositiva con una línea de tiempo de tres hitos; la nave avanza y el
 
 ## Parte 2 — Práctica Jedi: usar modelos Open Weights localmente (60 min)
 
-> ⚠️ **Por reestructurar:** los bloques de esta Parte 2 son la versión anterior (orden LM Studio → Ollama → RAG). El nuevo orden está en el Resumen de temas y se detallará en la próxima revisión.
+**Principio:** se muestran en vivo los mismos conceptos de la Parte 1, de lo más visual a lo más técnico. El speaker comparte la pantalla entera del PC Ubuntu (no se explica la instalación). Cada diapositiva resume un concepto y sirve de guía; las de LM Studio usan capturas reales con llamadas numeradas que aparecen en el orden de la demo. Las notas del presentador (tecla P) tienen los pasos exactos.
 
-**Principio:** se muestra el software funcionando en vivo, de lo más simple a lo más complejo. Cada concepto se explica justo cuando aparece en pantalla. Las diapositivas son puentes entre bloques y diagramas de apoyo.
+**Hilo conductor — el caso de uso:** las bases de licitación del **nuevo Convenio Marco de Servicios de Desarrollo y Mantención de Software, Servicios Profesionales TI y Cloud Computing** de ChileCompra (ID 2239-2-LR26) [55]. 3 categorías y 18 tipos de servicios [55]; convenio anterior ID 2239-19-LR23 [55]; plazo para ofertar extendido al 25 de septiembre de 2026 [56]; "~100 páginas" es dato del speaker, por confirmar.
 
-**Hilo conductor — el caso de uso:** las bases de licitación del **nuevo Convenio Marco de Servicios de Desarrollo y Mantención de Software, Servicios Profesionales TI y Cloud Computing** de ChileCompra (ID 2239-2-LR26) [55]. Datos clave:
-- 3 categorías y 18 tipos de servicios, incluyendo desarrollo de software, IA, automatización, datos, ciberseguridad y cloud [55].
-- El convenio vigente anterior es el ID 2239-19-LR23 [55].
-- El plazo para ofertar se extendió al 25 de septiembre de 2026 por modificaciones a las bases [56].
-- El PDF tiene cerca de 100 páginas (dato del speaker, por confirmar).
+**Antes de empezar:** VRAM libre (`ollama ps` vacío; ningún modelo cargado en LM Studio), modelos precalentados, LM Studio abierto en Library.
 
-El documento aparece en cada bloque y el modelo recibe cada vez más información: un PDF en LM Studio, un fragmento por API en Ollama, la carpeta completa de la licitación en los notebooks, y además el dataset del benchmark de modelos.
+### Bloque A — LM Studio: los conceptos en la interfaz (~22 min)
 
-**Preguntas de ejemplo para el documento:**
-- ¿Qué categorías y servicios incluye?
-- ¿Cuáles son los criterios de evaluación de las ofertas?
-- ¿Qué garantías se exigen a los proveedores?
-
-### Bloque A — LM Studio: qué es un modelo y cómo elegirlo (~22 min)
-
-LM Studio es una aplicación de escritorio para explorar, descargar y conversar con modelos, con interfaz gráfica. Desde la versión 0.4.0 (enero de 2026) también corre sin interfaz, como servidor [31][32]. Se parte por aquí porque el catálogo permite explicar los conceptos de forma visual, a medida que se seleccionan en la aplicación.
-
-**1. El catálogo (en vivo).** Al buscar un modelo se ven:
-- **Proveedor y modelo:** quién lo entrenó y cuántos parámetros tiene.
-- **Variantes de un mismo modelo:** distintas cuantizaciones; versiones *instruct* (conecta con el post-entrenamiento de la Parte 1); modelos **densos** contra **MoE**.
-- **Si cabe o no:** el catálogo indica qué modelos caben completos en la GPU y cuáles necesitan offload parcial a CPU.
-
-**Concepto: cuantización.** Entrenar produce pesos "pesados" (2 bytes por parámetro). Cuantizar los comprime: el formato más usado, **Q4_K_M**, deja un modelo en cerca de una cuarta parte de su tamaño, con una pérdida de calidad mínima [39][40]. Analogía: pasar una foto de RAW a JPEG.
-
-**Concepto: denso contra MoE.** Un modelo denso usa todos sus parámetros para cada palabra. Un modelo MoE (*Mixture of Experts*) se divide en "expertos" y activa solo algunos por palabra: es más rápido de lo que su tamaño sugiere, pero igual necesita memoria para todo el modelo. Ejemplos: Mixtral 8x7B [17] o Qwen3.5-397B-A17B, que activa 17B de sus 397B [22].
-
-**2. ¿Cómo elijo qué modelo descargar?** Ningún ranking te dice qué usar, solo a quién mirar:
-- **Votación humana (LMArena):** la gente vota a ciegas la respuesta que prefiere [35]. Mide lo que gusta, no lo que es correcto; el estudio *"The Leaderboard Illusion"* documenta sesgos [36].
-- **Exámenes automáticos:** la primera versión del ranking de Hugging Face se saturó y se retiró en junio de 2024 [37][38].
-- **Tareas reales (SWE-bench y similares):** miden si el modelo resuelve el trabajo. Son las más útiles para una empresa.
-
-**El panorama de hoy** (Artificial Analysis Intelligence Index, 7 de septiembre de 2026) [24]:
-
-| Modelo | Puntaje | Tipo |
-|---|---|---|
-| GLM-5.3 (Z.ai) | 44 | Open weight |
-| Kimi K3 (Moonshot AI) | 44 | Open weight |
-| GLM-5.3-Flash | 42 | Open weight |
-| Qwen3.8 | 40 | Open weight |
-| DeepSeek V4 Pro | 36 | Open weight |
-| Mejor cerrado (Claude Fable 5.1 / GPT-6 Astra) | 53 | Cerrado |
-
-Solo 9 puntos separan al mejor abierto del mejor cerrado [24]. Una semana después los números ya habían cambiado [25][26]: importa el criterio, no el ranking.
-
-**La licencia importa tanto como el benchmark.** Meta permite uso comercial libre de Llama 4 solo bajo 700 millones de usuarios activos al mes [27], y sus modelos multimodales excluyen a la Unión Europea [28].
-
-**Cinco filtros para elegir:** ¿la licencia me sirve? → ¿cabe en mi equipo? → ¿rinde en español? → ¿rinde en mi tipo de tarea? → **pruébalo con 20 a 30 casos reales**. El quinto filtro se remata con los resultados del **benchmark de modelos propio** (ver Bloque C y Recursos del repo).
-
-**3. Caso de uso, Camino 1: el PDF como texto (en vivo).** Se adjunta el PDF de las bases al chat de LM Studio y se le pregunta. Si el documento cabe en el contexto del modelo, LM Studio lo agrega completo a la conversación; si es muy largo, usa RAG para extraer solo las partes relevantes [57].
-*Diapositiva después de la demo:* PDF → texto o Markdown → fragmentos → índice de vectores → búsqueda de los fragmentos más parecidos a la pregunta. Dos formas de que el modelo reciba esos fragmentos:
-- **Inyección en el contexto:** se pegan en el mensaje junto a la pregunta (lo que hace LM Studio).
-- **Uso de herramientas:** el modelo decide cuándo buscar y llama a una función de búsqueda, como un agente (se muestra en el Bloque C).
-
-El concepto de RAG fue propuesto por Lewis et al. en 2020 [48].
-
-**4. Caso de uso, Camino 2: modelos que leen imágenes (en vivo).** Tablas, firmas y páginas escaneadas se pierden al pasar a texto. Un modelo multimodal las lee directamente como imagen: se adjunta una página (por ejemplo, la tabla de criterios de evaluación) y se le pregunta.
-*Diapositiva después de la demo — cómo se codifica la imagen:*
-1. La imagen se corta en **parches** de tamaño fijo, como propuso el Vision Transformer [58].
-2. Un **encoder de visión** convierte cada parche en un vector.
-3. Un **proyector** lleva esos vectores al espacio del modelo de lenguaje: se vuelven **tokens de imagen** que el LLM lee junto a los tokens de texto [59][60].
-
-Ejemplo concreto: LLaVA-1.5 lleva la imagen a 336×336 píxeles, la divide en 24×24 parches y genera **576 tokens visuales** por imagen [59].
-
-**¿Cuándo usar cada camino?** Texto y RAG para documentos largos con texto digital. Imagen para tablas, gráficos y escaneos; cada imagen ocupa cientos de tokens del contexto.
-
-**5. Misma pregunta, varios modelos (en vivo).** Se compara la **calidad** de la respuesta entre un modelo pequeño y uno mediano que caben en la GPU (por ejemplo, Llama 3.2 3B y Qwen3.6 27B o Gemma 4), anotando si la respuesta es correcta.
-
-### Bloque B — Ollama: lo que hay debajo del chat (~18 min)
-
-Ollama es el motor: corre como un servicio en tu equipo (`localhost:11434`) y expone un API compatible con el de OpenAI, así que migrar de la nube a local puede ser cambiar una URL. Desde mayo de 2025 usa un motor propio para dar soporte de primera clase a modelos multimodales [29][30]. Lee modelos en formato **GGUF**, que empaqueta pesos, configuración y vocabulario en un solo archivo; lo creó Georgi Gerganov en agosto de 2023 [33][34].
-
-**1. El API por dentro (en vivo).** Un `curl` al API de Ollama muestra lo que realmente se envía y lo que el modelo responde: un JSON con el texto, cuántos tokens procesó, cuántos generó y cuánto se demoró cada etapa. **De ahí salen los tokens por segundo**, y un benchmark no es más que esa misma petición repetida en distintas condiciones.
-*Diapositiva nueva:* el JSON de respuesta anotado.
-
-**2. Ventana de contexto y caché KV (en vivo).** Terminal dividida en paneles: `ollama run modelo --verbose` a un lado, y `nvtop` (uso de VRAM y GPU en vivo) y `watch -n1 ollama ps` al otro.
-- `--verbose` muestra después de cada respuesta la velocidad de generación, la velocidad de procesamiento del prompt y el tiempo de carga [61].
-- El contexto se cambia en vivo con `/set parameter num_ctx 8192` [60b].
-- En `ollama ps`, la columna SIZE incluye la caché KV [61]: se ve crecer al agrandar el contexto.
-- **El error clásico:** ver que el archivo cabe en la GPU y asumir que el modelo cabe. Hay que sumar la memoria de la conversación (la caché KV), que crece con el largo del contexto [41]. *Grouped-Query Attention* ayuda a que no se dispare [42][43].
-- Un script del repo (el **medidor de contexto**) dibuja una barra de tokens usados contra `num_ctx` y estima el tamaño de la caché KV. Se presenta como **estimación calculada**: Ollama no expone la ocupación de la caché KV directamente.
-*Diapositiva después de la demo:* barras de VRAM de 24 GB con pesos + caché KV, en pregunta corta contra documento largo (esquema ilustrativo con Qwen3.6-27B Q4_K_M de 16,8 GB).
-
-**3. GPU contra CPU con el mismo modelo (en vivo).** El parámetro `num_gpu` limita cuántas capas se cargan en la GPU [62]. Se corre **el mismo modelo con la misma tarea** en tres modos (todas las capas en GPU, la mitad, ninguna), así la única variable es el hardware. La columna PROCESSOR de `ollama ps` muestra "100% GPU", "100% CPU" o un reparto como "48%/52% CPU/GPU" [60b]. Se llena en vivo la tabla de tokens por segundo.
-
-**4. Hardware y costos.** La RTX 3090 tiene 24 GB de VRAM, de sobra para modelos de 14B a 32B bien cuantizados [44].
-
-| Equipo | Memoria para el modelo | Qué corre bien | Costo aprox. |
+| # | Diapositiva | Qué se hace en vivo | Concepto de la Parte 1 |
 |---|---|---|---|
-| Notebook sin GPU dedicada | RAM del sistema | Modelos pequeños, lento | por completar |
-| GPU de 8 GB | 8 GB | 7 a 8B en Q4 | por completar |
-| GPU de 12 GB | 12 GB | 12 a 14B en Q4 | por completar |
-| **RTX 3090 (equipo del speaker)** | 24 GB | 14 a 32B en Q4 | por completar |
-| RTX 5090 | 32 GB | 27B en Q6 u Q8 | por completar |
-| Mac con memoria unificada | 64 GB compartidos | 70B o más, más lento | por completar |
+| A1 | LM Studio: la biblioteca (captura) | Library → LLMs: columna Params (26B-A4B, 30B-A3B), íconos de capacidades, Size, panel Info (Quantization Q4_K_M, Format GGUF) | parámetros, capacidades, cuantización |
+| A2 | El nombre lo dice todo | Model Search: buscar una familia y ver variantes | instruct (post-entrenamiento), MoE, QAT, destilado (DeepSeek-R1-0528 → Qwen3-8B), formato GGUF |
+| A3 | Cuantizar: comprimir los pesos | Columna Size | Llama 3.1 8B: ~16 GB en FP16 (estimado) → 4,9 GB en Q4_K_M (archivo real) |
+| A4 | Denso contra MoE | Comparar 26B-A4B con un denso | Gemma 4 26B: 25,8B parámetros, 128 expertos [68]; solo CPU: 19 tok/s vs 27 tok/s de Llama 3.2 3B (medido) |
+| A5 | ¿No cabe? Una parte va a la CPU | Pestaña Load: Context Length y GPU Offload | ventana de contexto; los 30 bloques de Gemma 4 26B: 125 / 41 / 19 tok/s con todo en GPU / mitad / solo CPU (medido) |
+| A6 | LM Studio: el chat (captura) | "La capital de Chile es" → Santiago; estadísticas (tok/s); Think; System Prompt | token a token, razonamiento |
 
-GPU dedicada: más velocidad con un techo fijo de memoria. Mac: más techo, menos velocidad.
+*(A7–A9 —caso de uso, PDF e imágenes— pasaron al bonus; ver abajo.)*
 
-**5. Benchmark de hardware.** Se muestran los resultados del notebook ya ejecutado en la RTX 3090, como referencia para que cada asistente lo corra en su equipo y se compare.
+### Bloque B — Ollama: lo mismo, en la terminal (~9 min)
 
-### Bloque C — RAG sobre una carpeta completa (~15 min)
+No se vuelven a explicar los conceptos: solo la equivalencia con LM Studio, con el mismo modelo (`gemma4:26b`) y la misma pregunta. Antes: expulsar el modelo de LM Studio.
+- `ollama list` = Library · `ollama show gemma4:26b` = panel Info (25.8B, Q4_K_M, contexto 262.144, capacidades vision/tools/thinking) · `ollama run --verbose` = chat + estadísticas (eval rate) · `ollama ps` = pestaña Load (SIZE, PROCESSOR, CONTEXT) [60b][61].
+- **Por debajo de todo, un API:** `curl` a `/api/chat`; la respuesta trae el texto y los contadores (`prompt_eval_count` 18, `eval_count` 17, `eval_duration` en ns; medición real del 20 oct. 2026). Ollama en `localhost:11434` y LM Studio en `localhost:1234`, ambos compatibles con el API de OpenAI. *(Pendiente técnico: el servicio de Ollama del PC escucha hoy en el puerto 1234; volver a 11434.)*
 
-**Notebook ya ejecutado (en vivo se corren solo una o dos celdas).** El asistente define una carpeta, deja ahí sus archivos (PDF, Word, texto) y el resto lo hace **LangChain**, con el mínimo código visible.
-- Embeddings locales con `OllamaEmbeddings` y vectores en `InMemoryVectorStore`, sin instalar una base de datos aparte [63].
-- Los dos caminos sobre el mismo índice: **inyección en el contexto** (buscar y luego preguntar) y **agente con herramienta de búsqueda** (`create_agent` con una herramienta definida con `@tool`) [64].
-- Funciona con Ollama o LM Studio cambiando un parámetro, porque ambos exponen un API compatible con OpenAI.
-- Cada respuesta muestra de qué archivo y página salió.
-- Para el caso de uso, la carpeta es la licitación completa: bases, anexos y respuestas del foro de preguntas.
-- **Limitación a mencionar:** el RAG de texto no funciona con PDF escaneados; para eso están los modelos multimodales del Bloque A.
+### Bloque C — ¿Qué modelo elijo? (~10 min)
 
-### Cierre (~5 min)
+Rankings (votación humana, exámenes, tareas reales) [35]–[38], panorama de hoy (Artificial Analysis, 7 sep. 2026) [24]–[26], memoria y hardware (costos por completar), los cinco filtros y "Misma pregunta, tres modelos" (Llama 3.1 8B, Gemma 4 26B-A4B, Qwen3.8 27B; resultados pendientes del benchmark propio).
 
-- Qué llevarse: los tres tipos de modelo, los cinco filtros, y que el hardware y el contexto deciden qué puedes correr.
-- QR al repo con todo el material.
-- **Taller 2:** RAG le da al modelo información nueva, pero no cambia cómo se comporta. Para cambiar el comportamiento (formato, tono, estructura) hay que ajustar los pesos: eso es fine-tuning.
+### Cierre (~3 min)
+
+Qué llevarse (tokens, contexto y memoria deciden qué puedes correr; los cinco filtros), QR al repo y Taller 2 (fine-tuning).
+
+### Gancho para el Taller 2 (antes de "Gracias")
+
+- **¿Cuáles son los límites del modelo? ¿Se puede mejorar?** Solo sabe lo que vio al entrenarse. Sí: dándole más datos, por dos caminos para casos distintos.
+- **RAG:** le muestras tus documentos al preguntar (fragmentos → embeddings → búsqueda → contexto). Sirve para información propia o que cambia; no cambia el modelo.
+- **Fine-tuning:** ajustas los pesos con tus ejemplos (modelo base + pares pregunta/respuesta → entrenamiento → nuevo GGUF). Sirve para cambiar formato, tono o una tarea específica; no para datos que cambian. Se pueden combinar.
+
+*(El caso de uso del Convenio Marco, el PDF, las imágenes, el notebook de RAG y "¿Cómo aprende?" salieron del deck el 20 oct. 2026; su contenido queda en este documento como respaldo.)*
 
 ---
 

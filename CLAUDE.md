@@ -47,7 +47,7 @@ xdg-open slides/dist/index.html         # o abrir en el navegador
 
 - **Edita siempre `slides/deck.src.html`**, nunca `dist/index.html`.
 - Después de cada cambio: build + capturas de las diapositivas tocadas + revisar las imágenes antes de dar el trabajo por terminado. Revisa que nada se salga de los márgenes (lienzo 1600×900, padding 64px/96px).
-- Navegación del deck: flechas/espacio/PageUp-PageDown (clicker), tecla **F** pantalla completa, `#n` en la URL para saltar a una diapositiva, swipe en táctil.
+- Navegación del deck: flechas/espacio/PageUp-PageDown (clicker), tecla **F** pantalla completa, **S** salta a la siguiente sección, `#n` en la URL para saltar a una diapositiva, swipe en táctil.
 - **Modo presentador:** tecla **P** abre una ventana sincronizada (`?presenter`) con la diapositiva actual, la siguiente (o el siguiente paso), las notas y cronómetros (total, por diapositiva con objetivo, y plan acumulado). Las vistas internas usan `?embed`. Sincroniza por `postMessage` (funciona con file://) y `BroadcastChannel`.
 - **Notas del speaker:** cada `<section>` termina con `<aside class="notes" data-min="N"><ul><li>…</li></ul></aside>` (N = minutos objetivo). No se ven en la presentación.
 - Charla por Zoom: el Mac comparte la *ventana* del deck (no pantalla completa de macOS) con cámara y micrófono; el PC Ubuntu entra sin audio y comparte pantalla en la demo.
@@ -87,12 +87,11 @@ xdg-open slides/dist/index.html         # o abrir en el navegador
 
 ## Estado actual del deck (25 diapositivas en `deck.src.html`)
 
-**Parte 1 — Breve historia de la galaxia (30 min), orden acordado el 19 oct 2026:** 1 Portada · 2 Temario · 3 Divisor · 4 ¿Qué es un LLM? (chat animado: aplicación vs LLM; la 8 "Entonces, ¿qué es un LLM?" remata el chiste) · 5 ¿Qué es un token? · 6 ¿Qué es un embedding? (embeddings reales) · 7 ¿Qué es un parámetro? · 8 Entonces, ¿qué es un LLM? (red animada) · 9 En realidad: un Transformer (→ decoder-only) · 10 Capacidades (razonamiento, herramientas, visión) · 11 Ventana de contexto · 12 Tres tipos de modelo · 13 Breve historia (lado claro → oscuro → rebelión, con logos) · 14 ¿Cómo aprende? y 15 ¿Cómo nace un archivo Open Weights? (por decidir si se quedan).
+**Parte 1 — El origen de la galaxia (conceptos) + Interludio: breve historia del Imperio, orden acordado el 20 oct 2026:** 1 Portada · 2 Temario · 3 Divisor · 4 ¿Qué es un LLM? (chat animado: aplicación vs LLM; la 8 "Entonces, ¿qué es un LLM?" remata el chiste) · 5 ¿Qué es un token? · 6 ¿Qué es un embedding? (embeddings reales) · 7 ¿Qué es un parámetro? · 8 Entonces, ¿qué es un LLM? (red animada) · 9 En realidad: un Transformer (→ decoder-only) · 10 Capacidades (razonamiento, herramientas, visión) · 11 Ventana de contexto · 12 Divisor del Interludio · 13 Breve historia (lado claro → oscuro → rebelión, con logos) · 14 Tres tipos de modelo (resumen de la historia). Tecla **S** salta a la siguiente sección (divisor), p. ej. del interludio a la Parte 2. "¿Cómo aprende?" va al final como bonus, después de "Gracias"; "¿Cómo nace un archivo Open Weights?" se eliminó.
 Las redes se generan en JS desde `data-nn` (JSON con capas) y los embeddings desde `data-emb`.
 
-**Parte 2 — Práctica Jedi (60 min), versión antigua, por reestructurar:** 12 Divisor · 13 Ollama · 14 Tabla de hardware · 15 Cuantización · 16 Caché KV · 17 LM Studio: el catálogo · 18 Benchmarks · 19 Panorama de hoy · 20 Cinco filtros · 21 Caso de uso Convenio Marco · 22 Camino 1 · 23 Camino 2 · 24 Misma pregunta, tres modelos · 25 Cierre.
+**Parte 2 — Práctica Jedi, reestructurada el 20 oct 2026:** 15 Divisor · A) LM Studio: 16 biblioteca (captura con llamadas) · 17 El nombre lo dice todo · 18 Cuantización · 19 Denso vs MoE · 20 GPU offload · 21 chat (captura) · B) Ollama: 22 lo mismo en la terminal (list/show/run/ps ↔ LM Studio) · 23 Por debajo de todo: un API (JSON real) · C) ¿Qué modelo elijo?: 24 rankings · 25 panorama · 26 hardware · 27 cinco filtros · 28 benchmark propio (pendiente) · gancho Taller 2: ¿límites del modelo? → RAG → fine-tuning · Gracias (sin bonus). Capturas de LM Studio en `slides/assets/demo/` (llamadas en px de 1920×1080). Plan: 28 + 44 = 71 min, holgura para la demo en vivo.
 
-⚠️ **El orden de la Parte 2 en el deck todavía es el antiguo** (Ollama antes que LM Studio). El orden acordado está en `docs/contenido-taller-1.md` y abajo.
 
 ### Parte 2 acordada (reorganización pendiente en el deck)
 - **Bloque A — LM Studio (~22 min):** puente → catálogo en vivo → diapositivas de cuantización y **denso vs MoE (nueva)** → rankings, panorama, cinco filtros (+ resultados del benchmark de modelos propio) → PDF de las bases en vivo → Camino 1 → página como imagen con modelo multimodal → Camino 2 → misma pregunta con varios modelos (calidad).
@@ -117,8 +116,9 @@ Las redes se generan en JS desde `data-nn` (JSON con capas) y los embeddings des
 ## Pendientes
 
 **Del usuario:**
+- Portada con foto del speaker (`slides/assets/brand/speaker.jpg`); logo de Afentu en la esquina superior derecha de todas las diapositivas salvo la portada (`.corner-logo`).
 - Logos oficiales que faltan (kit de OpenAI y Mistral, vector de Chiletec). La diapositiva "Quién soy" se eliminó: Chiletec presenta al speaker.
-- URL real del repo de GitHub → regenerar `slides/assets/qr.b64` (hoy apunta a `https://github.com/TU-USUARIO/taller-open-weights-chiletec`). Se puede generar con `qrencode -o qr.png URL && base64 -w0 qr.png > slides/assets/qr.b64`.
+- QR del repo listo: apunta a https://github.com/bastiancy/taller-open-weights-chiletec (generado con el paquete `qrcode` de Python). Se puede generar con `qrencode -o qr.png URL && base64 -w0 qr.png > slides/assets/qr.b64`.
 - Costos de hardware en Chile (se ofreció buscar precios de referencia).
 - PDF de las bases (y anexos) para el dataset del benchmark; confirmar las ~100 páginas.
 - Modelo multimodal para el Camino 2; confirmar modelos de la demo (Llama 3.2 3B, Qwen3.6 27B o Gemma 4, y el modelo para GPU vs CPU).
